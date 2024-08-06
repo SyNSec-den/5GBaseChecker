@@ -1,0 +1,30 @@
+digraph g {
+
+	s0 [shape="circle" label="s0"];
+	s1 [shape="circle" label="s3"];
+	s2 [shape="circle" label="s2"];
+	s3 [shape="circle" label="s1"];
+	s4 [shape="circle" label="s5"];
+	s5 [shape="circle" label="s4"];
+
+	s5 -> s3 [modality="MAY", style="dashed", label="atake2"];
+	s2 -> s3 [modality="MAY", style="dashed", label="arelease1"];
+	s0 -> s1 [modality="MUST", style="strict", label="atake1"];
+	s1 -> s5 [modality="MUST", style="strict", label="atake2"];
+	s3 -> s3 [modality="MAY", style="dashed", label="atake2"];
+	s1 -> s3 [modality="MAY", style="dashed", label="arelease1"];
+	s4 -> s2 [modality="MUST", style="strict", label="atake2"];
+	s3 -> s3 [modality="MAY", style="dashed", label="atake1"];
+	s2 -> s3 [modality="MAY", style="dashed", label="atake2"];
+	s4 -> s1 [modality="MUST", style="strict", label="atake1"];
+	s3 -> s3 [modality="MAY", style="dashed", label="arelease1"];
+	s5 -> s3 [modality="MAY", style="dashed", label="atake1"];
+	s0 -> s2 [modality="MUST", style="strict", label="atake2"];
+	s2 -> s5 [modality="MUST", style="strict", label="atake1"];
+	s5 -> s4 [modality="MUST", style="strict", label="arelease1"];
+	s0 -> s3 [modality="MAY", style="dashed", label="arelease1"];
+	s1 -> s3 [modality="MAY", style="dashed", label="atake1"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}

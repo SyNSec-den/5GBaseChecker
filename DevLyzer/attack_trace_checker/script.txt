@@ -1,0 +1,5 @@
+reset
+read_model -i demo.smv
+go
+check_ltlspec
+quit

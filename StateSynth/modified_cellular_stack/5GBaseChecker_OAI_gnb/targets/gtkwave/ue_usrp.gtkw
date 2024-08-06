@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.58 (w)1999-2014 BSI
+[*] Sun Jul 17 20:46:59 2016
+[*]
+[dumpfile] "/tmp/openair_dump_UE.vcd"
+[dumpfile_mtime] "Sun Jul 17 20:46:29 2016"
+[dumpfile_size] 10932224
+[savefile] "/home/fourmi/openairinterface5g/targets/RT/USER/ue_usrp.gtkw"
+[timestart] 11696930000
+[size] 1215 640
+[pos] 105 102
+*-22.292629 30041590000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 224
+[signals_width] 262
+[sst_expanded] 1
+[sst_vpaned_height] 155
+@24
+variables.hw_subframe[63:0]
+@28
+functions.trx_read
+functions.trx_write
+functions.ue_thread_synch
+functions.ue_thread_rxtx0
+@24
+variables.subframe_RX0_UE[63:0]
+variables.subframe_TX0_UE[63:0]
+variables.frame_number_RX0_UE[63:0]
+variables.frame_number_TX0_UE[63:0]
+@28
+functions.ue_thread_rxtx1
+@24
+variables.subframe_RX1_UE[63:0]
+variables.subframe_TX1_UE[63:0]
+@25
+variables.frame_number_RX1_UE[63:0]
+@24
+variables.frame_number_TX1_UE[63:0]
+@28
+functions.phy_procedures_ue_rx
+functions.phy_procedures_ue_tx
+functions.ue_slot_fep
+functions.lte_ue_measurement_procedures
+functions.ue_rrc_measurements
+functions.ue_gain_control
+functions.ue_adjust_synch
+functions.lte_ue_pbch_procedures
+functions.lte_ue_pdcch_procedures
+functions.rx_pdcch
+functions.dci_decoding
+functions.phy_ue_generate_prach
+functions.phy_ue_ulsch_encoding
+functions.phy_ue_ulsch_modulation
+functions.phy_ue_ulsch_scrambling
+functions.phy_ue_config_sib2
+[pattern_trace] 1
+[pattern_trace] 0

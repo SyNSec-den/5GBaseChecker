@@ -1,0 +1,128 @@
+include $(OPENAIR_DIR)/common/utils/Makefile.inc
+
+TOP_DIR      = $(OPENAIR1_DIR)
+OPENAIR1_TOP = $(OPENAIR1_DIR)
+OPENAIR2_TOP = $(OPENAIR2_DIR)
+OPENAIR3_TOP = $(OPENAIR3_DIR)
+OPENAIR3     = $(OPENAIR3_DIR)
+
+EXE_FILE_NAME = test_pdcp_rlc
+
+CFLAGS += -m32 -DPHYSIM -DNODE_RG -DNB_ANTENNAS_RX=2 -DNB_ANTENNAS_TX=2 -DMAX_MODULES=1 -I/usr/include/X11
+
+ASN1_MSG_INC = $(OPENAIR2_DIR)/RRC/LITE/MESSAGES
+
+CFLAGS += -DOPENAIR_LTE -DOPENAIR2 #-DOFDMA_ULSCH -DIFFT_FPGA -DIFFT_FPGA_UE
+CFLAGS += -I/usr/include/libxml2 -lxml2
+
+#CFLAGS += -DXFORMS
+
+ifdef DEBUG_PHY
+CFLAGS += -DDEBUG_PHY
+endif
+
+ifdef PDCP_USE_NETLINK
+CFLAGS += -DPDCP_USE_NETLINK -DLINUX -DDEBUG_CONTROL
+endif
+
+#include $(OPENAIR1_DIR)/PHY/Makefile.inc
+#include $(OPENAIR1_DIR)/SCHED/Makefile.inc
+
+EXTRA_CFLAGS += -DOPENAIR2
+EXTRA_CFLAGS += -DASSERT
+EXTRA_CFLAGS += -DNO_RRM
+
+COMMON_DIR = $(OPENAIR2_TOP)/COMMON
+L2_INTERFACE_DIR = $(OPENAIR2_TOP)/RRC/L2_INTERFACE
+RLC_UM_DIR = $(OPENAIR2_TOP)/LAYER2/RLC/UM_v9.3.0
+RLC_AM_DIR = $(OPENAIR2_TOP)/LAYER2/RLC/AM_v9.3.0
+RLC_TM_DIR = $(OPENAIR2_TOP)/LAYER2/RLC/TM
+RLC_DIR = $(OPENAIR2_TOP)/LAYER2/RLC
+PDCP_DIR = $(OPENAIR2_TOP)/LAYER2/PDCP_v10.1.0
+MEM_DIR = $(OPENAIR2_TOP)/UTIL/MEM
+LIST_DIR = $(OPENAIR2_TOP)/UTIL/LISTS
+MATH_DIR = $(OPENAIR2_TOP)/UTIL/MATH
+TIMER_DIR = $(OPENAIR2_TOP)/UTIL/TIMER
+PHY_INTERFACE_DIR = $(OPENAIR2_TOP)/PHY_INTERFACE
+RRC_DIR = $(OPENAIR2_TOP)/RRC/LITE
+L2_INTERFACE_DIR = $(OPENAIR2_TOP)/RRC/L2_INTERFACE
+MAC_DIR = $(OPENAIR2_TOP)/LAYER2/MAC
+LOG_DIR=$(OPENAIR2_TOP)/UTIL/LOG
+OPT_DIR=$(OPENAIR2_TOP)/UTIL/OPT
+
+SOURCES_L2 =  $(LIST_DIR)/list.c
+SOURCES_L2 +=  $(LIST_DIR)/list2.c
+
+SOURCES_L2 +=  $(PDCP_DIR)/pdcp.c
+SOURCES_L2 +=  $(PDCP_DIR)/pdcp_primitives.c
+SOURCES_L2 +=  $(PDCP_DIR)/pdcp_sequence_manager.c
+
+SOURCES_L2 +=  $(RLC_DIR)/rlc_mac.c
+SOURCES_L2 +=  $(RLC_DIR)/rlc.c
+SOURCES_L2 +=  $(RLC_DIR)/rlc_rrc.c
+SOURCES_L2 +=  $(RLC_DIR)/rlc_mpls.c
+
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_control_primitives.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_dar.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_fsm.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_reassembly.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_receiver.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_segment.c
+SOURCES_L2 +=  $(RLC_UM_DIR)/rlc_um_test.c
+
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_init.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_timer_poll_retransmit.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_timer_reordering.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_timer_status_prohibit.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_segment.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_segments_holes.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_in_sdu.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_receiver.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_retransmit.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_windows.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_rx_list.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_reassembly.c
+SOURCES_L2 +=  $(RLC_AM_DIR)/rlc_am_status_report.c
+
+
+SOURCES_L2 +=  $(RLC_TM_DIR)/rlc_tm.c
+SOURCES_L2 +=  $(RLC_TM_DIR)/rlc_tm_control_primitives.c
+SOURCES_L2 +=  $(RLC_TM_DIR)/rlc_tm_fsm.c
+SOURCES_L2 +=  $(RLC_TM_DIR)/rlc_tm_segment.c
+SOURCES_L2 +=  $(RLC_TM_DIR)/rlc_tm_reassembly.c
+
+
+
+SOURCES_L2 +=  $(MEM_DIR)/mem_block.c
+
+LOG_OBJS =  $(LOG_DIR)/log.o
+OPT_OBJS =  $(OPT_DIR)/probe.o
+
+L2_OBJS=$(addsuffix .o,$(basename $(SOURCES_L2))) $(PHY_INTERFACE_OBJS) $(MAC_OBJS) $(L2_INTERFACE_OBJS) $(RRC_OBJS) $(LOG_OBJS) $(OPT_OBJS)
+
+L2_incl = -I$(OPENAIR2_TOP)  -I$(COMMON_DIR) -I$(RLC_DIR) -I$(RLC_AM_DIR) -I$(RLC_UM_DIR)  -I$(RLC_TM_DIR) -I$(PDCP_DIR) -I$(MEM_DIR) -I$(LIST_DIR)  \
+	  -I$(LOG_DIR) -I$(MATH_DIR) -I$(TIMER_DIR) -I$(OPENAIR3)/MESH -I$(OPENAIR2_TOP)/RRC/MESH -I$(OPENAIR2_TOP)/RRC/MESH/MESSAGES -I$(OPENAIR3)/MESH/RRM -I$(OPT_DIR)
+
+ASN1_MSG_OBJS2 := $(foreach file, $(ASN1_MSG_OBJS), $(OPENAIR2_DIR)/RRC/LITE/MESSAGES/$(file))
+
+# Define object file directory for RLM code
+#RLC_OBJ_DIR = $(RLC_DIR)/*.o $(RLC_AM_DIR)/*.o $(RLC_UM_DIR)/*.o $(RLC_TM_DIR)/*.o
+
+OBJ = $(PHY_OBJS) $(SIMULATION_OBJS)  $(SCHED_OBJS) $(STATS_OBJS) $(ASN1_MSG_OBJS2) $(RLC_OBJ_DIR)
+
+all: build_test_pdcp_rlc
+
+$(OBJ) : %.o : %.c
+	$(CC) -c $(CFLAGS) $(EXTRA_CFLAGS) -DPHY_CONTEXT=1 -I$(TOP_DIR) $(L2_incl) -I$(ASN1_MSG_INC) -o $@ $<
+
+$(L2_OBJS) : %.o : %.c
+	$(CC) -c $(CFLAGS) $(EXTRA_CFLAGS) -DMAC_CONTEXT=1 -DPHY_CONTEXT=1 -I$(TOP_DIR) $(L2_incl) -I$(ASN1_MSG_INC) -o $@ $<
+
+build_test_pdcp_rlc : $(OBJ) $(L2_OBJS) test_pdcp_rlc.c
+	$(CC) test_pdcp_rlc.c -I$(TOP_DIR) $(L2_incl) -I$(ASN1_MSG_INC) -o $(EXE_FILE_NAME) $(CFLAGS) $(EXTRA_CFLAGS) $(OBJ) $(L2_OBJS) -lm -lcurses
+
+clean:
+	rm -f test_pdcp_rlc
+	rm -f *.o

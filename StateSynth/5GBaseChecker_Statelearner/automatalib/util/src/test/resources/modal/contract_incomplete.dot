@@ -1,0 +1,49 @@
+digraph g {
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s2 [shape="circle" label="2"];
+	s3 [shape="circle" label="3"];
+	s4 [shape="circle" label="4"];
+	s5 [shape="circle" label="5"];
+	s6 [shape="circle" label="6"];
+	s7 [shape="circle" label="7"];
+	s8 [shape="circle" label="8"];
+	s9 [shape="circle" label="9"];
+	s10 [shape="circle" label="10"];
+	s11 [shape="circle" label="11"];
+	s12 [shape="circle" label="12"];
+	s13 [shape="circle" label="13"];
+	s14 [shape="circle" label="14"];
+	s15 [shape="circle" label="15"];
+	s16 [shape="circle" label="16"];
+	s17 [shape="circle" label="17"];
+	s18 [shape="circle" label="18"];
+	s0 -> s8 [modality="MUST" color="8" contract="RED" colorscheme="reds9" label="a" group="1"];
+	s0 -> s1 [modality="MUST" contract="NONE" label="b" group="-1"];
+	s1 -> s2 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s2 -> s3 [modality="MUST" contract="NONE" label="a" group="-1"];
+	s2 -> s17 [modality="MUST" color="5" contract="RED" colorscheme="reds9" label="b" group="4"];
+	s3 -> s4 [modality="MUST" contract="NONE" label="c" group="-1"];
+	s4 -> s5 [modality="MUST" contract="NONE" label="a" group="-1"];
+	s4 -> s15 [modality="MUST" color="4" contract="GREEN" colorscheme="greens9" label="b" group="3"];
+	s5 -> s6 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s6 -> s5 [modality="MAY" contract="NONE" style="dashed" label="a" group="-1"];
+	s6 -> s7 [modality="MUST" contract="NONE" label="b" group="-1"];
+	s7 -> s13 [modality="MUST" color="5" contract="GREEN" colorscheme="greens9" label="c" group="2"];
+	s8 -> s9 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s9 -> s10 [modality="MUST" contract="NONE" label="b" group="-1"];
+	s10 -> s11 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s11 -> s12 [modality="MUST" contract="NONE" label="a" group="-1"];
+	s12 -> s11 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s13 -> s14 [modality="MUST" contract="NONE" label="a" group="-1"];
+	s14 -> s13 [modality="MUST" contract="NONE" label="c" group="-1"];
+	s15 -> s16 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s16 -> s15 [modality="MUST" contract="NONE" label="b" group="-1"];
+	s17 -> s18 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s18 -> s17 [modality="MUST" contract="NONE" label="b" group="-1"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+
+}

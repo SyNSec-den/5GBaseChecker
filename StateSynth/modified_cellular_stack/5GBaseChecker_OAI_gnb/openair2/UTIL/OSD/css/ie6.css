@@ -1,0 +1,20 @@
+table {
+	border-collapse:	collapse; /* equivalent of cellspacing = 0 */
+}
+
+fieldset {
+  padding-top:1.5em;
+}
+
+fieldset legend {
+  padding:0 0.5em;
+}
+
+fieldset legend a:link,
+fieldset legend a:visited {
+  color:#0066B3;
+}
+
+ul.primary li a {
+  padding: 3px 10px 1px 10px; /* fix alignment of tabs */
+}

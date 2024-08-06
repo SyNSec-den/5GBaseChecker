@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export LC_ALL = C.UTF-8
+
+include /usr/share/dpkg/default.mk
+
+%:
+	dh $@ --buildsystem=meson
+
+override_dh_install:
+	dh_install --sourcedir=obj-$(DEB_HOST_GNU_TYPE)
+
+override_dh_auto_test:
+	cd obj-$(DEB_HOST_GNU_TYPE) && meson test -v --suite unit

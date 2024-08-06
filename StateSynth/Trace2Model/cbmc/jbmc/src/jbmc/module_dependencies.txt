@@ -1,0 +1,15 @@
+analyses
+ansi-c # should go away
+cbmc # bmc.h - will go away
+goto-checker
+goto-instrument
+goto-programs
+goto-symex
+java_bytecode
+jbmc
+langapi # should go away
+linking
+pointer-analysis
+solvers/refinement
+solvers/strings
+util

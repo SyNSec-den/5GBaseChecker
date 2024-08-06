@@ -1,0 +1,771 @@
+#/*
+# * Licensed to the OpenAirInterface (OAI) Software Alliance under one or more
+# * contributor license agreements.  See the NOTICE file distributed with
+# * this work for additional information regarding copyright ownership.
+# * The OpenAirInterface Software Alliance licenses this file to You under
+# * the OAI Public License, Version 1.1  (the "License"); you may not use this file
+# * except in compliance with the License.
+# * You may obtain a copy of the License at
+# *
+# *      http://www.openairinterface.org/?page_id=698
+# *
+# * Unless required by applicable law or agreed to in writing, software
+# * distributed under the License is distributed on an "AS IS" BASIS,
+# * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# * See the License for the specific language governing permissions and
+# * limitations under the License.
+# *-------------------------------------------------------------------------------
+# * For more information about the OpenAirInterface (OAI) Software Alliance:
+# *      contact@openairinterface.org
+# */
+
+# file build_helper
+# brief
+# authors Laurent Thomas, Lionel GAUTHIER
+#
+#######################################
+if [ ! -f /etc/os-release ]; then
+  echo "No /etc/os-release file found. You're likely on an unsupported distro."
+  exit -1
+fi
+OS_DISTRO=$(grep "^ID=" /etc/os-release | sed "s/ID=//" | sed "s/\"//g")
+OS_RELEASE=$(grep "^VERSION_ID=" /etc/os-release | sed "s/VERSION_ID=//" | sed "s/\"//g")
+case "$OS_DISTRO" in
+  fedora) OS_BASEDISTRO="fedora"; INSTALLER="dnf"; CMAKE="cmake" ;;
+  rhel)   OS_BASEDISTRO="fedora"; INSTALLER="dnf"; CMAKE="cmake" ;;
+  rocky)  OS_BASEDISTRO="fedora"; INSTALLER="dnf"; CMAKE="cmake" ;;
+  centos) OS_BASEDISTRO="centos"; INSTALLER="yum"; CMAKE="cmake3" ;;
+  debian) OS_BASEDISTRO="debian"; INSTALLER="apt-get"; CMAKE="cmake" ;;
+  ubuntu) OS_BASEDISTRO="debian"; INSTALLER="apt-get"; CMAKE="cmake" ;;
+esac
+KERNEL_VERSION=$(uname -r | cut -d '.' -f1)
+KERNEL_MAJOR=$(uname -r | cut -d '.' -f2)
+
+#check if we run inside a container
+IS_CONTAINER=`egrep -c "docker|podman|kubepods|libpod|buildah" /proc/self/cgroup || true`
+#sudo is not needed when we are root
+if [ "$UID" = 0 ]
+then
+  SUDO=''
+else
+  SUDO='sudo -S -E'
+fi
+
+###############################
+## echo and  family
+###############################
+black='\E[30m'
+red='\E[31m'
+green='\E[32m'
+yellow='\E[33m'
+blue='\E[1;34m'
+magenta='\E[35m'
+cyan='\E[36m'
+white='\E[37m'
+reset_color='\E[00m'
+COLORIZE=1
+
+cecho()  {
+    # Color-echo
+    # arg1 = message
+    # arg2 = color
+    local default_msg="No Message."
+    message=${1:-$default_msg}
+    color=${2:-$green}
+    [ "$COLORIZE" = "1" ] && message="$color$message$reset_color"
+    echo -e "$message"
+    return
+}
+
+echo_error()   { cecho "$*" $red          ;}
+echo_fatal()   { cecho "$*" $red; exit -1 ;}
+echo_warning() { cecho "$*" $yellow       ;}
+echo_success() { cecho "$*" $green        ;}
+echo_info()    { cecho "$*" $blue         ;}
+
+########################
+# distribution helpers #
+########################
+
+# This function return a string to identify the distribution we are running
+# If we can't check the distribution, it returns "Unknown"
+# This function return always true as exit code by design
+# Examples:
+#   debian8.5
+get_distribution_release() {
+    if [[ ! -z "$OS_DISTRO$OS_RELEASE" ]]; then
+        echo "$OS_DISTRO$OS_RELEASE"
+    else
+        echo Unknown
+    fi
+}
+
+check_supported_distribution() {
+    local distribution=$(get_distribution_release)
+    case "$distribution" in
+        "ubuntu23.10") return 0 ;;
+        "ubuntu22.04") return 0 ;;
+        "ubuntu21.04") return 0 ;;
+        "ubuntu20.04") return 0 ;;
+        "ubuntu18.04") return 0 ;;
+        "debian11")    return 0 ;;
+        "fedora36")    return 0 ;;
+        "fedora37")    return 0 ;;
+        "rhel7")       return 0 ;;
+        "rhel7.6")     return 0 ;;
+        "rhel7.7")     return 0 ;;
+        "rhel7.8")     return 0 ;;
+        "rhel7.9")     return 0 ;;
+        "rhel8.2")     return 0 ;;
+        "rhel8.3")     return 0 ;;
+        "rhel8.4")     return 0 ;;
+        "rhel8.5")     return 0 ;;
+        "rhel8.6")     return 0 ;;
+        "rhel8.7")     return 0 ;;
+        "rhel8.8")     return 0 ;;
+        "rhel8.9")     return 0 ;;
+        "rhel9.0")     return 0 ;;
+        "rhel9.1")     return 0 ;;
+        "rhel9.2")     return 0 ;;
+        "rhel9.3")     return 0 ;;
+        "centos7")     return 0 ;;
+        "centos8")     return 0 ;;
+        "rocky8.7")    return 0 ;;
+        "rocky8.8")    return 0 ;;
+        "rocky8.9")    return 0 ;;
+        "rocky9.1")    return 0 ;;
+        "rocky9.2")    return 0 ;;
+        "rocky9.3")    return 0 ;;
+    esac
+    return 1
+}
+
+##################
+# Error handlers #
+##################
+
+handler_EXIT() {
+	local exit_code=$?
+    [ "$exit_code" -eq 0 ] || echo_error "build have failed"
+	exit $exit_code
+}
+
+trap handler_EXIT EXIT
+
+###########################
+# Cleaners
+###########################
+
+clean_kernel() {
+    $SUDO modprobe ip_tables
+    $SUDO modprobe x_tables
+    $SUDO iptables -P INPUT ACCEPT
+    $SUDO iptables -F INPUT
+    $SUDO iptables -P OUTPUT ACCEPT
+    $SUDO iptables -F OUTPUT
+    $SUDO iptables -P FORWARD ACCEPT
+    $SUDO iptables -F FORWARD
+    $SUDO iptables -t nat -F
+    $SUDO iptables -t mangle -F
+    $SUDO iptables -t filter -F
+    $SUDO iptables -t raw -F
+    echo_info "Flushed iptables"
+    $SUDO rmmod nasmesh > /dev/null 2>&1
+    $SUDO rmmod oai_nw_drv  > /dev/null 2>&1
+    $SUDO rmmod ue_ip > /dev/null 2>&1
+    echo_info "removed drivers from kernel"
+}
+
+clean_all_files() {
+ set_openair_env
+ dir=$OPENAIR_DIR/cmake_targets
+ rm -rf $dir/ran_build $dir/ran_build_noLOG
+ rm -rf $dir/lte-simulators/build 
+ rm -rf $dir/nas_sim_tools/build 
+ rm -rf $dir/oaisim_build_oai/build $dir/oaisim_build_oai/CMakeLists.txt
+ rm -rf $dir/autotests/bin $dir/autotests/log $dir/autotests/*/build
+}
+
+###################################
+# Compilers
+###################################
+
+#check_warnings:
+#    print error message if the compilation had warnings
+#argument:
+#    $1: log file
+check_warnings() {
+  #we look for 'warning:' in the compilation log file
+  #this is how gcc starts a warning
+  #this is not perfect, we may get false positive
+  warning_count=`grep "warning:" "$1" | egrep -v "jobserver unavailable|disabling jobserver mode" | wc -l`
+  if [ $warning_count -gt 0 ]; then
+    echo_error "WARNING: $warning_count warnings. See $1"
+  fi
+}
+
+#check_errors:
+#    print error message if the compilation had errors
+#argument:
+#    $1: log file
+check_errors() {
+  #we look for 'error:' in the compilation log file
+  error_count=`grep -c "error:" "$1"`
+  if [ $error_count -gt 0 ]; then
+    echo_error "ERROR: $error_count error. See $1"
+  fi
+}
+
+compilations() {
+  [[ $# -gt 2 ]] || echo_fatal "compilations needs more than three arguments"
+  local dir=$1
+  shift 1
+  local logfile=$1
+  shift 1
+  local targets=$@
+  local verbose=$([ "$VERBOSE_COMPILE" == "1" ] && echo "-v" || echo "")
+  echo cd $OPENAIR_DIR/cmake_targets/$dir/build
+  cd $OPENAIR_DIR/cmake_targets/$dir/build
+  echo_info "Running \"cmake --build . $verbose --target $targets -- -j$(nproc)\"" $green
+  echo "Log file for compilation is being written to: $dlog/$logfile"
+  set +e
+  {
+    cmake --build . $verbose --target $targets -- -j$(nproc)
+    ret=$?
+  } > $dlog/$logfile 2>&1
+  if [ "$VERBOSE_CI" == "1" ]; then
+     echo "====== Start of log for $logfile ======"
+     cat $dlog/$logfile
+     echo "====== End of log for $logfile ======"
+  fi
+  check_warnings "$dlog/$logfile"
+  if [[ $ret -eq 0 ]]; then
+     echo_success "$targets compiled"
+  else
+     check_errors "$dlog/$logfile"
+     echo_error "compilation of $targets failed"
+     exit 1
+  fi
+}
+
+############################################
+# External packages installers
+############################################
+
+install_usrp_uhd_driver_from_source(){
+    uhd_install_log=$OPENAIR_DIR/cmake_targets/log/uhd_install_log.txt
+    echo_info "\nInstalling UHD driver from sources. The log file for UHD driver installation is here: $uhd_install_log "
+    (
+    pushd /tmp
+    echo "Cloning UHD driver repository"
+    rm -rf /tmp/uhd
+    git clone https://github.com/EttusResearch/uhd.git
+    cd uhd
+    # For our legacy TDD eNB running with a B2xx RF board
+    # the following patch has to be applied
+    if [[ -v UHD_VERSION ]]; then
+        git checkout tags/v${UHD_VERSION}
+        # We recommend to use not older than 3.15.0.0
+        if [[ "$UHD_VERSION" == "3.15.0.0" ]]; then
+            # Tested that patch for the following versions:
+            # - 3.15.0.0
+            git apply $OPENAIR_DIR/cmake_targets/tools/uhd-3.15-tdd-patch.diff
+            ret=$?;[[ $ret -ne 0 ]] && echo_fatal "Could not apply the TDD patch"
+        else
+            # Tested that patch for the following versions:
+            # - 4.0.0.0
+            # - 4.1.0.0
+            # - 4.1.0.5
+            # - 4.2.0.0
+            # - 4.2.0.1
+            # - 4.3.0.0-rc1
+            # - 4.4.0.0
+            git apply $OPENAIR_DIR/cmake_targets/tools/uhd-4.x-tdd-patch.diff
+            ret=$?;[[ $ret -ne 0 ]] && echo_fatal "Could not apply the TDD patch"
+        fi
+    else
+        git checkout tags/v4.0.0.0
+        git apply $OPENAIR_DIR/cmake_targets/tools/uhd-4.x-tdd-patch.diff
+        ret=$?;[[ $ret -ne 0 ]] && echo_fatal "Could not apply the TDD patch"
+    fi
+    # Printing out the results of the patch to make sure it was properly applied
+    git diff
+    mkdir -p host/build
+    cd host/build || true
+    $CMAKE ../ -GNinja
+    echo "Compiling UHD"
+    ninja
+    $SUDO ninja install
+    $SUDO ldconfig -v
+    if [ $IS_CONTAINER -eq 0 ]; then
+        if [[ "$OS_DISTRO" == "ubuntu" ]]; then
+            $SUDO /usr/local/lib/uhd/utils/uhd_images_downloader.py
+        fi
+        if [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+            $SUDO /usr/local/lib64/uhd/utils/uhd_images_downloader.py
+        fi
+    fi
+    popd
+    rm -rf /tmp/uhd
+    ) >& $uhd_install_log
+}
+
+check_install_usrp_uhd_driver(){
+    if [[ "$OS_BASEDISTRO" == "debian" ]]; then
+        boost_libs_ubuntu="libboost-chrono-dev libboost-date-time-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libboost-test-dev libboost-regex-dev"
+        #first we remove old installation
+        $SUDO apt-get remove uhd -y || true
+        $SUDO apt-get remove uhd-host -y || true
+        $SUDO apt-get remove libuhd-dev -y || true
+        $SUDO apt-get remove libuhd003 -y || true
+        $SUDO apt-get remove libuhd3.13.1 -y || true
+        $SUDO apt-get remove libuhd3.14.0 -y || true
+        $SUDO apt-get remove libuhd3.14.1 -y || true
+        $SUDO apt-get remove libuhd3.15.0 -y || true
+        local distribution=$(get_distribution_release)
+        if [[ "$distribution" == "ubuntu18.04" || "$distribution" == "ubuntu20.04" || "$distribution" == "ubuntu22.04" ]]; then
+            $SUDO apt-get remove libuhd4.0.0 -y || true
+            $SUDO apt-get remove libuhd4.1.0 -y || true
+        fi
+        v=$(lsb_release -cs)
+        $SUDO apt-add-repository --remove "deb http://files.ettus.com/binaries/uhd/repo/uhd/ubuntu/$v $v main"
+        if [[ -v BUILD_UHD_FROM_SOURCE ]] || [[ "$OS_DISTRO" == "debian" ]]; then
+            $SUDO apt-get install -y $boost_libs_ubuntu libusb-1.0-0-dev doxygen python3-docutils python3-mako python3-numpy python3-requests python3-setuptools ninja-build
+            install_usrp_uhd_driver_from_source
+            return
+        fi
+        # The new USRP repository
+        # Raphael Defosseux: Adding a loop on adding PPA because in CI the gpg key retrieve may
+        # timeout due to proxy / network latencies in Eurecom on VM
+        echo_info "\nAdding PPA repository ettusresearch/uhd\n"
+        x=0
+        while [ $x -le 5 ]
+        do
+            if $SUDO add-apt-repository ppa:ettusresearch/uhd -y
+            then
+                echo_info "add-apt-repository successful\n"
+                break
+            else
+                echo_info "add-apt-repository failed, retrying...\n"
+                sleep 30
+            fi
+            x=$((x + 1))
+        done
+        $SUDO apt-get update
+        $SUDO apt-get -y install python-tk  $boost_libs_ubuntu libusb-1.0-0-dev
+        case "$(get_distribution_release)" in
+          "ubuntu18.04" | "ubuntu20.04" | "ubuntu22.04")
+            $SUDO apt-get -y install libuhd-dev libuhd4.4.0 uhd-host
+            ;;
+        esac
+    elif [[ "$OS_BASEDISTRO" == "fedora" ]]; then
+        boost_libs_fedora="boost-chrono boost-date-time boost-filesystem boost-program-options boost-thread boost-test boost-regex boost-devel"
+        if [ $IS_CONTAINER -eq 0 ]
+        then
+            $SUDO $INSTALLER -y install python3 $boost_libs_fedora libusb-devel libusbx-devel  python3-mako python3-docutils python3-pip $CMAKE
+            $SUDO pip3 install requests
+        else
+            $SUDO $INSTALLER -y install $boost_libs_fedora $CMAKE
+            $SUDO pip3 install mako requests
+        fi
+        if [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "centos" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+            if [ $IS_CONTAINER -eq 0 ]
+            then
+                # until EPEL repo hasn't bumped UHD driver to >=3.10 in EPEL, build driver from source
+                $SUDO $INSTALLER -y remove uhd uhd-devel uhd-firmware
+            fi
+            install_usrp_uhd_driver_from_source
+        else
+            $SUDO $INSTALLER -y install uhd uhd-devel uhd-firmware
+        fi
+    fi
+}
+
+install_usrp_uhd_driver() {
+    if [[ "$OS_DISTRO" == "ubuntu" ]]; then
+        # We move uhd-host apart because it depends on linux kernel version
+        # On newer kernels, it fails to install
+        $SUDO apt-get -y install uhd-host
+    fi
+    # quick workaround for RHE7.6
+    local distribution=$(get_distribution_release)
+    if [ -z $1 ]; then
+      if [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+          $SUDO /usr/local/bin/uhd_images_downloader
+      else
+          $SUDO uhd_images_downloader
+      fi
+    else
+      if [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+          $SUDO /usr/local/bin/uhd_images_downloader -i $1
+      else
+          $SUDO uhd_images_downloader -i $1
+      fi
+    fi
+}
+
+install_bladerf_driver_from_source(){
+    bladerf_install_log=$OPENAIR_DIR/cmake_targets/log/bladerf_install_log.txt
+    echo_info "\nInstalling BladeRF driver from sources. The log file for BladeRF driver installation is here: $bladerf_install_log "
+    (
+    cd /tmp
+    echo "Downloading BladeRF driver"
+    rm -rf /tmp/bladeRF
+    git clone https://github.com/Nuand/bladeRF.git
+    cd bladeRF
+    git checkout tags/2016.06
+    mkdir -p build
+    cd build
+    $CMAKE ../
+    echo "Compiling BladeRF driver"
+    make
+    $SUDO make install
+    $SUDO ldconfig
+    echo "Downloading FPGA and firmware images"
+    cd /tmp/bladeRF
+    #wget has been removed from default dependencies, so we must be sure that's installed
+    $SUDO $INSTALLER -y install wget
+    wget --tries=3 --retry-connrefused https://www.nuand.com/fx3/bladeRF_fw_latest.img
+    wget --tries=3 --retry-connrefused https://www.nuand.com/fpga/hostedx40-latest.rbf
+    sudo mkdir -p /usr/share/Nuand/bladeRF
+    sudo mv bladeRF_fw_latest.img /usr/share/Nuand/bladeRF/bladeRF_fw.img
+    sudo mv hostedx40-latest.rbf /usr/share/Nuand/bladeRF/hostedx40.rbf
+    ) >& $bladerf_install_log
+}
+
+check_install_bladerf_driver(){
+    if [[ "$OS_DISTRO" == "ubuntu" ]]; then
+        $SUDO apt-get install -y  bladerf libbladerf-dev
+        $SUDO apt-get install -y bladerf-firmware-fx3
+        $SUDO apt-get install -y bladerf-fpga-hostedx40
+   elif [[ "$OS_BASEDISTRO" == "fedora" ]]; then
+        install_bladerf_driver_from_source
+   else
+        echo_error "BladeRF Installer for OAI does not support automatic build. Install BladeRF compiling sources manually from BladeRF website"
+   fi
+}
+
+flash_firmware_bladerf() {
+	$SUDO bladeRF-cli --flash-firmware /usr/share/Nuand/bladeRF/bladeRF_fw.img
+}
+
+check_install_lmssdr_driver(){
+	if ( [ -d "/usr/local/include/lime" ] &&
+             [ -f "/usr/local/include/lime/LimeSuite.h" ] )
+	then
+  		echo_success "Found lmssdr drivers and tools installed from source"
+        else
+                echo_error "lmssdr support implies installing lmssdr drivers and tools" \
+                           " from sources. check:"
+                echo_info "https://wiki.myriadrf.org/Lime_Suite"
+                echo_fatal "Cannot compile lmssdr device"
+	fi
+
+
+}
+
+install_soapy_from_source(){
+    soapy_install_log=$OPENAIR_DIR/cmake_targets/log/soapy_install_log.txt
+    echo_info "\nInstalling Soapy EcoSystem from source. The log file for Soapy installation is here: $soapy_install_log "
+    (
+    cd /tmp
+    echo "Downloading SoapySDR"
+    rm -rf /tmp/SoapySDR
+    git clone -b soapy-sdr-0.7.0 --single-branch https://github.com/pothosware/SoapySDR.git
+    cd SoapySDR
+    #git checkout tags/release_003_010_001_001
+    mkdir -p build
+    cd build
+    $CMAKE ../
+    echo "Compiling SoapySDR"
+    make -j`nproc`
+    $SUDO make install
+    $SUDO ldconfig
+    cd /tmp
+    echo "Downloading SoapyRemote"
+    rm -rf /tmp/SoapyRemote
+    git clone -b soapy-remote-0.5.0 --single-branch https://github.com/pothosware/SoapyRemote.git
+    cd SoapyRemote
+    #git checkout tags/release_003_010_001_001
+    mkdir -p build
+    cd build
+    $CMAKE ../
+    echo "Compiling SoapyRemote"
+    make -j`nproc`
+    $SUDO make install
+    $SUDO ldconfig
+    ) >& $soapy_install_log
+}
+
+install_soapy_iris_from_source(){
+    iris_install_log=$OPENAIR_DIR/cmake_targets/log/iris_install_log.txt
+    echo_info "\nInstalling Iris driver from source. The log file for Iris driver installation is here: $iris_install_log "
+    (
+    cd /tmp
+    echo "Downloading SoapyIris"
+    rm -rf /tmp/sklk-soapyiris
+    git clone -b soapy-iris-2018.08.0.1 --single-branch https://github.com/skylarkwireless/sklk-soapyiris.git
+    cd sklk-soapyiris
+    mkdir -p build
+    cd build
+    $CMAKE ../
+    echo "Compiling SoapyIris"
+    make -j`nproc`
+    $SUDO make install
+    $SUDO ldconfig
+    ) >& $iris_install_log
+}
+
+check_install_soapy () {
+    #if [[ "$OS_DISTRO" == "ubuntu" ]]; then
+        #first we remove old installation
+    $SUDO apt-get remove -y soapysdr soapysdr-server libsoapysdr-dev python-soapysdr python3-soapysdr soapysdr-module-remote || true
+        #$SUDO add-apt-repository -y ppa:myriadrf/drivers
+        #$SUDO apt-get update
+        #$SUDO apt-get install -y soapysdr soapysdr-server libsoapysdr-dev python-soapysdr python3-soapysdr soapysdr-module-remote
+
+    #elif [[ "$OS_BASEDISTRO" == "fedora" ]]; then
+    #    $SUDO $INSTALLER -y install software-properties-common python3-software-properties python-software-properties subversion git python3 python-numpy python3-numpy cmake swig python-dev
+    install_soapy_from_source
+    #fi
+    install_soapy_iris_from_source
+}
+
+# for ubuntu 18 we need a special repository (https://apt.kitware.com/) to install cmake >= 3.12
+add_cmake_repo () {
+  $SUDO $INSTALLER -y install wget
+  wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | $SUDO tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+  echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ bionic main' | $SUDO tee /etc/apt/sources.list.d/kitware.list >/dev/null
+  $SUDO $INSTALLER -y update
+  $SUDO rm /usr/share/keyrings/kitware-archive-keyring.gpg
+  $SUDO $INSTALLER -y install kitware-archive-keyring
+}
+
+check_install_additional_tools (){
+  $SUDO $INSTALLER update -y
+  local optional_packages=""
+  if [[ "$OS_BASEDISTRO" == "debian" ]]; then
+    case "$(get_distribution_release)" in
+        "ubuntu18.04")
+            optional_packages="python-dev python-pip python-pyroute2 python python-numpy python-scipy python-matplotlib ctags"
+            ;;
+        "ubuntu20.04" | "ubuntu21.04" | "ubuntu22.04" | "debian11" )
+            optional_packages="python3 python3-pip python3-dev python3-scipy python3-matplotlib python3-pyroute2 universal-ctags"
+            ;;
+    esac
+    PACKAGE_LIST="\
+	doxygen \
+	libpthread-stubs0-dev \
+	libqt5charts5-dev \
+	tshark \
+	uml-utilities \
+        iperf3 \
+        libforms-bin \
+        libforms-dev \
+        xmlstarlet"
+  elif [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "centos" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+    PACKAGE_LIST="\
+      doxygen \
+      ctags \
+      iperf3 \
+      xforms \
+      xforms-devel \
+      xmlstarlet"
+  elif [[ "$OS_DISTRO" == "fedora" ]]; then
+    PACKAGE_LIST=" \
+      doxygen \
+      ctags \
+      iperf3 \
+      xforms \
+      xforms-devel \
+      xmlstarlet"
+  fi
+    $SUDO $INSTALLER install -y $PACKAGE_LIST $optional_packages
+}
+
+check_install_oai_software() {
+    local specific_packages=""
+    if ! check_supported_distribution; then
+        echo_error "Your distribution $(get_distribution_release) is not supported by oai !"
+        exit 1
+    fi
+    $SUDO $INSTALLER update -y
+  if [[ "$OS_BASEDISTRO" == "debian" ]]; then
+    $SUDO apt install -y software-properties-common
+    case "$(get_distribution_release)" in
+        "ubuntu18.04")
+            add_cmake_repo
+            specific_packages="libgcrypt11-dev"
+            ;;
+         "debian11")
+            specific_packages="libz-dev"
+            ;;
+    esac
+    $SUDO apt-get install -y \
+    $specific_packages \
+	automake  \
+	build-essential \
+	$CMAKE \
+        ninja-build \
+	pkg-config \
+	git \
+	libatlas-base-dev \
+	libblas-dev \
+	liblapack-dev \
+	liblapacke-dev \
+	libreadline-dev \
+	libgnutls28-dev \
+	libconfig-dev \
+	libsctp-dev  \
+	libssl-dev  \
+	libtool  \
+        libxft-dev \
+	patch \
+	openssl \
+        zlib1g-dev \
+        xxd
+
+  elif [[ "$OS_BASEDISTRO" == "fedora" ]]; then
+    if [[ "$OS_DISTRO" == "rhel" ]] || [[ "$OS_DISTRO" == "centos" ]] || [[ "$OS_DISTRO" == "rocky" ]]; then
+      if rpm -q epel-release > /dev/null; then
+        echo "EPEL repos already present. Good."
+      else
+        echo "EPEL repos not present. Installing them."
+        $SUDO $INSTALLER install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+      fi
+    fi
+
+    $SUDO $INSTALLER install -y \
+      automake \
+      $CMAKE \
+      gcc \
+      gcc-c++ \
+      git \
+      atlas-devel \
+      pkgconfig \
+      libconfig-devel \
+      libffi-devel \
+      libgcrypt-devel \
+      lksctp-tools \
+      lksctp-tools-devel \
+      libtool \
+      libXft-devel \
+      ninja-build \
+      make \
+      openssl \
+      openssl-devel \
+      patch \
+      readline-devel \
+      gnutls-devel \
+      lapack \
+      lapack-devel \
+      blas \
+      blas-devel \
+      vim-common \
+      zlib-devel
+  fi
+
+    install_asn1c_from_source $1
+    install_simde_from_source $1
+}
+
+install_asn1c_from_source(){
+    mkdir -p $OPENAIR_DIR/cmake_targets/log
+    asn1_install_log=$OPENAIR_DIR/cmake_targets/log/asn1c_install_log.txt
+    echo_info "\nInstalling ASN1. The log file for ASN1 installation is here: $asn1_install_log "
+    (
+    $SUDO $INSTALLER -y install bison flex
+    $SUDO rm -rf /tmp/asn1c
+    # GIT_SSL_NO_VERIFY=true git clone https://gitlab.eurecom.fr/oai/asn1c.git /tmp/asn1c
+    git clone https://github.com/mouse07410/asn1c /tmp/asn1c
+    cd /tmp/asn1c
+    git checkout vlm_master
+    autoreconf -iv
+    ./configure --prefix /opt/asn1c/
+    make -j`nproc`
+    $SUDO make install
+    cd -
+    $SUDO ldconfig
+    if [[ -v CI_ENV ]]; then
+        $SUDO rm -rf /tmp/asn1c
+    fi
+    ) > $asn1_install_log 2>&1
+}
+
+install_simde_from_source(){
+    echo_info "\nInstalling SIMDE from source without test cases (header files only)"
+    cd /tmp
+    $SUDO rm -rf /tmp/simde
+    git clone https://github.com/simd-everywhere/simde-no-tests.git /tmp/simde
+    cd /tmp/simde
+    # brute force copy into /usr/include
+    $SUDO \cp -rv ../simde /usr/include
+}
+
+#################################################
+# 2. compile
+################################################
+
+install_nas_tools() {
+  echo_success "generate .ue_emm.nvram .ue.nvram"
+  ./nvram --gen -c $1 -o $2 > "$3"
+  echo_success "generate .usim.nvram"
+  ./usim --gen -c $1 -o $2 >> "$3"
+}
+
+
+################################
+# set_openair_env
+###############################
+set_openair_env(){
+    fullpath=`readlink -f $BASH_SOURCE`
+    [ -f "/.$fullpath" ] || fullpath=`readlink -f $PWD/$fullpath`
+    openair_path=${fullpath%/cmake_targets/*}
+    openair_path=${openair_path%/targets/*}
+    openair_path=${openair_path%/openair[123]/*}
+    export OPENAIR_DIR=$openair_path
+    export OPENAIR1_DIR=$openair_path/openair1
+    export OPENAIR2_DIR=$openair_path/openair2
+    export OPENAIR3_DIR=$openair_path/openair3
+    export OPENAIR_TARGETS=$openair_path/targets
+}
+
+################################
+# Function to killall the subprocesses when Ctrl-C Key is hit
+###############################
+function handle_ctrl_c(){
+CURPID=$$
+ppid=$$
+arraycounter=1
+echo_info "** Trapped CTRL-C. Killing all subprocesses now..."
+echo_info "** Calling sync now..."
+sync
+while true
+do
+        FORLOOP=FALSE
+        # Get all the child process id
+        for i in `ps -ef| awk '$3 == '$ppid' { print $2 }'`
+        do
+                if [ $i -ne $CURPID ] ; then
+                        procid[$arraycounter]=$i
+                        arraycounter=`expr $arraycounter + 1`
+                        ppid=$i
+                        FORLOOP=TRUE
+                fi
+        done
+        if [ "$FORLOOP" = "FALSE" ] ; then
+           arraycounter=`expr $arraycounter - 1`
+           ## We want to kill child process id first and then parent id's
+           while [ $arraycounter -ne 0 ]
+           do
+             echo "first we send ctrl-c to program"
+             $SUDO kill -INT "${procid[$arraycounter]}"
+             sleep 5
+             echo "Now we force kill if that didn't work"
+             $SUDO kill -9 "${procid[$arraycounter]}" >/dev/null
+             arraycounter=`expr $arraycounter - 1`
+           done
+         exit
+        fi
+done
+}

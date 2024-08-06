@@ -1,0 +1,42 @@
+digraph test {
+
+    graph [color = "blue"]
+    edge [color = "green"]
+
+    n1 [label = "Node 1" color = "blue"]
+    n2 [label = "Node 2"]
+    /*
+    Some
+    multi-line
+    comment
+    */
+    node [style = "dashed"]
+
+    n2 [color = "red"]
+
+    "" [label = empty]
+
+    n1 -> n2 [label = "Input 1"]
+    n1 -> n2 [label = "Input 2" color = "red" style = "solid"]
+
+    # single line comment
+
+    edge [style = "dashed"]
+    n1 -> n3 -> n2 [label = "arg"]
+
+    n3 -> subgraph {
+    n4 [label = "Sub 1"]
+    n5 [label = "Sub 2"]
+    }
+
+    n2 -> n5
+
+    subgraph sg {
+    n6; n7
+    } -> n1
+
+    node [shape=octagon]
+
+    {n10; n11} -> {n12; n13 -> {n14; n15} [color = blue]} [color = red]
+    {n10; n11} -> {n12; n13} -> {n14; n15} [color=green]
+}

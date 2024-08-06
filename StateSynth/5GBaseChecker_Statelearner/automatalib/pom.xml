@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2013-2022 TU Dortmund
+This file is part of AutomataLib, http://www.automatalib.net/.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ================================= PROJECT INFO ============================== -->
+    <groupId>net.automatalib</groupId>
+    <artifactId>automata-parent</artifactId>
+    <version>0.11.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>AutomataLib</name>
+    <description>
+        A fully generic library for automata, graphs, and models, written in Java.
+        This is the parent artifact which does not have any source code. Please refer to the
+        "modules" page for more detailed documentation on the single library artifacts.
+    </description>
+    <url>http://learnlib.github.io/automatalib/maven-site/${project.version}</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>mtf90</id>
+            <name>Markus Frohme</name>
+            <email>markus.frohme@udo.edu</email>
+            <organization>TU Dortmund, Chair for Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+                <role>Maintainer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>misberner</id>
+            <name>Malte Isberner</name>
+            <email>malte.isberner@gmail.com</email>
+            <roles>
+                <role>Developer (inactive)</role>
+                <role>Maintainer (inactive)</role>
+            </roles>
+            <properties>
+                <picUrl>
+                    http://www.gravatar.com/avatar/c44dc4164f1a9a597ec0c24425d1b89d.png
+                </picUrl>
+            </properties>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Marc Jasper</name>
+            <email>marc.jasper@udo.edu</email>
+            <organization>TU Dortmund University, Chair of Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Jeroen Meijer</name>
+            <email>j.j.g.meijer@utwente.nl</email>
+            <organization>University of Twente, Formal Methods and Tools</organization>
+            <organizationUrl>http://fmt.cs.utwente.nl/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Alnis Murtovi</name>
+            <organization>TU Dortmund University, Chair of Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Maximilian Schlüter</name>
+            <organization>TU Dortmund, Chair for Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>David Schmidt</name>
+            <email>david3.schmidt@tu-dortmund.de</email>
+            <organization>TU Dortmund, Chair for Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <properties>
+                <picUrl>
+                    http://gravatar.com/avatar/e88eaff66c6e05c0e97cf336b9adba66.png
+                </picUrl>
+            </properties>
+        </contributor>
+        <contributor>
+            <name>Maximilian Freese</name>
+            <organization>TU Dortmund, Chair for Programming Systems</organization>
+            <organizationUrl>http://ls5-www.cs.tu-dortmund.de/</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+    <mailingLists>
+        <mailingList>
+            <name>Q&amp;A List</name>
+            <subscribe>automatalib-qa+subscribe@googlegroups.com</subscribe>
+            <unsubscribe>automatalib-qa+unsubscribe@googlegroups.com</unsubscribe>
+            <post>automatalib-qa@googlegroups.com</post>
+            <archive>https://groups.google.com/d/forum/automatalib-qa</archive>
+        </mailingList>
+        <mailingList>
+            <name>Discussion List</name>
+            <subscribe>automatalib-discussion+subscribe@googlegroups.com</subscribe>
+            <unsubscribe>automatalib-discussion+unsubscribe@googlegroups.com</unsubscribe>
+            <post>automatalib-discussion@googlegroups.com</post>
+            <archive>https://groups.google.com/d/forum/automatalib-discussion</archive>
+        </mailingList>
+        <mailingList>
+            <name>Developers List</name>
+            <subscribe>automatalib-devel+subscribe@googlegroups.com</subscribe>
+            <unsubscribe>automatalib-devel+unsubscribe@googlegroups.com</unsubscribe>
+            <post>automatalib-devel@googlegroups.com</post>
+            <archive>https://groups.google.com/d/forum/automatalib-devel</archive>
+        </mailingList>
+    </mailingLists>
+
+    <!--
+    ================================= MODULES ===================================
+    -->
+    <modules>
+        <module>adapters</module>
+        <module>api</module>
+        <module>archetypes</module>
+        <module>build-parent</module>
+        <module>build-tools</module>
+        <module>commons</module>
+        <module>core</module>
+        <module>distribution</module>
+        <module>incremental</module>
+        <module>modelchecking</module>
+        <module>util</module>
+        <module>serialization</module>
+        <module>visualization</module>
+    </modules>
+
+    <!--
+    =============================== SCM =======================
+    -->
+    <scm>
+        <connection>scm:git:git@github.com:learnlib/automatalib.git</connection>
+        <developerConnection>scm:git:git@github.com:learnlib/automatalib.git</developerConnection>
+        <url>https://github.com/learnlib/automatalib/tree/develop</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/learnlib/automatalib/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/LearnLib/automatalib/actions</url>
+    </ciManagement>
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <!-- Dummy - this will NOT actually be used, but is required for mvn site:stage -->
+        <!-- Use scm-publish plugin for site deployment on GitHub pages -->
+        <site>
+            <id>local</id>
+            <url>file://${user.home}/automatalib-site</url>
+        </site>
+    </distributionManagement>
+
+    <!--
+    ================================= PROPERTIES ================================
+    -->
+    <properties>
+        <!-- general config -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <argLine/> <!-- compatibility for property expansion in surefire-plugin -->
+
+        <!-- custom properties -->
+        <javadoc-plugin.conf.release>8</javadoc-plugin.conf.release>
+        <automatalib.java9OrNewer>false</automatalib.java9OrNewer>
+
+        <!-- plugin versions -->
+        <antrun-plugin.version>3.0.0</antrun-plugin.version>
+        <archetype-plugin.version>3.2.0</archetype-plugin.version>
+        <assembly-plugin.version>3.3.0</assembly-plugin.version>
+        <checkstyle-plugin.version>3.1.1</checkstyle-plugin.version>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <coveralls-plugin.version>4.3.0</coveralls-plugin.version>
+        <dependency-plugin.version>3.1.2</dependency-plugin.version>
+        <deploy-plugin.version>3.0.0-M1</deploy-plugin.version>
+        <enforcer-plugin.version>3.0.0-M3</enforcer-plugin.version>
+        <gpg-plugin.version>1.6</gpg-plugin.version>
+        <info-reports-plugin.version>3.1.1</info-reports-plugin.version>
+        <jacoco-plugin.version>0.8.7</jacoco-plugin.version>
+        <javacc-plugin.version>2.6</javacc-plugin.version>
+        <javadoc-plugin.version>3.3.1</javadoc-plugin.version>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <pmd-plugin.version>3.13.0</pmd-plugin.version>
+        <release-plugin.version>3.0.0-M1</release-plugin.version>
+        <scm-publish-plugin.version>3.0.0</scm-publish-plugin.version>
+        <site-plugin.version>3.9.1</site-plugin.version>
+        <source-plugin.version>3.2.1</source-plugin.version>
+        <spotbugs-plugin.version>4.2.2</spotbugs-plugin.version>
+        <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <tidy-pom.version>1.1.0</tidy-pom.version>
+
+        <!-- dependency versions -->
+        <addlib.version>2.0.20-BETA-SNAPSHOT</addlib.version>
+        <assertj.version>3.21.0</assertj.version>
+        <buildergen.version>0.1</buildergen.version>
+        <brics-automaton.version>1.11-8</brics-automaton.version>
+        <cacio.version>1.10</cacio.version>
+        <checkerframework.version>3.7.0</checkerframework.version>
+        <checkstyle.version>8.36.2</checkstyle.version>
+        <duzzt.version>0.1.0</duzzt.version>
+        <error-prone.version>9+181-r4173-1</error-prone.version> <!-- required by checkerframework, keep in sync -->
+        <guava.version>30.1.1-jre</guava.version>
+        <graphviz-awt-shapes.version>0.0.1</graphviz-awt-shapes.version>
+        <javax-annotations.version>1.3.2</javax-annotations.version>
+        <jung.version>2.1.1</jung.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <logback.version>1.2.3</logback.version>
+        <metainf-services.version>1.8</metainf-services.version>
+        <mockito.version>3.5.13</mockito.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <testng.version>7.1.0</testng.version>
+        <xstream.version>1.4.18</xstream.version>
+
+        <!-- Javadoc links -->
+        <brics-automaton.apidocs>http://www.brics.dk/automaton/doc</brics-automaton.apidocs>
+        <checkerframework.apidocs>https://checkerframework.org/releases/${checkerframework.version}/api/</checkerframework.apidocs>
+        <guava.apidocs>http://google.github.io/guava/releases/${guava.version}/api/docs/</guava.apidocs>
+        <java8.apidocs>http://docs.oracle.com/javase/8/docs/api/</java8.apidocs>
+        <jung.apidocs>http://jung.sourceforge.net/doc/api/</jung.apidocs>
+    </properties>
+
+    <!--
+    =============================== DEFAULT DEP. VERSIONS =======================
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- internal dependencies in a 'bill of material' fashion  -->
+            <!-- sorted alphabetically/hierarchical to allow for a better check for completeness using a file explorer -->
+
+            <!-- adapters -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-adapters-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-brics</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- api -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- archetypes -->
+            <dependency>
+                <groupId>net.automatalib.archetypes</groupId>
+                <artifactId>automata-archetypes-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib.archetypes</groupId>
+                <artifactId>basic</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib.archetypes</groupId>
+                <artifactId>complete</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- build-parent -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-build-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <!-- build-tools -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-build-tools</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- commons -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-commons-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-commons-smartcollections</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-commons-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- core -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- distribution -->
+            <dependency>
+                <groupId>net.automatalib.distribution</groupId>
+                <artifactId>automata-distribution</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <!-- examples -->
+            <!-- artifact will not be deployed, so don't allow any accidental reference to it -->
+            <!--dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-examples</artifactId>
+                <version>${project.version}</version>
+            </dependency-->
+
+            <!-- incremental -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-incremental</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- model-checkers -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-modelchecking-parent</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-modelchecking-ltsmin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-modelchecking-m3c</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- serialization -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-aut</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-dot</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-etf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-fsm</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-learnlibv2</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-saf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-serialization-taf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- util -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- visualization -->
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-visualization-parent</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-dot-visualizer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.automatalib</groupId>
+                <artifactId>automata-jung-visualizer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- external dependencies -->
+            <dependency>
+                <groupId>dk.brics.automaton</groupId>
+                <artifactId>automaton</artifactId>
+                <version>${brics-automaton.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>jsr305</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                  <groupId>org.checkerframework</groupId>
+                  <artifactId>checker-qual</artifactId>
+                  <version>${checkerframework.version}</version>
+            </dependency>
+
+            <!-- Java 11 compat -->
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${javax-annotations.version}</version>
+            </dependency>
+
+            <!-- JUNG dependencies -->
+            <dependency>
+                <groupId>net.sf.jung</groupId>
+                <artifactId>jung-api</artifactId>
+                <version>${jung.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jung</groupId>
+                <artifactId>jung-algorithms</artifactId>
+                <version>${jung.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jung</groupId>
+                <artifactId>jung-graph-impl</artifactId>
+                <version>${jung.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jung</groupId>
+                <artifactId>jung-visualization</artifactId>
+                <version>${jung.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.misberner.graphviz-awt-shapes</groupId>
+                <artifactId>graphviz-awt-shapes</artifactId>
+                <version>${graphviz-awt-shapes.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.misberner.buildergen</groupId>
+                <artifactId>buildergen</artifactId>
+                <version>${buildergen.version}</version>
+                <!-- Compile-time only -->
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.misberner.duzzt</groupId>
+                <artifactId>duzzt-processor</artifactId>
+                <version>${duzzt.version}</version>
+                <!-- Compile-time only -->
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${xstream.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.kohsuke.metainf-services</groupId>
+                <artifactId>metainf-services</artifactId>
+                <version>${metainf-services.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>info.scce</groupId>
+                <artifactId>addlib-core</artifactId>
+                <version>${addlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>info.scce</groupId>
+                <artifactId>addlib-cudd</artifactId>
+                <version>${addlib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.caciocavallosilano</groupId>
+                <artifactId>cacio-tta</artifactId>
+                <version>${cacio.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <!-- explicitly name maven-central, so it is queried first -->
+        <repository>
+            <id>maven-central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
+    <!--
+    ================================= BUILD PLUGINS =============================
+    -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${dependency-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${pmd-plugin.version}</version>
+                    <configuration>
+                        <analysisCache>true</analysisCache>
+                        <printFailingErrors>true</printFailingErrors>
+                        <linkXRef>false</linkXRef>
+                        <excludeRoots>
+                            <excludeRoot>target/generated-sources</excludeRoot>
+                        </excludeRoots>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>${spotbugs-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${site-plugin.version}</version>
+                    <configuration>
+                        <!-- Skip site deployment; this will be done by scm-publish plugin -->
+                        <skipDeploy>true</skipDeploy>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefire-plugin.version}</version>
+                    <configuration>
+                        <enableAssertions>true</enableAssertions>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>javacc-maven-plugin</artifactId>
+                    <version>${javacc-plugin.version}</version>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/generated-sources/</outputDirectory>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>javacc</id>
+                            <goals>
+                                <goal>javacc</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>prepare-report</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                        <!-- re-generate over previous reports, to have unified UTs and ITs -->
+                        <execution>
+                            <id>report-integration</id>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${release-plugin.version}</version>
+                    <configuration>
+                        <arguments>-Dautomatalib.release=true</arguments>
+                        <goals>deploy site site:stage scm-publish:publish-scm</goals>
+                        <!-- Automatically use the parent version for all submodules, do not prompt for each one -->
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <!-- Perform an install into the local repository, otherwise the javadoc plugin and archetype integration tests will fail -->
+                        <preparationGoals>clean install site -Pcode-analysis</preparationGoals>
+                        <tagNameFormat>automatalib-@{version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${javadoc-plugin.version}</version>
+                    <configuration>
+                        <quiet>true</quiet>
+                        <source>${maven.compiler.source}</source>
+                        <detectLinks>true</detectLinks>
+                        <linksource>false</linksource>
+                        <links>
+                            <link>${java8.apidocs}</link>
+                            <link>${brics-automaton.apidocs}</link>
+                            <link>${checkerframework.apidocs}</link>
+                            <link>${guava.apidocs}</link>
+                            <link>${jung.apidocs}</link>
+                        </links>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${info-reports-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eluder.coveralls</groupId>
+                    <artifactId>coveralls-maven-plugin</artifactId>
+                    <version>${coveralls-plugin.version}</version>
+                    <configuration>
+                        <jacocoReports>
+                            <jacocoReport>${basedir}/distribution/target/site/jacoco-aggregate/jacoco.xml</jacocoReport>
+                        </jacocoReports>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${antrun-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>${lifecycle-mapping.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${gpg-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${enforcer-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-publish-plugin</artifactId>
+                    <version>${scm-publish-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tidy-maven-plugin</artifactId>
+                    <version>${tidy-pom.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-descriptor</id>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--
+    ================================= REPORTING PLUGINS ==============================
+    -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>licenses</report>
+                            <report>team</report>
+                            <report>mailing-lists</report>
+                            <report>scm</report>
+                            <report>issue-management</report>
+                            <report>ci-management</report>
+                            <report>dependencies</report>
+                            <report>dependency-info</report>
+                            <report>modules</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <id>non-aggregate</id>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <!--
+    =============================== PROFILES =======================
+     -->
+    <profiles>
+        <profile>
+            <!-- enables additional plugins that perform static code analysis, also see the 'build-parent' pom -->
+            <id>code-analysis</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>analyze</id>
+                                <!-- default phase is verify -->
+                                <goals>
+                                    <goal>analyze-only</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnWarning>true</failOnWarning>
+                                    <!-- workaround for APT / slf4j test dependencies -->
+                                    <ignoreNonCompile>true</ignoreNonCompile>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>tidy-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- enables generation of test-coverage reports -->
+            <id>code-coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>touch-jacoco</id>
+                                <phase>generate-test-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <touch file="${project.build.directory}/jacoco.exec" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>netbeans-private-testng</id>
+            <activation>
+                <property>
+                    <name>netbeans.testng.action</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>target/nb-private/testng-suite.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- add workarounds when importing the project in Eclipse -->
+            <id>eclipse-m2e-configs</id>
+            <activation>
+                <property>
+                    <!-- property is set by eclipse's m2e plugin -->
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- This gets rid of the nasty "maven-enforcer-plugin will be ignored" warning by m2e -->
+                        <plugin>
+                            <groupId>org.eclipse.m2e</groupId>
+                            <artifactId>lifecycle-mapping</artifactId>
+                            <configuration>
+                                <lifecycleMappingMetadata>
+                                    <pluginExecutions>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.apache.maven.plugins</groupId>
+                                                <artifactId>maven-enforcer-plugin</artifactId>
+                                                <versionRange>[1.0.0,)</versionRange>
+                                                <goals>
+                                                    <goal>enforce</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.codehaus.mojo</groupId>
+                                                <artifactId>javacc-maven-plugin</artifactId>
+                                                <versionRange>${javacc-plugin.version}</versionRange>
+                                                <goals>
+                                                    <goal>javacc</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <execute>
+                                                    <runOnConfiguration>true</runOnConfiguration>
+                                                    <runOnIncremental>true</runOnIncremental>
+                                                </execute>
+                                            </action>
+                                        </pluginExecution>
+                                    </pluginExecutions>
+                                </lifecycleMappingMetadata>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <!-- enables building of JavaDoc- and source JARs as well as bundled artifacts in 'distribution' module -->
+            <id>bundles</id>
+            <activation>
+                <property>
+                    <name>automatalib.release</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- enables the signing of artifacts using gpg -->
+            <id>sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>automatalib.release</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-maven</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireMavenVersion>
+                                            <version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
+                                            <message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.</message>
+                                        </requireMavenVersion>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- set certain configurations when performing a release -->
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>automatalib.release</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <configuration>
+                            <!-- Adjust directory structure to our gh-pages branch -->
+                            <stagingDirectory>${session.executionRootDirectory}/target/staging/maven-site/${project.version}</stagingDirectory>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-publish-plugin</artifactId>
+                        <configuration>
+                            <pubScmUrl>${project.scm.connection}</pubScmUrl>
+                            <scmBranch>gh-pages</scmBranch>
+                            <tryUpdate>true</tryUpdate>
+                            <!--
+                            Sets everything up, but does not commit any changes. Perfect for us to perform final
+                            adjustments (such as updating the LATEST symlink, etc.)
+                            -->
+                            <dryRun>true</dryRun>
+                            <skipCheckin>true</skipCheckin>
+                            <skipDeletedFiles>true</skipDeletedFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>jdk9+-compat</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+            <properties>
+                <automatalib.java9OrNewer>true</automatalib.java9OrNewer>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>${javadoc-plugin.version}</version>
+                            <configuration>
+                                <release>${javadoc-plugin.conf.release}</release>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>jdk11-compat</id>
+            <activation>
+                <jdk>11</jdk>
+            </activation>
+            <properties>
+                <cacio.version>1.11</cacio.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>examples</id>
+            <!-- don't include examples in a release -->
+            <activation>
+                <property>
+                    <name>automatalib.release</name>
+                    <value>!true</value>
+                </property>
+            </activation>
+            <modules>
+                <module>examples</module>
+            </modules>
+        </profile>
+    </profiles>
+</project>

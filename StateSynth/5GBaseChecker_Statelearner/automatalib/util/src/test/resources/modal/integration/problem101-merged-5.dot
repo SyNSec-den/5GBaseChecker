@@ -1,0 +1,38 @@
+digraph g {
+
+	s0 [shape="circle" label="s0"];
+	s1 [shape="circle" label="s9"];
+	s2 [shape="circle" label="s10"];
+	s3 [shape="circle" label="s3"];
+	s4 [shape="circle" label="s12"];
+	s5 [shape="circle" label="s1"];
+	s6 [shape="circle" label="s7"];
+	s7 [shape="circle" label="s6"];
+	s8 [shape="circle" label="s5"];
+	s9 [shape="circle" label="s4"];
+	s10 [shape="circle" label="s8"];
+	s11 [shape="circle" label="s2"];
+	s12 [shape="circle" label="s11"];
+
+	s3 -> s8 [modality="MUST", style="strict", label="atake1"];
+	s4 -> s5 [modality="MUST", style="strict", label="atake2"];
+	s0 -> s11 [modality="MUST", style="strict", label="atake1"];
+	s6 -> s1 [modality="MUST", style="strict", label="arelease1"];
+	s5 -> s3 [modality="MUST", style="strict", label="x1"];
+	s1 -> s2 [modality="MUST", style="strict", label="arelease2"];
+	s2 -> s4 [modality="MUST", style="strict", label="x1"];
+	s12 -> s4 [modality="MUST", style="strict", label="arelease2"];
+	s9 -> s8 [modality="MUST", style="strict", label="atake2"];
+	s1 -> s12 [modality="MUST", style="strict", label="x1"];
+	s0 -> s5 [modality="MUST", style="strict", label="atake2"];
+	s8 -> s6 [modality="MUST", style="strict", label="x1"];
+	s6 -> s10 [modality="MUST", style="strict", label="arelease2"];
+	s10 -> s2 [modality="MUST", style="strict", label="arelease1"];
+	s11 -> s9 [modality="MUST", style="strict", label="x1"];
+	s7 -> s10 [modality="MUST", style="strict", label="x1"];
+	s8 -> s7 [modality="MUST", style="strict", label="arelease2"];
+	s4 -> s11 [modality="MUST", style="strict", label="atake1"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}

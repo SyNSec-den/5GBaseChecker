@@ -1,0 +1,53 @@
+types
+read x:N buffer_size:N
+write x:N buffer_size:N
+reset x:N buffer_size:N
+trace
+write 0 5
+reset 1 5
+reset 0 5
+read 0 5
+read 0 5
+read 0 5
+write 0 5
+read 1 5
+read 0 5
+reset 0 5
+trace
+reset 0 5
+reset 0 5
+reset 0 5
+read 0 5
+read 0 5
+read 0 5
+write 0 5
+read 1 5
+read 0 5
+reset 0 5
+trace
+reset 0 5
+write 0 5
+reset 1 5
+write 0 5
+write 1 5
+write 2 5
+write 3 5
+write 4 5
+write 5 5
+reset 5 5
+reset 0 5
+trace
+write 0 5
+write 1 5
+write 2 5
+write 3 5
+write 4 5
+write 5 5
+read 5 5
+reset 4 5
+trace
+write 0 5
+write 1 5
+read 2 5
+reset 1 5
+trace

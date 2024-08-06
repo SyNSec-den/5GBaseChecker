@@ -1,0 +1,11 @@
+SNR_20_25=[];errs_mch_20_25=[];mch_trials_20_25=[];
+SNR_20_25 = [SNR_20_25 17.000000]; errs_mch_20_25 =[errs_mch_20_25  450]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 17.500000]; errs_mch_20_25 =[errs_mch_20_25  322]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 18.000000]; errs_mch_20_25 =[errs_mch_20_25  225]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 18.500000]; errs_mch_20_25 =[errs_mch_20_25  159]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 19.000000]; errs_mch_20_25 =[errs_mch_20_25  102]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 19.500000]; errs_mch_20_25 =[errs_mch_20_25  64]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 20.000000]; errs_mch_20_25 =[errs_mch_20_25  34]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 20.500000]; errs_mch_20_25 =[errs_mch_20_25  15]; mch_trials_20_25 =[mch_trials_20_25  5000];
+SNR_20_25 = [SNR_20_25 21.000000]; errs_mch_20_25 =[errs_mch_20_25  124]; mch_trials_20_25 =[mch_trials_20_25  50000];
+SNR_20_25 = [SNR_20_25 21.500000]; errs_mch_20_25 =[errs_mch_20_25  11]; mch_trials_20_25 =[mch_trials_20_25  5000];

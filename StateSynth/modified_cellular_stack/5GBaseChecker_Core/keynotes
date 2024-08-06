@@ -1,0 +1,15 @@
+
+
+Source code reading:  lib
+ * Know the procedure of starting many network functions
+ * Read lib-core, lib-app. Especially ogs_thread, ogs_socket
+ 
+Need to work:
+ * Invoke 5 NAS messages
+ * Rewrite in ogs_thread and ogs_socket, connect with log_executor
+ * Solve the problem of late print
+ * Connect srsue by zmq
+ 
+ *** Automata Learning ***
+ * read L* and RPNI paper
+ * write sample in learnlib for RPNI-DFA, RPNI-Mealy

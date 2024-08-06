@@ -1,0 +1,23 @@
+Fully implemented:
+AT Command> INFO: Parser interpreted command AT+CGSN
+AT Command> INFO: Parser interpreted command AT+CGMM
+AT Command> INFO: Parser interpreted command AT+CGMI
+AT Command> INFO: Parser interpreted command AT+CPIN?
+AT Command> INFO: Parser interpreted command ATE0Q0V1+CMEE=1
+AT Command> INFO: Parser interpreted command AT+CFUN?
+AT Command> INFO: Parser interpreted command AT+CFUN=1
+AT Command> INFO: Parser interpreted command AT+CIMI
+AT Command> INFO: Parser interpreted command AT+COPS?
+AT Command> ERROR: Parser rejected command AT+CREG
+AT Command> INFO: Parser interpreted command AT+CGACT=1,1
+AT Command> INFO: Parser interpreted command AT+CGDCONT?
+
+Not implemented:
+AT Command> ERROR: Parser rejected command AT+CNUM
+AT Command> ERROR: Parser rejected command AT+CRSM
+AT Command> ERROR: Parser rejected command AT+CGMR
+AT Command> ERROR: Parser rejected command AT+CESQ
+AT Command> ERROR: Parser rejected command AT+CNTI
+AT Command> ERROR: Parser rejected command AT!BAND?
+AT Command> ERROR: Parser rejected command AT+PACSP?
+

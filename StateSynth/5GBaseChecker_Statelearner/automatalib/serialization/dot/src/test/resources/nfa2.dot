@@ -1,0 +1,13 @@
+/* another test file
+ * that uses some more syntax
+ * properties of DOT files
+ */
+digraph g {
+
+	// just an NFA with 3 initial self loops states
+	// none of which is accepting
+	s0 -> s0 [label="a"];
+	s1 -> s1 [label="b"];
+	s2 -> s2 [label="c"];
+
+}

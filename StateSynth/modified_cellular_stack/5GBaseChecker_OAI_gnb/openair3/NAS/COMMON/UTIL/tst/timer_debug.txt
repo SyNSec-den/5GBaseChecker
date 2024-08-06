@@ -1,0 +1,101 @@
+Attach.c[168]                 DEBUG     Start timer T3410 (id=-1, time=15)
+_timer_db_insert_entry: DEBUG - Restart system timer for id=0, time=15.000000
+timer_start: DEBUG - Timer id=0 started
+Attach.c[171]                 DEBUG     Timer T3410 (id=0) started
+
+Attach.c[173]                 DEBUG     Stop T3402 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[175]                 DEBUG     Timer T3402 (id=-1) stopped
+
+Attach.c[176]                 DEBUG     Stop T3411 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[178]                 DEBUG     Timer T3411 (id=-1) stopped
+
+--------------------------------------------------------------------------------
+
+Attach.c[219]                 WARNING   T3410 timer expired, attach counter = 0
+
+Attach.c[226]                 DEBUG     Start timer T3411 (id=-1, time=10)
+timer_start: DEBUG - Timer id=1 started
+Attach.c[229]                 DEBUG     Timer T3411 (id=1, time=10) started
+
+_timer_db_remove_entry: DEBUG - Remove entry id=0
+_timer_db_remove: DEBUG - Remove timer id=0
+_timer_db_remove_entry: DEBUG - Restart system timer for id=1, time=9.999921
+
+--------------------------------------------------------------------------------
+
+Attach.c[288]                 WARNING   T3411 timer expired
+
+Attach.c[168]                 DEBUG     Start timer T3410 (id=0, time=15)
+timer_start: DEBUG - Timer id=2 started
+Attach.c[171]                 DEBUG     Timer T3410 (id=2) started
+
+Attach.c[173]                 DEBUG     Stop T3402 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[175]                 DEBUG     Timer T3402 (id=-1) stopped
+
+Attach.c[176]                 DEBUG     Stop T3411 (id=1)
+timer_stop: DEBUG - Stop timer id=1
+
+_timer_db_remove_entry: DEBUG - Remove entry id=1
+_timer_db_remove: DEBUG - Remove timer id=1
+_timer_db_remove_entry: DEBUG - Restart system timer for id=2, time=14.988820
+
+Attach.c[178]                 DEBUG     Timer T3411 (id=1) stopped
+
+_timer_db_remove_entry: DEBUG - Remove entry id=2
+_timer_db_remove: DEBUG - Remove timer id=2
+_timer_db_remove: DEBUG - Stop system timer
+
+
+--------------------------------------------------------------------------------
+
+Attach.c[168]                 DEBUG     Start timer T3410 (id=-1, time=15)
+_timer_db_insert_entry: DEBUG - Restart system timer for id=0, time=15.000000
+timer_start: DEBUG - Timer id=0 started
+Attach.c[171]                 DEBUG     Timer T3410 (id=0) started
+
+Attach.c[173]                 DEBUG     Stop T3402 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[175]                 DEBUG     Timer T3402 (id=-1) stopped
+
+Attach.c[176]                 DEBUG     Stop T3411 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[178]                 DEBUG     Timer T3411 (id=-1) stopped
+
+--------------------------------------------------------------------------------
+
+Attach.c[219]                 WARNING   T3410 timer expired, attach counter = 0
+Attach.c[226]                 DEBUG     Start timer T3411 (id=-1, time=10)
+timer_start: DEBUG - Timer id=1 started
+Attach.c[229]                 DEBUG     Timer T3411 (id=1, time=10) started
+
+timer_stop: DEBUG - Stop timer id=0
+_timer_db_remove_entry: DEBUG - Remove entry id=0
+_timer_db_remove: DEBUG - Remove timer id=0
+_timer_db_remove_entry: DEBUG - Restart system timer for id=1, time=9.999934
+
+--------------------------------------------------------------------------------
+
+Attach.c[288]                 WARNING   T3411 timer expired
+
+Attach.c[168]                 DEBUG     Start timer T3410 (id=0, time=15)
+timer_start: DEBUG - Timer id=2 started
+Attach.c[171]                 DEBUG     Timer T3410 (id=2) started
+
+Attach.c[173]                 DEBUG     Stop T3402 (id=-1)
+timer_stop: DEBUG - Stop timer id=-1
+Attach.c[175]                 DEBUG     Timer T3402 (id=-1) stopped
+
+Attach.c[176]                 DEBUG     Stop T3411 (id=1)
+timer_stop: DEBUG - Stop timer id=1
+
+timer_stop: DEBUG - Stop timer id=1
+_timer_db_remove_entry: DEBUG - Remove entry id=1
+_timer_db_remove: DEBUG - Remove timer id=1
+_timer_db_remove_entry: DEBUG - Restart system timer for id=2, time=14.999969
+Attach.c[178]                 DEBUG     Timer T3411 (id=1) stopped
+
+UEprocess: timer.c:519: _timer_db_remove_entry: Assertion `_timer_db.tq[id].id == id' failed.
+Aborted

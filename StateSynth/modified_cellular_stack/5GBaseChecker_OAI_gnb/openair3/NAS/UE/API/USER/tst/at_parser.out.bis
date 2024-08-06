@@ -1,0 +1,204 @@
+INFO: Fine, parser interpreted valid command AT+CGSN
+INFO: Fine, parser interpreted valid command AT+CGSN=?
+INFO: Fine, parser interpreted valid command AT+CGMI
+INFO: Fine, parser interpreted valid command AT+CGMI=?
+INFO: Fine, parser interpreted valid command AT+CGMM
+INFO: Fine, parser interpreted valid command AT+CGMM=?
+INFO: Fine, parser interpreted valid command AT+CIMI
+INFO: Fine, parser interpreted valid command AT+CIMI=?
+INFO: Fine, parser interpreted valid command AT+CFUN=1,1
+INFO: Fine, parser interpreted valid command AT+CFUN=2
+INFO: Fine, parser interpreted valid command AT+CFUN?
+INFO: Fine, parser interpreted valid command AT+CFUN=?
+INFO: Fine, parser interpreted valid command AT+CPIN=1234
+INFO: Fine, parser interpreted valid command AT+CPIN=1234,4321
+INFO: Fine, parser interpreted valid command AT+CPIN?
+INFO: Fine, parser interpreted valid command AT+CPIN=?
+INFO: Fine, parser interpreted valid command AT+CSQ
+INFO: Fine, parser interpreted valid command AT+CSQ=?
+INFO: Fine, parser interpreted valid command AT+COPS=1,1,EURECOM
+INFO: Fine, parser interpreted valid command AT+COPS=2,3
+INFO: Fine, parser interpreted valid command AT+COPS=5
+INFO: Fine, parser interpreted valid command AT+COPS?
+INFO: Fine, parser interpreted valid command AT+COPS=?
+INFO: Fine, parser interpreted valid command AT+CGREG=1
+INFO: Fine, parser interpreted valid command AT+CGREG?
+INFO: Fine, parser interpreted valid command AT+CGREG=?
+INFO: Fine, parser interpreted valid command AT+CGDCONT=1
+INFO: Fine, parser interpreted valid command AT+CGDCONT?
+INFO: Fine, parser interpreted valid command AT+CGDCONT=?
+INFO: Fine, parser interpreted valid command AT+CGACT=1
+INFO: Fine, parser interpreted valid command AT+CGACT?
+INFO: Fine, parser interpreted valid command AT+CGACT=?
+INFO: Fine, parser interpreted valid command AT+CGMR
+INFO: Fine, parser interpreted valid command AT+CGMR=?
+INFO: Fine, parser interpreted valid command AT+CESQ
+INFO: Fine, parser interpreted valid command AT+CESQ=?
+INFO: Fine, parser interpreted valid command AT+CMEE=2
+INFO: Fine, parser interpreted valid command AT+CMEE?
+INFO: Fine, parser interpreted valid command AT+CMEE=?
+INFO: Fine, parser interpreted valid command AT+CLCK=SC,2
+INFO: Fine, parser interpreted valid command AT+CLCK=?
+INFO: Fine, parser interpreted valid command AT+CREG=1
+INFO: Fine, parser interpreted valid command AT+CREG?
+INFO: Fine, parser interpreted valid command AT+CREG=?
+INFO: Fine, parser interpreted valid command AT+CEREG=1
+INFO: Fine, parser interpreted valid command AT+CEREG?
+INFO: Fine, parser interpreted valid command AT+CEREG=?
+INFO: Fine, parser interpreted valid command AT+CGATT=1
+INFO: Fine, parser interpreted valid command AT+CGATT?
+INFO: Fine, parser interpreted valid command AT+CGATT=?
+INFO: Fine, parser interpreted valid command AT
+INFO: Fine, parser rejected the command AT+CGSN=3,4
+INFO: Fine, parser rejected the command AT+CGSN=??
+INFO: Fine, parser rejected the command AT+CGMI=1,b
+INFO: Fine, parser rejected the command AT+CGMI==
+INFO: Fine, parser rejected the command AT+CGMM?
+INFO: Fine, parser rejected the command AT+CGMM==n
+INFO: Fine, parser rejected the command AT+CIMI=4
+INFO: Fine, parser rejected the command AT+CIMI=?t
+INFO: Fine, parser rejected the command AT+CFUN=n1,1
+INFO: Fine, parser rejected the command AT+CFUN??
+INFO: Fine, parser rejected the command AT+CFUN=a?
+INFO: Fine, parser rejected the command AT+CPIN=1fd4
+INFO: Fine, parser rejected the command AT+CPIN=1sd+,432
+INFO: Fine, parser rejected the command AT+CPIN?4
+INFO: Fine, parser rejected the command AT+CPIN=?,?
+INFO: Fine, parser rejected the command AT+CSQ=AT
+INFO: Fine, parser rejected the command AT+CSQ=q
+INFO: Fine, parser rejected the command AT+COPS=123121123123123123,EURECOMEURECOMEURECOMEURECOM
+INFO: Fine, parser rejected the command AT+COPS=2asd3,33ads1
+INFO: Fine, parser rejected the command AT+COPS.=5
+INFO: Fine, parser rejected the command AT+COPS?/r\r
+INFO: Fine, parser rejected the command AT+COPS=?
+
+INFO: Fine, parser rejected the command AT+CGREG=da1243"r
+INFO: Fine, parser rejected the command AT+CGREG.?
+INFO: Fine, parser rejected the command AT+CGREG1=?
+INFO: Fine, parser rejected the command AT+CGDCONT=d31
+INFO: Fine, parser rejected the command AT+CGDCONTxc?\crca
+INFO: Fine, parser rejected the command AT+CGDCONcTc=c?
+INFO: Fine, parser rejected the command AT+CGA12C3T=11Sr
+INFO: Fine, parser rejected the command AT+CGACT';;.,?
+INFO: Fine, parser rejected the command AT+CGACT=?]\;e23
+INFO: Fine, parser rejected the command 
+INFO: Fine, parser rejected the command AT+COP
+Note 1: Carriage return will be appended to every command by default
+Note 2: Enter 'quit' to exit
+AT Command> INFO: Parser interpreted command ATE0Q0V1
+
+AT Command> INFO: Parser interpreted command ATE0Q0V1
+
+AT Command> ERROR: Parser rejected command ATS0=0
+
+AT Command> INFO: Parser interpreted command AT+CMEE=1
+
+AT Command> INFO: Parser interpreted command AT+CREG=2
+
+AT Command> INFO: Parser interpreted command AT+CGREG=1
+
+AT Command> ERROR: Parser rejected command AT+CCWA=1
+
+AT Command> ERROR: Parser rejected command AT+CMOD=0
+
+AT Command> ERROR: Parser rejected command AT+CSSN=0,1
+
+AT Command> ERROR: Parser rejected command AT+COLP=0
+
+AT Command> ERROR: Parser rejected command AT+CSCS="HEX"
+
+AT Command> ERROR: Parser rejected command AT+CUSD=1
+
+AT Command> ERROR: Parser rejected command AT+CGEREP=1,0
+
+AT Command> ERROR: Parser rejected command AT+CMGF=0
+
+AT Command> INFO: Parser interpreted command AT+CFUN?
+
+AT Command> INFO: Parser interpreted command AT+CPIN?
+
+AT Command> ERROR: Parser rejected command AT+CSMS=1
+
+AT Command> ERROR: Parser rejected command AT+CNMI=1,2,2,1,0
+
+AT Command> INFO: Parser interpreted command AT+CFUN=0
+
+AT Command> INFO: Parser interpreted command AT+CFUN=1
+
+AT Command> INFO: Parser interpreted command AT+CPIN?
+
+AT Command> ERROR: Parser rejected command AT+CSMS=1
+
+AT Command> ERROR: Parser rejected command AT+CNMI=1,2,2,1,0
+
+AT Command> INFO: Parser interpreted command AT+CGSN
+
+AT Command> INFO: Parser interpreted command AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+
+AT Command> INFO: Parser interpreted command AT+CGREG?
+
+AT Command> INFO: Parser interpreted command AT+CREG?
+
+AT Command> INFO: Parser interpreted command AT+COPS?
+
+AT Command> ERROR: Parser rejected command AT+CLCC
+
+AT Command> INFO: Parser interpreted command AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+
+AT Command> INFO: Parser interpreted command AT+CGREG?
+
+AT Command> INFO: Parser interpreted command AT+CREG?
+
+AT Command> INFO: Parser interpreted command AT+COPS?
+
+AT Command> INFO: Parser interpreted command AT+COPS=0
+
+AT Command> INFO: Parser interpreted command AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+
+AT Command> INFO: Parser interpreted command AT+CGREG?
+
+AT Command> INFO: Parser interpreted command AT+CREG?
+
+AT Command> INFO: Parser interpreted command AT+COPS?
+
+AT Command> INFO: Parser interpreted command AT+CIMI
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,12258,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28480,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28617,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28589,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28618,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28433,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28619,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28435,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28486,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28621,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28613,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28472,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28438,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28437,0,0,15
+
+AT Command> INFO: Parser interpreted command AT+CPIN?
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28439,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28436,0,0,15
+
+AT Command> ERROR: Parser rejected command AT+CRSM=192,28440,0,0,15
+
+AT Command> INFO: Parser interpreted command AT+CSQ
+
+AT Command> Exiting...

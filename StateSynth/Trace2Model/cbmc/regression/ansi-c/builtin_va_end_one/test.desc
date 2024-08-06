@@ -1,0 +1,7 @@
+CORE gcc-only
+main.c
+
+^EXIT=1$
+^SIGNAL=0$
+wrong number of function arguments
+--

@@ -1,0 +1,9 @@
+CORE
+test_trim.class
+--verbosity 10 --max-nondet-string-length 100 --function test_trim.main
+^EXIT=10$
+^SIGNAL=0$
+^\[.*assertion.1\].* line 6.* SUCCESS$
+^\[.*assertion.2\].* line 7.* FAILURE$
+--
+non equal types

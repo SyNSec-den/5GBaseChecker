@@ -1,0 +1,19 @@
+digraph g {
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s2 [shape="circle" label="2"];
+	s0 -> s0 [modality="MAY" style="dashed" label="a"];
+	s0 -> s1 [modality="MUST" label="b"];
+	s0 -> s2 [modality="MAY" style="dashed" label="c"];
+	s1 -> s0 [modality="MUST" label="a"];
+	s1 -> s1 [modality="MAY" style="dashed" label="b"];
+	s1 -> s2 [modality="MUST" label="c"];
+	s2 -> s0 [modality="MAY" style="dashed" label="a"];
+	s2 -> s1 [modality="MUST" label="b"];
+	s2 -> s2 [modality="MAY" style="dashed" label="c"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+
+}

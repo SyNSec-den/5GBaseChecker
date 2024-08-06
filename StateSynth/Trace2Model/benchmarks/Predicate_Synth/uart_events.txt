@@ -1,0 +1,48 @@
+start
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+reset, x' = 0
+reset, x' = 0
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+reset, x' = 0
+start
+reset, x' = 0
+reset, x' = 0
+reset, x' = 0
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+read, x' = (ite (> x 1) (- x 1) 0)
+read, x' = (ite (> x 1) (- x 1) 0)
+reset, x' = 0
+start
+reset, x' = 0
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+reset, x' = 0
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+reset, x' = 0
+reset, x' = 0
+start
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+read, x' = (ite (> x 1) (- x 1) 0)
+reset, x' = 0
+start
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+write, x' = (ite (> buffer_size x) (+ x 1) buffer_size)
+read, x' = (ite (> x 1) (- x 1) 0)
+start

@@ -1,0 +1,14 @@
+digraph g {
+
+	s0 [shape="circle" label="121"];
+	s1 [shape="circle" label="122"];
+	s2 [shape="circle" label="123"];
+
+	s0 -> s2 [modality="MUST", style="strict", label="btake2"];
+	s2 -> s0 [modality="MUST", style="strict", label="brelease2"];
+	s1 -> s0 [modality="MUST", style="strict", label="arelease2"];
+	s0 -> s1 [modality="MUST", style="strict", label="atake2"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}

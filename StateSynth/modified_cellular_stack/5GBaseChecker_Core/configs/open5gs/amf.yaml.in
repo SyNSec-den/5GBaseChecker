@@ -1,0 +1,383 @@
+#
+# logger:
+#
+#  o Set OGS_LOG_INFO to all domain level
+#   - If `level` is omitted, the default level is OGS_LOG_INFO)
+#   - If `domain` is omitted, the all domain level is set from 'level'
+#    (Nothing is needed)
+#
+#  o Set OGS_LOG_ERROR to all domain level
+#   - `level` can be set with none, fatal, error, warn, info, debug, trace
+#    level: error
+#
+#  o Set OGS_LOG_DEBUG to mme/emm domain level
+#    level: debug
+#    domain: mme,emm
+#
+#  o Set OGS_LOG_TRACE to all domain level
+#    level: trace
+#    domain: core,ngap,nas,gmm,sbi,amf,event,tlv,mem,sock
+#
+logger:
+    file: @localstatedir@/log/open5gs/amf.log
+#
+# amf:
+#
+#  <SBI Server>
+#
+#  o SBI Server(http://<all address available>:80)
+#    sbi:
+#
+#  o SBI Server(http://<any address>:80)
+#    sbi:
+#      - addr:
+#          - 0.0.0.0
+#          - ::0
+#        port: 7777
+#
+#  o SBI Server(https://<all address available>:443)
+#    sbi:
+#      - tls:
+#          key: amf.key
+#          pem: amf.pem
+#
+#  o SBI Server(https://127.0.0.5:443, http://[::1]:80)
+#    sbi:
+#      - addr: 127.0.0.5
+#        tls:
+#          key: amf.key
+#          pem: amf.pem
+#      - addr: ::1
+#
+#  o SBI Server(http://amf.open5gs.org:80)
+#    sbi:
+#      - name: amf.open5gs.org
+#
+#  o SBI Server(http://127.0.0.5:7777)
+#    sbi:
+#      - addr: 127.0.0.5
+#        port: 7777
+#
+#  o SBI Server(http://<eth0 IP address>:80)
+#    sbi:
+#      - dev: eth0
+#
+#  o Provide custom SBI address to be advertised to NRF
+#    sbi:
+#      - dev: eth0
+#        advertise: open5gs-amf.svc.local
+#
+#    sbi:
+#      - addr: localhost
+#        advertise:
+#          - 127.0.0.99
+#          - ::1
+#
+#  o SBI Option (Default)
+#    - tcp_nodelay : true
+#    - so_linger.l_onoff : false
+#
+#    sbi:
+#      addr: 127.0.0.5
+#      option:
+#        tcp_nodelay: false
+#        so_linger:
+#          l_onoff: true
+#          l_linger: 10
+#
+#  <NF Service>
+#
+#  o NF Service Name(Default : all NF services available)
+#    service_name:
+#
+#  o NF Service Name(Only some NF services are available)
+#    service_name:
+#      - namf-comm
+#
+#  <NGAP Server>>
+#
+#  o NGAP Server(all address available)
+#    ngap:
+#
+#  o NGAP Server(0.0.0.0:38412)
+#    ngap:
+#      addr: 0.0.0.0
+#
+#  o NGAP Server(127.0.0.5:38412, [::1]:38412)
+#    ngap:
+#      - addr: 127.0.0.5
+#      - addr: ::1
+#
+#  o NGAP Server(different port)
+#    ngap:
+#      - addr: 127.0.0.5
+#        port: 38413
+#
+#  o NGAP Server(address available in `eth0` interface)
+#    ngap:
+#      dev: eth0
+#
+#  o NGAP Option (Default)
+#    - sctp_nodelay : true
+#    - so_linger.l_onoff : false
+#
+#    ngap:
+#      addr: 127.0.0.5
+#      option:
+#        stcp_nodelay: false
+#        so_linger:
+#          l_onoff: true
+#          l_linger: 10
+#
+#  o NGAP SCTP Option (Default)
+#    - spp_hbinterval : 5000 (5secs)
+#    - spp_sackdelay : 200 (200ms)
+#    - srto_initial : 3000 (3secs)
+#    - srto_min : 1000 (1sec)
+#    - srto_max : 5000 (5secs)
+#    - sinit_num_ostreams : 30
+#    - sinit_max_instreams : 65535
+#    - sinit_max_attempts : 4
+#    - sinit_max_init_timeo : 8000(8secs)
+#
+#    ngap:
+#      addr: 127.0.0.5
+#      option:
+#        sctp:
+#          spp_hbinterval : 5000
+#          spp_sackdelay : 200
+#          srto_initial : 3000
+#          srto_min : 1000
+#          srto_max : 5000
+#          sinit_num_ostreams : 30
+#          sinit_max_instreams : 65535
+#          sinit_max_attempts : 4
+#          sinit_max_init_timeo : 8000
+#
+#  <GUAMI>
+#
+#  o Multiple GUAMI
+#    guami:
+#      - plmn_id:
+#          mcc: 999
+#          mnc: 70
+#        amf_id:
+#          region: 2
+#          set: 1
+#          pointer: 4
+#      - plmn_id:
+#          mcc: 001
+#          mnc: 01
+#        amf_id:
+#          region: 5
+#          set: 2
+#
+#  <TAI>
+#
+#  o Multiple TAI
+#    tai:
+#      - plmn_id:
+#          mcc: 001
+#          mnc: 01
+#        tac: [1, 2, 3]
+#    tai:
+#      - plmn_id:
+#          mcc: 002
+#          mnc: 02
+#        tac: 4
+#      - plmn_id:
+#          mcc: 003
+#          mnc: 03
+#        tac: 5
+#    tai:
+#      - plmn_id:
+#          mcc: 004
+#          mnc: 04
+#        tac: [6, 7]
+#      - plmn_id:
+#          mcc: 005
+#          mnc: 05
+#        tac: 8
+#      - plmn_id:
+#          mcc: 006
+#          mnc: 06
+#        tac: [9, 10]
+#
+#  <PLMN Support>
+#
+#  o Multiple PLMN Support
+#    plmn_support:
+#      - plmn_id:
+#          mcc: 999
+#          mnc: 70
+#        s_nssai:
+#          - sst: 1
+#            sd: 010000
+#      - plmn_id:
+#          mcc: 999
+#          mnc: 70
+#        s_nssai:
+#          - sst: 1
+#
+#  <Network Name>
+#
+#    network_name:
+#        full: Open5GS
+#        short: Next
+#
+#  <AMF Name>
+#
+#    amf_name: amf1.open5gs.amf.5gc.mnc70.mcc999.3gppnetwork.org
+#
+#  <Relative Capacity> - Default(255)
+#
+#    relative_capacity: 100
+#
+amf:
+    sbi:
+      - addr: 127.0.0.5
+        port: 7777
+    ngap:
+      - addr: 127.0.0.5
+    guami:
+      - plmn_id:
+          mcc: 999
+          mnc: 70
+        amf_id:
+          region: 2
+          set: 1
+    tai:
+      - plmn_id:
+          mcc: 999
+          mnc: 70
+        tac: 1
+    plmn_support:
+      - plmn_id:
+          mcc: 999
+          mnc: 70
+        s_nssai:
+          - sst: 1
+    security:
+        integrity_order : [ NIA2, NIA1, NIA0 ]
+        ciphering_order : [ NEA0, NEA1, NEA2 ]
+    network_name:
+        full: Open5GS
+    amf_name: open5gs-amf0
+
+#
+# nrf:
+#
+#  <SBI Client>>
+#
+#  o SBI Client(http://127.0.0.10:7777)
+#    sbi:
+#      addr: 127.0.0.10
+#      port: 7777
+#
+#  o SBI Client(https://127.0.0.10:443, http://nrf.open5gs.org:80)
+#    sbi:
+#      - addr: 127.0.0.10
+#        tls:
+#          key: nrf.key
+#          pem: nrf.pem
+#      - name: nrf.open5gs.org
+#
+#  o SBI Client(http://[fd69:f21d:873c:fa::1]:80)
+#    If prefer_ipv4 is true, http://127.0.0.10:80 is selected.
+#
+#    sbi:
+#      addr:
+#        - 127.0.0.10
+#        - fd69:f21d:873c:fa::1
+#
+#  o SBI Option (Default)
+#    - tcp_nodelay : true
+#    - so_linger.l_onoff : false
+#
+#    sbi:
+#      addr: 127.0.0.10
+#      option:
+#        tcp_nodelay: false
+#        so_linger:
+#          l_onoff: true
+#          l_linger: 10
+#
+nrf:
+    sbi:
+      - addr:
+          - 127.0.0.10
+          - ::1
+        port: 7777
+
+#
+# parameter:
+#
+#  o Disable use of IPv4 addresses (only IPv6)
+#      no_ipv4: true
+#
+#  o Disable use of IPv6 addresses (only IPv4)
+#      no_ipv6: true
+#
+#  o Prefer IPv4 instead of IPv6 for estabishing new GTP connections.
+#      prefer_ipv4: true
+#
+parameter:
+
+#
+# max:
+#
+# o Maximum Number of UE
+#    ue: 1024
+# o Maximum Number of Peer(S1AP/NGAP, DIAMETER, GTP, PFCP or SBI)
+#    peer: 64
+#
+max:
+
+#
+# usrsctp:
+#    udp_port : 9899
+#
+usrsctp:
+
+#
+# time:
+#
+#  o NF Instance Heartbeat (Default : 0)
+#    NFs will not send heart-beat timer in NFProfile
+#    NRF will send heart-beat timer in NFProfile
+#
+#  o NF Instance Heartbeat (20 seconds)
+#    NFs will send heart-beat timer (20 seconds) in NFProfile
+#    NRF can change heart-beat timer in NFProfile
+#
+#    nf_instance:
+#      heartbeat: 20
+#
+#  o Message Wait Duration (Default : 10,000 ms = 10 seconds)
+#
+#  o Message Wait Duration (3000 ms)
+#    message:
+#        duration: 3000
+#
+#  o Handover Wait Duration (Default : 300 ms)
+#    Time to wait for AMF to send UEContextReleaseCommand
+#    to the source gNB after receiving HandoverNotify
+#
+#  o Handover Wait Duration (500ms)
+#    handover:
+#        duration: 500
+time:
+
+#
+# metrics:
+#
+#  <Metrics Server>
+#
+#  o Metrics Server(http://<any address>:9090)
+#    metrics:
+#      addr: 0.0.0.0
+#      port: 9090
+#
+metrics:
+    addr: 127.0.0.5
+    port: 9090

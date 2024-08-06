@@ -1,0 +1,13 @@
+mu X.(<>X || <b><b>true)
+mu X.(<>X || <b><S><b>true)
+mu X.(<>X || <b><T><b>true)
+<S><T><a>true
+<S><T><b>true
+<S><T><c>true
+<S><a><T><c>true
+<S><a><S><T><c>true
+nu X. ([]X && [] false)
+mu X. (<>X || [] false)
+nu X. ([]X && mu Y. (<>Y || [] false))
+nu X. ([]X && (<S>true -> (mu Y. (<S>Y || <R>true))))
+nu X. ([]X && (<S>true -> [S](mu Y. (<>Y || <R>true))))

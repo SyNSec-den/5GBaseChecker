@@ -1,0 +1,85 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: open5gs-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+
+  webui:
+    build: webui
+    image: ${USER}/open5gs-webui
+    container_name: open5gs-webui
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      DB_URI: mongodb://mongodb/open5gs
+
+  base:
+    build:
+      context: ./${DIST-ubuntu}/${TAG-latest}/base
+      args:
+        dist: ${DIST-ubuntu}
+        tag: ${TAG-latest}
+    image: ${USER}/${DIST-ubuntu}-${TAG-latest}-open5gs-base
+    command: /bin/bash -c "echo 'base' services"
+
+  build:
+    build:
+      context: ../
+      dockerfile: docker/build/Dockerfile
+      args:
+        dist: ${DIST-ubuntu}
+        tag: ${TAG-latest}
+        username: ${USER}
+    image: ${USER}/${DIST-ubuntu}-${TAG-latest}-open5gs-build
+    depends_on:
+      - base
+    command: /bin/bash -c "echo 'build' services"
+
+  dev:
+    build:
+      context: ./${DIST-ubuntu}/${TAG-latest}/dev
+      args:
+        dist: ${DIST-ubuntu}
+        tag: ${TAG-latest}
+        username: ${USER}
+    image: ${USER}/${DIST-ubuntu}-${TAG-latest}-open5gs-dev
+    depends_on:
+      - mongodb
+      - base
+    environment:
+      - DB_URI=mongodb://mongodb/open5gs
+      - DISPLAY=$DISPLAY
+    # - DISPLAY=host.docker.internal:0
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - "/dev/net/tun:/dev/net/tun"
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    volumes:
+      - home:/home/${USER}
+      - ${HOME}:/mnt
+    # - /tmp/.X11-unix:/tmp/.X11-unix
+    # - /etc/localtime:/etc/localtime:ro
+    # - /usr/share/zoneinfo/Europe/Helsinki:/etc/localtime:ro
+    hostname: open5gs-dev
+    user: ${USER}
+    entrypoint: /bin/bash -c "/bin/bash -c \"$${@}\""
+    command: |
+        /bin/bash -c "
+            sudo chmod 666 /dev/net/tun
+            sudo /root/setup.sh
+            /bin/bash || exit 0
+        "
+volumes:
+  mongodb: {}
+  home: {}

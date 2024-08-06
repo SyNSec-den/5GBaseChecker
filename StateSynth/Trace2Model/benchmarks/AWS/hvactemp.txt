@@ -1,0 +1,193 @@
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+!(inp.temp >= rangeLow): HEATING
+start
+START
+IDLE
+IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+!(inp.temp >= rangeLow): HEATING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+!(inp.temp >= rangeLow): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+(inp.temp > rangeHigh): COOLING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+!(inp.temp >= rangeLow): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+HEATING
+start
+START
+IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+start
+START
+IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+(!(coolingTimeout >= out.coolingTimer) and !(inp.temp > (desiredTemperature - allowedError)) and !(rangeLow > inp.temp)): IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+HEATING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+HEATING
+HEATING
+HEATING
+HEATING
+((out.heatingTimer > heatingTimeout) and (inp.temp >= (desiredTemperature + allowedError)) and !(inp.temp > rangeHigh)): IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+!(inp.temp >= rangeLow): HEATING
+start
+START
+IDLE
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+start
+START
+IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+HEATING
+HEATING
+(inp.temp > rangeHigh): COOLING
+start
+START
+IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+COOLING
+COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+HEATING
+((out.heatingTimer > heatingTimeout) and (inp.temp >= (desiredTemperature + allowedError)) and !(inp.temp > rangeHigh)): IDLE
+start
+START
+IDLE
+IDLE
+IDLE
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+HEATING
+HEATING
+HEATING
+HEATING
+(inp.temp > rangeHigh): COOLING
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+HEATING
+((out.heatingTimer > heatingTimeout) and (inp.temp >= (desiredTemperature + allowedError)) and !(inp.temp > rangeHigh)): IDLE
+IDLE
+start
+START
+IDLE
+!(inp.temp >= (desiredTemperature - allowedError)): HEATING
+(inp.temp > rangeHigh): COOLING
+COOLING
+!(inp.temp >= rangeLow): HEATING
+HEATING
+HEATING
+HEATING
+((out.heatingTimer > heatingTimeout) and (inp.temp >= (desiredTemperature + allowedError)) and !(inp.temp > rangeHigh)): IDLE
+(inp.temp > (desiredTemperature + allowedError)): COOLING
+start

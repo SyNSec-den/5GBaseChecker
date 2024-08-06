@@ -1,0 +1,31 @@
+/* put your custom CSS in here */
+
+/* ADDED BY PHIL */
+.error-message{
+	background:url(images/false.png) 10px center no-repeat;
+	padding:0 0 0 30px;
+	display:inline;
+	color:#ff5b5b;
+	border-color: #FF0000;
+	display:none;
+}
+
+.good-message{
+	background:url(images/true.png) 10px center no-repeat;
+	padding:0 0 0 30px;
+	display:inline;
+	color:#99CC33;
+	display:none;
+}
+
+
+#xmlwritten {	
+	position:absolute;
+	left:20%;
+	width:60%;
+	margin-top:50px;
+	text-align:center;
+	padding:15px;
+	border:1px dashed #333;
+	}
+

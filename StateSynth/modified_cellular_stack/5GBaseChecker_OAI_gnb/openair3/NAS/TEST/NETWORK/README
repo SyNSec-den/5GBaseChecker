@@ -1,0 +1,255 @@
+================================================================================
+				EURECOM LTE NAS emulation
+================================================================================
+
+The EURECOM-NAS.tar.bz2 archive contains libraries and binary files used to
+execute emulation of the NAS protocol running on the control plane between
+the UE and the core network in the Evolved Packet System.
+
+--------------------------------------------------------------------------------
+	    How to extract files from EURECOM-NAS.tar.bz2 tarball file ?
+--------------------------------------------------------------------------------
+
+> tar xvzf EURECOM-NAS.tar.bz2
+
+EURECOM-NAS directory should contain following files:
+
+> tree -a EURECOM-NAS
+
+EURECOM-NAS
+|-- bin
+|   |-- .ue.nvram0
+|   |-- .ue_emm.nvram0
+|   |-- .usim.nvram0
+|   |-- NetworkProcess
+|   |-- UEprocess
+|   `-- UserProcess
+`-- lib
+    |-- libEMMmsg.a
+    |-- libEMMmsg.so
+    |-- libEMMsap.a
+    |-- libEMMsap.so
+    |-- libESMmsg.a
+    |-- libESMmsg.so
+    |-- libESMsap.a
+    |-- libESMsap.so
+    |-- libapi.a
+    |-- libapi.so
+    |-- libies.a
+    |-- libies.so
+    |-- libutil.a
+    `-- libutil.so
+
+--------------------------------------------------------------------------------
+				EURECOM-NAS/bin directory
+--------------------------------------------------------------------------------
+
+EURECOM-NAS/bin contains binary files.
+
+UEprocess is an implementation of the NAS protocol running at the UE side.
+
+NetworkProcess is a simulation of the core network running at the eNodeB
+(network registration) and the MME (network attachment and PDN connection).
+
+UserProcess is a pseudo Connection Manager used to send AT commands to the
+UE for testing purpose.
+
+When starting up, UEprocess reads configuration data from .nvram binary
+files used as UE's non-volatile memory.
+
+.usim.nvram0 contains data stored into the USIM
+.ue.nvram0 contains data related to the UE identification (IMEI,
+manufacturer, model, PIN code)
+.ue_emm.nvram0 contains data related to EPS Mobility Management (IMSI, last
+registered PLMN)
+
+--------------------------------------------------------------------------------
+				EURECOM-NAS/lib directory
+--------------------------------------------------------------------------------
+
+EURECOM-NAS/lib contains static libraries (lib*.a) and dynamically linked
+shared object libraries (lib*.so).
+
+--------------------------------------------------------------------------------
+				Environment variables
+--------------------------------------------------------------------------------
+
+Although static libraries are provided, only shared libraries are loaded by
+programs at run time. To allow programs to find them all, the environment
+variable LD_LIBRARY_PATH must be defined with the path of the EURECOM-NAS/lib
+directory.
+
+> export LD_LIBRARY_PATH=/my-root-directory/EURECOM-NAS/lib:$LD_LIBRARY_PATH
+
+Where 'my-root-directory' is the absolute path to the directory where is
+located the EURECOM-NAS directory.
+
+By default UEprocess reads UE's and USIM non-volatile data from files
+located in the directory from where the program was started. If not found in
+the current directory, UEprocess search files into the directories defined
+by USIM_DIR and NVRAM_DIR environment variables.
+
+So if the UEprocess application is not started from the EURECOM-NAS/bin
+directory, the environment variables USIM_DIR and NVRAM_DIR must be defined
+with the path of the EURECOM-NAS/bin directory.
+
+> export USIM_DIR=/my-root-directory/EURECOM-NAS/bin
+> export NVRAM_DIR=/my-root-directory/EURECOM-NAS/bin
+
+--------------------------------------------------------------------------------
+				Application settings
+--------------------------------------------------------------------------------
+
+UserProcess, UEprocess and NetworkProcess applications can be runned locally
+on the same host or distributed on several remote machines.
+
+
+			+-------------------------------+
+			|	    UserProcess		|
+			|  (pseudo Connection Manager)	|
+			+-------------------------------+
+					^
+					| /dev/ttyUSBx
+					|    or UDP
+			    AT commands	v
+			+-------------------------------+
+			|	    UEprocess		|
+			|	 (NAS protocol)		|
+			+-------------------------------+
+					^
+					| UDP
+			   NAS messages	v
+			+-------------------------------+
+			|	 Networkprocess		|
+			|   (core network simulator)	|
+			+-------------------------------+
+
+
+UEprocess communicates with UserProcess in two different ways:
+
+	- using tty device file when together connected via USB-to-serial
+	  adaptor cable
+
+	- using UDP socket through the Internet Protocol
+
+UEprocess connects itself to NetworkProcess using UDP socket only.
+
+--------------------------------------------------------------------------------
+		How to run the EURECOM LTE emulation application ?
+--------------------------------------------------------------------------------
+
+Every executables can be started in any order.
+
+Each executable has an usage menu.
+
+> EURECOM-NAS/bin/UserProcess --help
+Usage: EURECOM-NAS/bin/UserProcess [-host <host>] [-port <port>] [-dev <devpath>] [-params <params>]
+        <host>          Remote hostname                 (localhost)
+        <port>          Remote port number              (10000)
+        <devpath>       Device pathname                 (NULL)
+        <params>        Device attribute parameters     (NULL)
+
+> EURECOM-NAS/bin/UEprocess --help
+Usage: EURECOM-NAS/bin/UEprocess [-ueid <ueid>] [-trace <mask>] [-uhost <uhost>] [-nhost <nhost>] [-uport <uport>] [-nport <nport>] [-dev <devpath>] [-params <params>]
+        <ueid>  UE identifier                           (1)
+        <mask>  Logging trace level                     (0)
+        <uhost> User app layer's hostname               (localhost)
+        <nhost> Network layer's hostname                (localhost)
+        <uport> User app layer's port number            (10000)
+        <nport> Network layer's port number             (12000)
+        <devpath>       Device pathname                 (NULL)
+        <params>        Device attribute parameters     (NULL)
+Version: exported - 2013-05-30 18:49:43
+
+> EURECOM-NAS/bin/NetworkProcess --help
+Usage: EURECOM-NAS/bin/NetworkProcess [-host <host>] [-port <port>]
+        <host>  Remote hostname                 (localhost)
+        <port>  Remote port number              (12000)
+
+--------------------------------------------------------------------------------
+			Receiving AT commands via serial-USB
+--------------------------------------------------------------------------------
+
+Assuming that UserProcess connects to USB0 and UEprocess connects to USB1
+(they can connect to the same USB device number if they are running on
+different hosts).
+
+1 - Configure and export environment variables:
+
+> export LD_LIBRARY_PATH=/my-root-directory/EURECOM-NAS/lib:$LD_LIBRARY_PATH
+> export USIM_DIR=/my-root-directory/EURECOM-NAS/bin
+> export NVRAM_DIR=/my-root-directory/EURECOM-NAS/bin
+
+2 - Start the pseudo Connection Manager to send AT commands to / receive
+    responses from USB0 at 9600 bauds rate:
+
+> ./EURECOM-NAS/bin/UserProcess -dev /dev/ttyUSB0 -params 9600
+
+3 - Start the NAS protocol emulation to receive AT command from / send
+    responses to USB1 at 9600 bauds rate and send/receive NAS messages
+    to/from the network simulator using default localhost and port number
+    (1200):
+
+> ./EURECOM-NAS/bin/UEprocess -trace 2f -dev /dev/ttyUSB1 -params 9600
+
+4 - Start the network simulation to send/receive NAS messages to/from the
+    NAS protocol emulation using default localhost and port number (1200):
+
+> ./EURECOM-NAS/bin/NetworkProcess
+
+--------------------------------------------------------------------------------
+			    Receiving AT commands via UDP
+--------------------------------------------------------------------------------
+
+1 - Configure and export environment variables:
+
+> export LD_LIBRARY_PATH=/my-root-directory/EURECOM-NAS/lib:$LD_LIBRARY_PATH
+> export USIM_DIR=/my-root-directory/EURECOM-NAS/bin
+> export NVRAM_DIR=/my-root-directory/EURECOM-NAS/bin
+
+2 - Start the pseudo Connection Manager to send AT commands to / receive
+    responses from the localhost using default port number (10000):
+
+> ./EURECOM-NAS/bin/UserProcess
+
+3 - Start the NAS protocol emulation to receive AT command from / send
+    responses to the localhost using default port number (10000) and
+    send/receive NAS messages to/from the network simulator using default
+    localhost and port number (1200):
+
+> ./EURECOM-NAS/bin/UEprocess -trace 2f
+
+4 - Start the network simulation to send/receive NAS messages to/from the
+    NAS protocol emulation using default localhost and port number (1200):
+
+> ./EURECOM-NAS/bin/NetworkProcess
+
+--------------------------------------------------------------------------------
+				    Application output
+--------------------------------------------------------------------------------
+
+UEprocess displays information related to parsing and execution of AT commands
+and NAS procedures with following severity levels:
+
+DEBUG:		Used for debug purpose (displayed in green color)
+INFO:		Informational trace
+WARNING:	Warning message (displayed in blue color)
+ERROR:		Error message (displayed in red color)
+FUNC:		Function's calling tree information at runtime
+DUMP:		Hex dump of all user and network messages
+
+The severity level is selected with the command line parameter -trace <sev>
+where <sev> is a bitmask of the following hexadecimal values:
+
+00	- No trace (default)
+01	- DEBUG
+02	- INFO
+04	- WARNING
+08	- ERROR
+0f	- DEBUG + INFO + WARNING + ERROR
+10	- FUNC
+20	- DUMP
+2f	- DEBUG + INFO + WARNING + ERROR + DUMP
+
+--------------------------------------------------------------------------------
+

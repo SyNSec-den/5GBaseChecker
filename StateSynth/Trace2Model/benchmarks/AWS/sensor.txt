@@ -1,0 +1,56 @@
+start
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+(((inp.pos >= gps_pos) and (inp.pos > gps_pos)) or !(inp.pos >= gps_pos)): DEVICE_IN_USE
+(((inp.id >= user_id) and (inp.id > user_id)) or !(inp.id >= user_id)): DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+start
+DEVICE_IDLE
+(((inp.pos >= gps_pos) and (inp.pos > gps_pos)) or !(inp.pos >= gps_pos)): DEVICE_IN_USE
+DEVICE_IN_USE
+DEVICE_IN_USE
+(((inp.id >= user_id) and (inp.id > user_id)) or !(inp.id >= user_id)): DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+DEVICE_EXCEPTION
+start
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+(((inp.pos >= gps_pos) and (inp.pos > gps_pos)) or !(inp.pos >= gps_pos)): DEVICE_IN_USE
+start
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+(((inp.pos >= gps_pos) and (inp.pos > gps_pos)) or !(inp.pos >= gps_pos)): DEVICE_IN_USE
+(((inp.id >= user_id) and (inp.id > user_id)) or !(inp.id >= user_id)): DEVICE_EXCEPTION
+start
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+DEVICE_IDLE
+(((inp.pos >= gps_pos) and (inp.pos > gps_pos)) or !(inp.pos >= gps_pos)): DEVICE_IN_USE
+(((inp.id >= user_id) and (inp.id > user_id)) or !(inp.id >= user_id)): DEVICE_EXCEPTION
+start

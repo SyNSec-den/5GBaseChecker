@@ -1,0 +1,15 @@
+registration_request
+id_response
+auth_response
+nas_sm_complete
+nas_sm_reject
+registration_complete
+deregistration_accept
+rrc_sm_complete
+rrc_sm_failure
+rrc_ue_cap_info
+rrc_ueinfo_response
+rrc_countercheck_response
+rrc_reconf_complete
+null_action
+config_update_complete

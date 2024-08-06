@@ -1,0 +1,20 @@
+dfa {Paul,loves,Mary} {
+	s0 [initial] {
+		{loves,Mary} -> s2
+		Paul -> s1
+	}
+	s1 {
+		loves -> s3
+		{Paul,Mary} -> s2
+	}
+	s2 {
+		{Paul,loves,Mary} -> s2
+	}
+	s3 {
+		Mary -> s4
+		{Paul,loves} -> s2
+	}
+	s4 [accepting] {
+		{Paul,loves,Mary} -> s2
+	}
+}

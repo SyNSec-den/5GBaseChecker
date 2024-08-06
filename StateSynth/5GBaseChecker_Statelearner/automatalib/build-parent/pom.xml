@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<!--
+Copyright (C) 2013-2022 TU Dortmund
+This file is part of AutomataLib, http://www.automatalib.net/.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.automatalib</groupId>
+        <artifactId>automata-parent</artifactId>
+        <version>0.11.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>automata-build-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <name>AutomataLib :: Build Parent</name>
+    <description>
+        A utility artifact, that defines certain plugin executions for the build process. May be used to define
+        dependencies on the "build-tools" artifact without introducing cyclic dependencies with the general parent.
+    </description>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- If we run coverage analysis, skip generated sources -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <!-- generated builders for automata types -->
+                            <exclude>net/automatalib/util/automata/builders/AutomatonBuilder.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/AutomatonBuilder$*.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/DFABuilder.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/DFABuilder$*.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/FSABuilder.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/FSABuilder$*.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/MealyBuilder.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/MealyBuilder$*.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/MooreBuilder.class</exclude>
+                            <exclude>net/automatalib/util/automata/builders/MooreBuilder$*.class</exclude>
+
+                            <!-- generated parser for DOT serialization -->
+                            <exclude>net/automatalib/serialization/dot/InternalDOTParser*.class</exclude>
+                            <exclude>net/automatalib/serialization/dot/ParseException.class</exclude>
+                            <exclude>net/automatalib/serialization/dot/SimpleCharStream.class</exclude>
+                            <exclude>net/automatalib/serialization/dot/Token.class</exclude>
+                            <exclude>net/automatalib/serialization/dot/TokenMgrError.class</exclude>
+
+                            <!-- generated parser for TAF serialization -->
+                            <exclude>net/automatalib/serialization/taf/parser/InternalTAFParser*.class</exclude>
+                            <exclude>net/automatalib/serialization/taf/parser/ParseException.class</exclude>
+                            <exclude>net/automatalib/serialization/taf/parser/SimpleCharStream.class</exclude>
+                            <exclude>net/automatalib/serialization/taf/parser/Token.class</exclude>
+                            <exclude>net/automatalib/serialization/taf/parser/TokenMgrError.class</exclude>
+
+                            <!-- generated parser for LTSmin LTL parser -->
+                            <exclude>net/automatalib/modelcheckers/ltsmin/InternalLTSminLTLParser*.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/ParseException.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/SimpleCharStream.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/Token.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/TokenMgrError.class</exclude>
+
+                            <!-- generated parser for M3C formula parser -->
+                            <exclude>net/automatalib/modelcheckers/m3c/formula/parser/InternalM3CParser*.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/m3c/formula/parser/ParseException.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/m3c/formula/parser/SimpleCharStream.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/m3c/formula/parser/Token.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/m3c/formula/parser/TokenMgrError.class</exclude>
+
+                            <!-- generated builders for model checkers -->
+                            <exclude>net/automatalib/modelcheckers/ltsmin/ltl/LTSminLTLAlternatingBuilder.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/ltl/LTSminLTLDFABuilder.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/ltl/LTSminLTLIOBuilder.class</exclude>
+
+                            <exclude>net/automatalib/modelcheckers/ltsmin/monitor/LTSminMonitorAlternatingBuilder.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/monitor/LTSminMonitorDFABuilder.class</exclude>
+                            <exclude>net/automatalib/modelcheckers/ltsmin/monitor/LTSminMonitorIOBuilder.class</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>code-analysis</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.github.spotbugs</groupId>
+                            <artifactId>spotbugs-maven-plugin</artifactId>
+                            <configuration>
+                                <excludeFilterFile>/automatalib-spotbugs-exclusions.xml</excludeFilterFile>
+                                <effort>Max</effort>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>net.automatalib</groupId>
+                                    <artifactId>automata-build-tools</artifactId>
+                                    <version>${project.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <configuration>
+                                <rulesets>
+                                    <ruleset>/automatalib-pmd-ruleset.xml</ruleset>
+                                </rulesets>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>net.automatalib</groupId>
+                                    <artifactId>automata-build-tools</artifactId>
+                                    <version>${project.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <configuration>
+                                <configLocation>/automatalib-learnlib-checkstyle.xml</configLocation>
+                                <headerLocation>/license-header-java.txt</headerLocation>
+                                <suppressionsLocation>/automatalib-checkstyle-suppressions.xml</suppressionsLocation>
+                                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                                <linkXRef>false</linkXRef>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.puppycrawl.tools</groupId>
+                                    <artifactId>checkstyle</artifactId>
+                                    <version>${checkstyle.version}</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>net.automatalib</groupId>
+                                    <artifactId>automata-build-tools</artifactId>
+                                    <version>${project.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>pmd</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>cf</id>
+            <dependencies>
+                <!-- utility dependency so that the classloader can correctly resolve annotations -->
+                <dependency>
+                    <groupId>com.google.code.findbugs</groupId>
+                    <artifactId>jsr305</artifactId>
+                    <version>${jsr305.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.errorprone</groupId>
+                    <artifactId>javac</artifactId>
+                    <version>${error-prone.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>properties</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>cf-compile</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <configuration>
+                                    <skipMain>${automatalib.java9OrNewer}</skipMain>
+                                    <failOnWarning>true</failOnWarning>
+                                    <fork>true</fork>
+                                    <outputDirectory>${project.build.directory}/checkerframework</outputDirectory>
+                                    <annotationProcessorPaths>
+                                        <path>
+                                            <groupId>org.checkerframework</groupId>
+                                            <artifactId>checker</artifactId>
+                                            <version>${checkerframework.version}</version>
+                                        </path>
+                                    </annotationProcessorPaths>
+                                    <annotationProcessors>
+                                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                                        <!--<annotationProcessor>org.checkerframework.checker.signedness.SignednessChecker</annotationProcessor>-->
+                                    </annotationProcessors>
+                                    <compilerArgs>
+                                        <arg>-J-Xbootclasspath/p:${com.google.errorprone:javac:jar}</arg>
+                                        <arg>-AskipDefs=^net.automatalib.serialization.taf.parser.(Internal.*|Token.*|SimpleCharStream)|\
+                                                        ^net.automatalib.serialization.dot.(Internal.*|Token.*|SimpleCharStream)|\
+                                                        ^net.automatalib.modelcheckers.ltsmin.(Internal.*|Token.*|SimpleCharStream)|\
+                                                        ^net.automatalib.modelcheckers.m3c.formula.parser.(Internal.*|Token.*|SimpleCharStream)|\
+                                        </arg>
+                                        <arg>-AskipUses=^com.google.*|\
+                                                        ^java.(awt.*|util.Arrays|io.StreamTokenizer)|\
+                                                        ^javax.swing.*|\
+                                        </arg>
+                                        <arg>-AsuppressWarnings=uninitialized</arg>
+                                        <arg>-AassumeAssertionsAreEnabled</arg>
+                                        <arg>-Astubs=jdk8.astub:collection-object-parameters-may-be-null.astub</arg>
+                                    </compilerArgs>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>cf-test-compile</id>
+                                <phase>test-compile</phase>
+                                <goals>
+                                    <goal>testCompile</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>${automatalib.java9OrNewer}</skip>
+                                    <failOnWarning>true</failOnWarning>
+                                    <fork>true</fork>
+                                    <outputDirectory>${project.build.directory}/checkerframework</outputDirectory>
+                                    <annotationProcessorPaths>
+                                        <path>
+                                            <groupId>org.checkerframework</groupId>
+                                            <artifactId>checker</artifactId>
+                                            <version>${checkerframework.version}</version>
+                                        </path>
+                                    </annotationProcessorPaths>
+                                    <annotationProcessors>
+                                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                                    </annotationProcessors>
+                                    <compilerArgs>
+                                        <arg>-J-Xbootclasspath/p:${com.google.errorprone:javac:jar}</arg>
+                                        <arg>-AonlyDefs=^net\.automatalib</arg>
+                                        <arg>-AskipUses=.*</arg>
+                                        <arg>-AsuppressWarnings=uninitialized</arg>
+                                        <arg>-AassumeAssertionsAreEnabled</arg>
+                                    </compilerArgs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

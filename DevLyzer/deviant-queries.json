@@ -1,0 +1,108 @@
+{
+  "traces": [
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd_ns_plain_text', 'nas_sm_cmd', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd', 'registration_accept_protected', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'registration_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'null_action', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'nas_sm_cmd_ns_plain_text', 'auth_request_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'nas_sm_complete', 'auth_response', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'nas_sm_complete', 'auth_response', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd', 'registration_accept_protected', 'registration_accept_plain_text', 'config_update_cmd_protected', 'config_update_cmd_plain_text', 'nas_sm_cmd_ns', 'nas_sm_cmd_ns_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'registration_complete', 'null_action', 'config_update_complete', 'config_update_complete', 'nas_sm_reject', 'nas_sm_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'null_action', 'null_action', 'null_action', 'null_action', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd', 'nas_sm_cmd_ns', 'nas_sm_cmd_ns_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_reject', 'nas_sm_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'nas_sm_cmd_ns_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'nas_sm_complete', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    },
+    {
+      "input_symbols": "['enable_s1', 'auth_request_plain_text', 'rrc_sm_cmd_ns_plain_text', 'nas_sm_cmd', 'nas_sm_cmd_ns', 'nas_sm_cmd_ns_plain_text', 'nas_sm_cmd_ns']",
+      "outputs": [
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'rrc_sm_complete', 'nas_sm_complete', 'nas_sm_reject', 'nas_sm_complete', 'nas_sm_reject']",
+          "devices": "['FSM_B']"
+        },
+        {
+          "output_symbols": "['registration_request', 'auth_response', 'rrc_sm_complete', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete', 'nas_sm_complete']",
+          "devices": "['FSM_A']"
+        }
+      ]
+    }
+  ]
+}

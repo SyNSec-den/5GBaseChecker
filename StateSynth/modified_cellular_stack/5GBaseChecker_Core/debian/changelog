@@ -1,0 +1,1873 @@
+open5gs (2.4.9) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 25 Jul 2022 20:49:38 +0900
+
+open5gs (2.4.9~jammy) jammy; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 25 Jul 2022 20:48:36 +0900
+
+open5gs (2.4.9~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 25 Jul 2022 20:47:16 +0900
+
+open5gs (2.4.9~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 25 Jul 2022 20:45:33 +0900
+
+open5gs (2.4.8) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jun 2022 16:28:51 +0900
+
+open5gs (2.4.8~jammy) jammy; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jun 2022 16:27:13 +0900
+
+open5gs (2.4.8~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jun 2022 16:23:05 +0900
+
+open5gs (2.4.8~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jun 2022 16:22:04 +0900
+
+open5gs (2.4.8~impish) impish; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jun 2022 16:19:27 +0900
+
+open5gs (2.4.7) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 May 2022 19:20:07 +0900
+
+open5gs (2.4.7~jammy) jammy; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 May 2022 19:19:10 +0900
+
+open5gs (2.4.7~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 May 2022 19:18:11 +0900
+
+open5gs (2.4.7~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 May 2022 19:17:08 +0900
+
+open5gs (2.4.7~impish) impish; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 May 2022 19:14:58 +0900
+
+open5gs (2.4.6) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 17 May 2022 22:41:32 +0900
+
+open5gs (2.4.6~jammy) jammy; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 17 May 2022 22:40:16 +0900
+
+open5gs (2.4.6~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 17 May 2022 22:38:38 +0900
+
+open5gs (2.4.6~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 17 May 2022 22:37:22 +0900
+
+open5gs (2.4.6~impish) impish; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 17 May 2022 22:34:40 +0900
+
+open5gs (2.4.5) unstable; urgency=medium
+
+  * GTP-1C(GGSN) provided by sysmocom
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Mar 2022 18:41:04 +0900
+
+open5gs (2.4.5~focal) focal; urgency=medium
+
+  * GTP-1C(GGSN) provided by sysmocom
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Mar 2022 18:40:06 +0900
+
+open5gs (2.4.5~bionic) bionic; urgency=medium
+
+  * GTP-1C(GGSN) provided by sysmocom
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Mar 2022 18:38:55 +0900
+
+open5gs (2.4.5~impish) impish; urgency=medium
+
+  * GTP-1C(GGSN) provided by sysmocom
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Mar 2022 18:37:40 +0900
+
+open5gs (2.4.4) unstable; urgency=medium
+
+  * Fixed Memory leak
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 01 Feb 2022 15:03:37 +0900
+
+open5gs (2.4.4~focal) focal; urgency=medium
+
+  * Fixed Memory leak
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 01 Feb 2022 15:02:35 +0900
+
+open5gs (2.4.4~bionic) bionic; urgency=medium
+
+  * Fixed Memory leak
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 01 Feb 2022 15:01:31 +0900
+
+open5gs (2.4.4~impish) impish; urgency=medium
+
+  * Fixed Memory leak
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 01 Feb 2022 14:58:13 +0900
+
+open5gs (2.4.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 20 Jan 2022 17:09:51 +0900
+
+open5gs (2.4.3~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 20 Jan 2022 17:08:55 +0900
+
+open5gs (2.4.3~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 20 Jan 2022 17:08:01 +0900
+
+open5gs (2.4.3~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 20 Jan 2022 17:06:53 +0900
+
+open5gs (2.4.3~impish) impish; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 20 Jan 2022 17:05:35 +0900
+
+open5gs (2.4.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 14 Jan 2022 20:39:46 +0900
+
+open5gs (2.4.2~impish) impish; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 14 Jan 2022 20:38:43 +0900
+
+open5gs (2.4.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 14 Jan 2022 20:37:33 +0900
+
+open5gs (2.4.2~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 14 Jan 2022 20:36:17 +0900
+
+open5gs (2.4.2~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 14 Jan 2022 20:34:57 +0900
+
+open5gs (2.4.1) unstable; urgency=medium
+
+  * Use talloc & S1AP/NGAP r16.7.0
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 04 Jan 2022 17:34:08 +0900
+
+open5gs (2.4.1~bionic) bionic; urgency=medium
+
+  * Use talloc & S1AP/NGAP r16.7.0
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 04 Jan 2022 17:33:09 +0900
+
+open5gs (2.4.1~focal) focal; urgency=medium
+
+  * Use talloc & S1AP/NGAP r16.7.0
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 04 Jan 2022 17:31:56 +0900
+
+open5gs (2.4.1~hirsute) hirsute; urgency=medium
+
+  * Use talloc & S1AP/NGAP r16.7.0
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 04 Jan 2022 17:27:54 +0900
+
+open5gs (2.4.0) unstable; urgency=medium
+
+  * VoNR Added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 11 Dec 2021 22:21:31 +0900
+
+open5gs (2.4.0~bionic) bionic; urgency=medium
+
+  * VoNR added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 11 Dec 2021 22:19:42 +0900
+
+open5gs (2.4.0~focal) focal; urgency=medium
+
+  * VoNR added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 11 Dec 2021 22:18:26 +0900
+
+open5gs (2.4.0~hirsute) hirsute; urgency=medium
+
+  * VoNR added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 11 Dec 2021 21:22:12 +0900
+
+open5gs (2.3.6) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 16 Oct 2021 22:45:37 +0900
+
+open5gs (2.3.6~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 16 Oct 2021 22:44:14 +0900
+
+open5gs (2.3.6~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 16 Oct 2021 22:43:17 +0900
+
+open5gs (2.3.6~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 16 Oct 2021 22:42:02 +0900
+
+open5gs (2.3.4) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 06 Oct 2021 21:46:16 +0900
+
+open5gs (2.3.4~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 06 Oct 2021 21:44:21 +0900
+
+open5gs (2.3.4~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 06 Oct 2021 21:43:06 +0900
+
+open5gs (2.3.4~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 06 Oct 2021 21:41:20 +0900
+
+open5gs (2.3.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 Aug 2021 18:20:49 +0900
+
+open5gs (2.3.3~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 Aug 2021 18:19:35 +0900
+
+open5gs (2.3.3~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 Aug 2021 18:17:53 +0900
+
+open5gs (2.3.3~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 21 Aug 2021 18:16:18 +0900
+
+open5gs (2.3.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 18 Jul 2021 20:24:08 +0900
+
+open5gs (2.3.2~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 18 Jul 2021 20:23:04 +0900
+
+open5gs (2.3.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 18 Jul 2021 20:21:54 +0900
+
+open5gs (2.3.2~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 18 Jul 2021 20:20:38 +0900
+
+open5gs (2.3.1) unstable; urgency=medium
+
+  * Support ePDG Interface
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 29 Jun 2021 22:12:11 +0900
+
+open5gs (2.3.1~hirsute) hirsute; urgency=medium
+
+  * Support ePDG Interface
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 29 Jun 2021 22:11:04 +0900
+
+open5gs (2.3.1~bionic) bionic; urgency=medium
+
+  * Support ePDG Interface
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 29 Jun 2021 22:10:02 +0900
+
+open5gs (2.3.1~focal) focal; urgency=medium
+
+  * Support ePDG Interface
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 29 Jun 2021 22:08:55 +0900
+
+open5gs (2.3.0) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Jun 2021 21:19:10 +0900
+
+open5gs (2.3.0~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Jun 2021 21:18:10 +0900
+
+open5gs (2.3.0~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Jun 2021 21:16:53 +0900
+
+open5gs (2.3.0~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Jun 2021 21:15:17 +0900
+
+open5gs (2.2.9) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 14:12:49 +0900
+
+open5gs (2.2.9~hirsute1) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 14:11:46 +0900
+
+open5gs (2.2.9~bionic1) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 14:10:51 +0900
+
+open5gs (2.2.9~focal1) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 14:09:29 +0900
+
+open5gs (2.2.9~hirsute) hirsute; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 14:06:05 +0900
+
+open5gs (2.2.9~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 13:32:46 +0900
+
+open5gs (2.2.9~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 19 May 2021 13:31:08 +0900
+
+open5gs (2.2.8) unstable; urgency=medium
+
+  * Security Protection
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 09 May 2021 11:23:01 +0900
+
+open5gs (2.2.8~bionic) bionic; urgency=medium
+
+  * Security Protection
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 09 May 2021 11:22:02 +0900
+
+open5gs (2.2.8~focal) focal; urgency=medium
+
+  * Security Protection
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 09 May 2021 11:20:13 +0900
+
+open5gs (2.2.7) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 30 Apr 2021 14:20:47 +0900
+
+open5gs (2.2.7~focal3) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 30 Apr 2021 14:19:39 +0900
+
+open5gs (2.2.7~bionic3) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 30 Apr 2021 14:17:11 +0900
+
+open5gs (2.2.6) unstable; urgency=medium
+
+  * HSS Cx Added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Apr 2021 21:10:43 +0900
+
+open5gs (2.2.6~bionic) bionic; urgency=medium
+
+  * HSS Cx Added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Apr 2021 21:09:14 +0900
+
+open5gs (2.2.6~focal) focal; urgency=medium
+
+  * HSS Cx Added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Apr 2021 21:07:19 +0900
+
+open5gs (2.2.5) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Apr 2021 14:16:23 +0900
+
+open5gs (2.2.5~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Apr 2021 14:14:53 +0900
+
+open5gs (2.2.5~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Apr 2021 14:13:33 +0900
+
+open5gs (2.2.4) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Apr 2021 16:45:22 +0900
+
+open5gs (2.2.4~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Apr 2021 16:43:54 +0900
+
+open5gs (2.2.4~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Apr 2021 16:42:31 +0900
+
+open5gs (2.2.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 29 Mar 2021 22:44:54 +0900
+
+open5gs (2.2.3~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 29 Mar 2021 22:43:54 +0900
+
+open5gs (2.2.3~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 29 Mar 2021 22:42:53 +0900
+
+open5gs (2.2.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 19 Mar 2021 21:48:13 +0900
+
+open5gs (2.2.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 19 Mar 2021 21:47:12 +0900
+
+open5gs (2.2.2~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 19 Mar 2021 21:45:47 +0900
+
+open5gs (2.2.1) unstable; urgency=medium
+
+  * UE IPv6 Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 15 Mar 2021 10:06:16 +0900
+
+open5gs (2.2.1~bionic) bionic; urgency=medium
+
+  * UE IPv6 Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 15 Mar 2021 10:05:00 +0900
+
+open5gs (2.2.1~focal) focal; urgency=medium
+
+  * UE IPv6 Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 15 Mar 2021 10:03:39 +0900
+
+open5gs (2.2.0) unstable; urgency=medium
+
+  * DB Schame Changes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Mar 2021 21:31:35 +0900
+
+open5gs (2.2.0~bionic) bionic; urgency=medium
+
+  * DB Schame Changes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Mar 2021 21:30:31 +0900
+
+open5gs (2.2.0~focal) focal; urgency=medium
+
+  * DB Schame Changes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Mar 2021 21:29:03 +0900
+
+open5gs (2.1.7) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Feb 2021 22:27:23 -0500
+
+open5gs (2.1.7~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Feb 2021 22:26:08 -0500
+
+open5gs (2.1.7~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 08 Feb 2021 22:23:55 -0500
+
+open5gs (2.1.6) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 04 Feb 2021 09:18:13 -0500
+
+open5gs (2.1.6~bionic1) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 04 Feb 2021 09:17:04 -0500
+
+open5gs (2.1.6~focal1) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 04 Feb 2021 09:14:17 -0500
+
+open5gs (2.1.5) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 02 Feb 2021 14:47:59 -0500
+
+open5gs (2.1.5~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 02 Feb 2021 14:46:57 -0500
+
+open5gs (2.1.5~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 02 Feb 2021 14:45:48 -0500
+
+open5gs (2.1.4) unstable; urgency=medium
+
+  * Paging was added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Jan 2021 19:14:26 -0500
+
+open5gs (2.1.4~bionic) bionic; urgency=medium
+
+  * Paging was added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Jan 2021 19:13:26 -0500
+
+open5gs (2.1.4~focal) focal; urgency=medium
+
+  * Paging was added
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Jan 2021 19:12:06 -0500
+
+open5gs (2.1.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 23:20:33 -0500
+
+open5gs (2.1.3~bionic1) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 23:19:22 -0500
+
+open5gs (2.1.3~focal1) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 23:17:48 -0500
+
+open5gs (2.1.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 00:28:16 -0500
+
+open5gs (2.1.2~bionic1) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 00:27:09 -0500
+
+open5gs (2.1.2~focal1) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 08 Jan 2021 00:25:31 -0500
+
+open5gs (2.1.1) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 16 Dec 2020 23:04:41 -0500
+
+open5gs (2.1.1~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 16 Dec 2020 23:03:25 -0500
+
+open5gs (2.1.1~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 16 Dec 2020 23:02:04 -0500
+
+open5gs (2.1.0) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 11 Dec 2020 14:16:21 -0500
+
+open5gs (2.1.0~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 11 Dec 2020 14:15:00 -0500
+
+open5gs (2.1.0~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 11 Dec 2020 14:13:40 -0500
+
+open5gs (2.0.22) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 19 Nov 2020 07:55:27 -0500
+
+open5gs (2.0.22~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 19 Nov 2020 07:54:23 -0500
+
+open5gs (2.0.22~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 19 Nov 2020 07:53:15 -0500
+
+open5gs (2.0.21) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 11 Nov 2020 14:16:54 -0500
+
+open5gs (2.0.21~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 11 Nov 2020 14:12:36 -0500
+
+open5gs (2.0.21~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 11 Nov 2020 14:11:17 -0500
+
+open5gs (2.0.20) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 23:05:14 -0500
+
+open5gs (2.0.20~bionic3) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 23:04:15 -0500
+
+open5gs (2.0.20~focal3) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 23:03:11 -0500
+
+open5gs (2.0.19) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 01:49:04 -0400
+
+open5gs (2.0.19~bionic3) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 01:47:12 -0400
+
+open5gs (2.0.19~focal3) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 01 Nov 2020 01:46:05 -0400
+
+open5gs (2.0.18) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Oct 2020 07:51:09 -0400
+
+open5gs (2.0.18~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Oct 2020 07:48:43 -0400
+
+open5gs (2.0.18~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 09 Oct 2020 07:47:23 -0400
+
+open5gs (2.0.17) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 08 Oct 2020 23:06:11 -0400
+
+open5gs (2.0.17~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 08 Oct 2020 23:05:03 -0400
+
+open5gs (2.0.17~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 08 Oct 2020 23:03:46 -0400
+
+open5gs (2.0.16) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 07 Oct 2020 21:31:32 -0400
+
+open5gs (2.0.16~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 07 Oct 2020 21:30:17 -0400
+
+open5gs (2.0.16~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 07 Oct 2020 21:28:04 -0400
+
+open5gs (2.0.15) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 05 Oct 2020 14:10:57 -0400
+
+open5gs (2.0.15~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 05 Oct 2020 14:09:37 -0400
+
+open5gs (2.0.15~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 05 Oct 2020 14:08:21 -0400
+
+open5gs (2.0.13) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Oct 2020 22:44:15 -0400
+
+open5gs (2.0.13~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Oct 2020 22:42:55 -0400
+
+open5gs (2.0.13~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 03 Oct 2020 22:41:30 -0400
+
+open5gs (2.0.12) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Oct 2020 13:50:03 -0400
+
+open5gs (2.0.12~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Oct 2020 13:48:56 -0400
+
+open5gs (2.0.12~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 01 Oct 2020 13:46:28 -0400
+
+open5gs (2.0.11) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 24 Sep 2020 22:06:23 -0400
+
+open5gs (2.0.11~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 24 Sep 2020 22:04:37 -0400
+
+open5gs (2.0.11~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 24 Sep 2020 22:03:26 -0400
+
+open5gs (2.0.10) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 21:25:27 -0400
+
+open5gs (2.0.10~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 21:23:46 -0400
+
+open5gs (2.0.10~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 21:22:40 -0400
+
+open5gs (2.0.9) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 14:08:35 -0400
+
+open5gs (2.0.9~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 14:07:27 -0400
+
+open5gs (2.0.9~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 14:06:05 -0400
+
+open5gs (2.0.8) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 00:49:15 -0400
+
+open5gs (2.0.8~focal2) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 00:48:02 -0400
+
+open5gs (2.0.8~bionic2) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 22 Sep 2020 00:46:46 -0400
+
+open5gs (2.0.7) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 18 Sep 2020 21:51:37 -0400
+
+open5gs (2.0.7~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 18 Sep 2020 21:55:36 -0400
+
+open5gs (2.0.7~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 18 Sep 2020 21:54:21 -0400
+
+open5gs (2.0.6) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 15 Sep 2020 12:37:53 -0400
+
+open5gs (2.0.6~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 15 Sep 2020 12:40:53 -0400
+
+open5gs (2.0.6~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 15 Sep 2020 12:39:41 -0400
+
+open5gs (2.0.5~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 10 Sep 2020 21:59:27 -0400
+
+open5gs (2.0.5~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 10 Sep 2020 21:58:12 -0400
+
+open5gs (2.0.5) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 10 Sep 2020 21:56:16 -0400
+
+open5gs (2.0.4~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 09 Sep 2020 02:39:43 +0000
+
+open5gs (2.0.4~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 09 Sep 2020 02:38:39 +0000
+
+open5gs (2.0.4) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 09 Sep 2020 02:35:55 +0000
+
+open5gs (2.0.3~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Sep 2020 02:40:37 +0000
+
+open5gs (2.0.3~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Sep 2020 02:38:57 +0000
+
+open5gs (2.0.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 08 Sep 2020 02:33:07 +0000
+
+open5gs (2.0.2~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 06 Sep 2020 23:59:56 -0400
+
+open5gs (2.0.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 06 Sep 2020 23:58:40 -0400
+
+open5gs (2.0.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 06 Sep 2020 23:54:34 -0400
+
+open5gs (2.0.1~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 05 Sep 2020 19:39:51 -0400
+
+open5gs (2.0.1~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 05 Sep 2020 19:36:22 -0400
+
+open5gs (2.0.1) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 05 Sep 2020 16:43:24 -0400
+
+open5gs (2.0.0~focal) focal; urgency=medium
+
+  * 5G Core and EPC (Hybrid)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 21 Aug 2020 23:40:12 -0400
+
+open5gs (2.0.0~bionic) bionic; urgency=medium
+
+  * 5G Core and EPC (Hybrid)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 21 Aug 2020 23:38:44 -0400
+
+open5gs (2.0.0) unstable; urgency=medium
+
+  * 5G Core and EPC (Hybrid)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 21 Aug 2020 22:18:53 -0400
+
+open5gs (1.3.0) unstable; urgency=medium
+
+  * Release-16
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 10 Jul 2020 17:29:33 -0400
+
+open5gs (1.3.0~eoan1) eoan; urgency=medium
+
+  * Release-16
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 10 Jul 2020 17:33:18 -0400
+
+open5gs (1.3.0~focal1) focal; urgency=medium
+
+  * Release-16
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 10 Jul 2020 17:32:17 -0400
+
+open5gs (1.3.0~bionic1) bionic; urgency=medium
+
+  * Release-16
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 10 Jul 2020 17:30:57 -0400
+
+open5gs (1.2.4~eoan) eoan; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 26 Apr 2020 15:08:22 -0400
+
+open5gs (1.2.4~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 26 Apr 2020 15:07:40 -0400
+
+open5gs (1.2.4~focal) focal; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 26 Apr 2020 15:04:41 -0400
+
+open5gs (1.2.4) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 26 Apr 2020 13:59:06 -0400
+
+open5gs (1.2.3~eoan) eoan; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 04 Apr 2020 18:11:28 -0400
+
+open5gs (1.2.3~disco) disco; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 04 Apr 2020 18:10:43 -0400
+
+open5gs (1.2.3~bionic1) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 04 Apr 2020 18:08:17 -0400
+
+open5gs (1.2.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 04 Apr 2020 18:03:59 -0400
+
+open5gs (1.2.2~eoan) eoan; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 25 Mar 2020 23:52:52 +0000
+
+open5gs (1.2.2~disco) disco; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 25 Mar 2020 23:51:53 +0000
+
+open5gs (1.2.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 25 Mar 2020 23:49:09 +0000
+
+open5gs (1.2.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 25 Mar 2020 23:46:47 +0000
+
+open5gs (1.2.1~eoan) eoan; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 05 Feb 2020 19:59:15 +0900
+
+open5gs (1.2.1~disco) disco; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 05 Feb 2020 19:58:05 +0900
+
+open5gs (1.2.1~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 05 Feb 2020 19:56:44 +0900
+
+open5gs (1.2.1) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 05 Feb 2020 19:52:54 +0900
+
+open5gs (1.2.0~eoan) eoan; urgency=medium
+
+  * VoLTE tested
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jan 2020 23:08:38 +0900
+
+open5gs (1.2.0~disco) disco; urgency=medium
+
+  * VoLTE tested
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jan 2020 23:07:41 +0900
+
+open5gs (1.2.0~bionic2) bionic; urgency=medium
+
+  * VoLTE tested
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jan 2020 23:05:19 +0900
+
+open5gs (1.2.0) unstable; urgency=medium
+
+  * VoLTE tested
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 12 Jan 2020 22:45:29 +0900
+
+open5gs (1.1.0) unstable; urgency=medium
+
+  * Static IP addresses
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Nov 2019 22:27:05 +0900
+
+open5gs (1.0.0) unstable; urgency=medium
+
+  * Change build-tool to MESON
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Oct 2019 06:34:23 +0000
+
+open5gs (1.0.0~eoan6) eoan; urgency=medium
+
+  * Change build-tool to MESON
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Oct 2019 06:33:10 +0000
+
+open5gs (1.0.0~disco6) disco; urgency=medium
+
+  * Change build-tool to MESON
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Oct 2019 06:32:11 +0000
+
+open5gs (1.0.0~bionic6) bionic; urgency=medium
+
+  * Change build-tool to MESON
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 27 Oct 2019 14:39:52 +0900
+
+open5gs (0.5.2~disco) disco; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Aug 2019 13:21:24 +0000
+
+open5gs (0.5.2~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Aug 2019 12:55:48 +0000
+
+open5gs (0.5.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Aug 2019 11:51:07 +0000
+
+open5gs (0.5.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Aug 2019 11:17:35 +0000
+
+open5gs (0.5.1~xenial) xenial; urgency=medium
+
+  * SMSoSG Supported 
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 30 Jul 2019 22:42:27 +0900
+
+open5gs (0.5.1~bionic) bionic; urgency=medium
+
+  * SMSoSG Supported 
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 30 Jul 2019 22:41:14 +0900
+
+open5gs (0.5.1) unstable; urgency=medium
+
+  * SMSoSG Supported 
+  * Many BUGS Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 30 Jul 2019 21:34:15 +0900
+
+open5gs (0.5.0-1~bionic) bionic; urgency=medium
+
+  * CSFB Supported
+  * OGSLib package name changed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 11 Jul 2019 15:34:08 +0000
+
+open5gs (0.5.0-1~xenial) xenial; urgency=medium
+
+  * CSFB Supported
+  * OGSLib package name changed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 11 Jul 2019 15:09:05 +0000
+
+open5gs (0.5.0) unstable; urgency=medium
+
+  * CSFB Supported
+  * OGSLib package name changed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 11 Jul 2019 22:26:35 +0900
+
+open5gs (0.4.4~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 30 Jun 2019 13:23:15 +0000
+
+open5gs (0.4.4~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 30 Jun 2019 13:21:59 +0000
+
+open5gs (0.4.4) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 30 Jun 2019 12:05:12 +0000
+
+open5gs (0.4.3~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 22 Jun 2019 06:57:10 +0000
+
+open5gs (0.4.3~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 22 Jun 2019 06:55:56 +0000
+
+open5gs (0.4.3) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 22 Jun 2019 03:30:10 +0000
+
+open5gs (0.4.2~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 28 May 2019 20:11:51 +0900
+
+open5gs (0.4.2~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 28 May 2019 20:09:02 +0900
+
+open5gs (0.4.2) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 28 May 2019 20:04:53 +0900
+
+open5gs (0.4.1~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 18 May 2019 09:59:17 +0000
+
+open5gs (0.4.1~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 18 May 2019 09:57:44 +0000
+
+open5gs (0.4.1) unstable; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 18 May 2019 08:18:59 +0000
+
+open5gs (0.4.0) unstable; urgency=medium
+
+  * Integration with OGSLIB
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 29 Apr 2019 14:09:03 +0000
+
+open5gs (0.3.11~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 27 Apr 2019 13:59:08 +0000
+
+open5gs (0.3.11~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 27 Apr 2019 13:57:42 +0000
+
+open5gs (0.3.10~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 17 Aug 2018 04:28:38 +0000
+
+open5gs (0.3.10~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 17 Aug 2018 04:21:39 +0000
+
+open5gs (0.3.9~artful) artful; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 03 Jun 2018 01:40:44 +0000
+
+open5gs (0.3.9~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 03 Jun 2018 01:39:33 +0000
+
+open5gs (0.3.9~bionic) bionic; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 03 Jun 2018 01:38:15 +0000
+
+open5gs (0.3.8-1~bionic) bionic; urgency=medium
+
+  * Bug Fixed 
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 05 May 2018 22:37:45 +0900
+
+open5gs (0.3.8~bionic) bionic; urgency=medium
+
+  * Bug Fixed 
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 05 May 2018 21:48:55 +0900
+
+open5gs (0.3.8~xenial) xenial; urgency=medium
+
+  * Bug Fixed 
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 29 Apr 2018 21:47:25 +0900
+
+open5gs (0.3.8~artful) artful; urgency=medium
+
+  * Bug Fixed 
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 29 Apr 2018 21:45:36 +0900
+
+open5gs (0.3.7~artful) artful; urgency=medium
+
+  * Buf Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 14 Apr 2018 15:02:05 +0900
+
+open5gs (0.3.7~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sat, 14 Apr 2018 14:59:37 +0900
+
+open5gs (0.3.6~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 21 Mar 2018 08:02:52 +0000
+
+open5gs (0.3.6~artful) artful; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 21 Mar 2018 08:00:12 +0000
+
+open5gs (0.3.5~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 06 Mar 2018 12:41:53 +0000
+
+open5gs (0.3.5~artful) artful; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 06 Mar 2018 12:40:07 +0000
+
+open5gs (0.3.4-1~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 22 Feb 2018 02:16:08 +0000
+
+open5gs (0.3.4-1~artful) artful; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 22 Feb 2018 02:14:43 +0000
+
+open5gs (0.3.4~xenial) xenial; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 22 Feb 2018 02:09:23 +0000
+
+open5gs (0.3.4~artful) artful; urgency=medium
+
+  * Bug Fixed
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 22 Feb 2018 01:33:04 +0000
+
+open5gs (0.3.3-3~artful) artful; urgency=medium
+
+  * Support Docker
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 13 Feb 2018 04:47:43 +0000
+
+open5gs (0.3.3-3~xenial) xenial; urgency=medium
+
+  * Support Docker
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 13 Feb 2018 04:44:47 +0000
+
+open5gs (0.3.3-2~xenial) xenial; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 16:08:14 +0000
+
+open5gs (0.3.3-2~artful) artful; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 16:05:44 +0000
+
+open5gs (0.3.3-1~xenial) xenial; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 15:39:37 +0000
+
+open5gs (0.3.3-1~artful) artful; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 15:33:57 +0000
+
+open5gs (0.3.3~artful) artful; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 15:05:08 +0000
+
+open5gs (0.3.3~xenial) xenial; urgency=medium
+
+  * Minor bug fixes
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 11 Feb 2018 15:00:24 +0000
+
+open5gs (0.3.2~zesty) zesty; urgency=medium
+
+  * VoLTE Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 24 Jan 2018 08:06:32 +0000
+
+open5gs (0.3.2~xenial) xenial; urgency=medium
+
+  * VoLTE Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 24 Jan 2018 08:03:41 +0000
+
+open5gs (0.3.2~artful) artful; urgency=medium
+
+  * VoLTE Support
+
+ -- Sukchan Lee <acetcom@gmail.com>  Wed, 24 Jan 2018 08:00:24 +0000
+
+open5gs (0.3.1-1~zesty) zesty; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 31 Dec 2017 22:10:52 +0000
+
+open5gs (0.3.1-1~xenial) xenial; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 31 Dec 2017 22:09:26 +0000
+
+open5gs (0.3.1-1~artful) artful; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Sun, 31 Dec 2017 22:04:50 +0000
+
+open5gs (0.3-3~zesty) zesty; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Dec 2017 10:18:26 +0000
+
+open5gs (0.3-3~xenial) xenial; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Dec 2017 10:16:51 +0000
+
+open5gs (0.3-3~artful) artful; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Dec 2017 10:15:18 +0000
+
+open5gs (0.3-2~artful) artful; urgency=medium
+
+  * Fix the bug reboot scenario
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Dec 2017 07:06:52 +0000
+
+open5gs (0.3-1~artful) artful; urgency=medium
+
+  * IPv6 Support (Linux Only)
+  * Change Configuration File (JSON -> YAML)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 18 Dec 2017 05:07:31 +0000
+
+open5gs (0.2-6~artful2) artful; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:30:53 +0000
+
+open5gs (0.2-6~zesty2) zesty; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:30:08 +0000
+
+open5gs (0.2-6~xenial2) xenial; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:28:41 +0000
+
+open5gs (0.2-6~zesty) zesty; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:25:37 +0000
+
+open5gs (0.2-6~xenial) xenial; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:23:54 +0000
+
+open5gs (0.2-6~artful) artful; urgency=medium
+
+  * postrm script is improved to purge package completely.
+
+ -- Sukchan Lee <acetcom@gmail.com>  Fri, 03 Nov 2017 02:00:14 +0000
+
+open5gs (0.2-5~artful) artful; urgency=medium
+
+  * Relase 0.2
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 02 Nov 2017 07:13:23 +0000
+
+open5gs (0.2-5~zesty) zesty; urgency=medium
+
+  * Relase 0.2
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 02 Nov 2017 07:12:17 +0000
+
+open5gs (0.2-5~xenial) xenial; urgency=medium
+
+  * Release 0.2
+
+ -- Sukchan Lee <acetcom@gmail.com>  Thu, 02 Nov 2017 07:11:16 +0000
+
+open5gs (0.2-4~xenial2) xenial; urgency=medium
+
+  * Fix the bug open5gs-pgwd post install script
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 14:07:54 +0000
+
+open5gs (0.2-4~artful) artful; urgency=medium
+
+  * Fix the bug open5gs-pgwd post install script
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 14:06:31 +0000
+
+open5gs (0.2-4~zesty) zesty; urgency=medium
+
+  * Fix the bug open5gs-pgwd post install script
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 14:04:23 +0000
+
+open5gs (0.2-4~xenial) xenial; urgency=medium
+
+  * Fix the bug open5gs-pgwd post install script
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 14:01:58 +0000
+
+open5gs (0.2-3~artful) artful; urgency=medium
+
+  * MongoDB re-connect using systemd
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 12:10:18 +0000
+
+open5gs (0.2-3~zesty) zesty; urgency=medium
+
+  * MongoDB re-connect using systemd
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 12:07:36 +0000
+
+open5gs (0.2-3~xenial) xenial; urgency=medium
+
+  * MongoDB re-connect using systemd
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 12:00:16 +0000
+
+open5gs (0.2-2~artful) artful; urgency=medium
+
+  * Fix PGW installation
+
+ -- Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 05:02:03 +0000
+
+open5gs (0.2-2~xenial) xenial; urgency=medium
+
+  * Fix PGW installation
+
+ --  Sukchan Lee <acetcom@gmail.com>  Tue, 31 Oct 2017 03:16:02 +0000
+
+open5gs (0.2-1~artful2) artful; urgency=medium
+
+  * Fix the compile error [-Werror=pointer]
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 30 Oct 2017 13:14:42 +0000
+
+open5gs (0.2-1~artful1) artful; urgency=medium
+
+  * Remove mongodb build-dependancy for Ubuntu 17.10(i386)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 30 Oct 2017 12:46:58 +0000
+
+open5gs (0.2-1~artful) artful; urgency=medium
+
+  * Ubuntu 17.10(amd64)
+  * Currently, `mongodb` is not available in Ubuntu 17.10(i386)
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 30 Oct 2017 06:50:47 +0000
+
+open5gs (0.2-1~zesty) zesty; urgency=medium
+
+  * Ubuntu 17.04
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 30 Oct 2017 06:47:55 +0000
+
+open5gs (0.2-1~xenial) xenial; urgency=medium
+
+  * Add matapackage
+  * dh_overide_auto_test is re-enabled
+
+ -- Sukchan Lee <acetcom@gmail.com>  Mon, 30 Oct 2017 03:48:39 +0000
+
+open5gs (0.1.1) UNRELEASED; urgency=medium
+
+  * Initial release.
+
+ -- Harald Welte <laforge@gnumonks.org>  Tue, 17 Oct 2017 08:19:54 +0200

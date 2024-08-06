@@ -1,0 +1,12 @@
+digraph g {
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s0 -> s1 [modality="MUST" contract="NONE" label="b" group="-1"];
+	s0 -> s0 [modality="MUST" contract="NONE" label="d" group="-1"];
+	s1 -> s0 [modality="MUST" contract="NONE" label="d" group="-1"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+
+}

@@ -1,0 +1,35 @@
+digraph g {
+	node [shape="octagon"];
+	edge [color="green"];
+
+	s0;
+	s1;
+	s2;
+	s3;
+	s4;
+	s5;
+	s6;
+	s7;
+	s8;
+	s9;
+	s10;
+	s11;
+	s12;
+	s13;
+	s14;
+	s0 -> s1;
+	s1 -> s2;
+	s1 -> s3;
+	s2 -> s4;
+	s2 -> s5;
+	s3 -> s6;
+	s3 -> s7;
+	s4 -> s8;
+	s4 -> s9;
+	s5 -> s10;
+	s5 -> s11;
+	s6 -> s12;
+	s6 -> s13;
+	s7 -> s14;
+
+}

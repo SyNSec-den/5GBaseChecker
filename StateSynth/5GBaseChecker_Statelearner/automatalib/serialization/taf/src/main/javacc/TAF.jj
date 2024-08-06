@@ -1,0 +1,364 @@
+/* Copyright (C) 2013-2022 TU Dortmund
+ * This file is part of AutomataLib, http://www.automatalib.net/.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+options {
+	LOOKAHEAD = 1;
+	STATIC = false;
+	DEBUG_PARSER = false;
+	SUPPORT_CLASS_VISIBILITY_PUBLIC = false;
+}
+
+PARSER_BEGIN(InternalTAFParser)
+
+package net.automatalib.serialization.taf.parser;
+
+import java.util.Collections;
+import java.util.Collection;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+
+import java.text.MessageFormat;
+
+import net.automatalib.words.Alphabet;
+import net.automatalib.words.impl.Alphabets;
+import net.automatalib.words.impl.GrowingMapAlphabet;
+import net.automatalib.commons.util.strings.StringUtil;
+
+class InternalTAFParser {
+
+	private TAFParseDiagnosticListener listener;
+
+	public void error(String fmtString, Object... args) {
+		if (listener != null) {
+			listener.error(getLine(), getCol(), fmtString, args);
+		}
+	}
+	
+	public void warning(String fmtString, Object... args) {
+		if (listener != null) {
+			listener.error(getLine(), getCol(), fmtString, args);
+		}
+	}
+	
+	public void fatal(String fmtString, Object... args) {
+		throw new TAFFormatException("At line " + getLine() + ", column " + getCol() + ": "
+			+ MessageFormat.format(fmtString, args));
+	}
+	
+	public void setDiagnosticListener(TAFParseDiagnosticListener listener) {
+		this.listener = listener;
+	}
+	
+	private int getLine() {
+		return token.beginLine;
+	}
+	
+	private int getCol() {
+		return token.beginColumn;
+	}
+}
+
+PARSER_END(InternalTAFParser)
+
+SKIP :
+{
+	" "
+|	"\r"
+|	"\t"
+|	"\n"
+}
+
+TOKEN [IGNORE_CASE]:
+{
+	< DFA: "dfa" >
+|	< MEALY: "mealy" >
+}
+
+TOKEN:
+{
+	< LBRACK: "[" >
+|	< RBRACK: "]" >
+|	< DOTS: ".." >
+|	< LBRACE: "{" >
+|	< RBRACE: "}" >
+|	< COMMA: "," >
+|	< SLASH: "/" >
+|	< ASTERISK: "*" >
+|	< ARROW: "->" >
+|	< LC_ALPHA: ["a"-"z"] >
+|	< ID: ["a"-"z","A"-"Z","_"](["a"-"z","A"-"Z","0"-"9","_"])* >
+|	< NUMBER: ["0"-"9"](["0"-"9"])* >
+}
+
+SKIP:
+{
+	< BEGIN_QID: "\"" > : IN_QID
+}
+
+<IN_QID> TOKEN:
+{
+	< QID: ("\\\""|~["\""])+ >
+}
+
+<IN_QID> SKIP:
+{
+	< END_QID: "\"" > : DEFAULT
+}
+
+SKIP:
+{
+	< BEGIN_LINE_COMMENT: "//" > : IN_LINE_COMMENT
+|	< BEGIN_BLOCK_COMMENT: "/*" > : IN_BLOCK_COMMENT
+}
+
+<IN_LINE_COMMENT> SKIP:
+{
+	< END_LINE_COMMENT: "\n" > : DEFAULT
+|	< ~[] >
+}
+
+
+<IN_BLOCK_COMMENT> SKIP:
+{
+	< END_BLOCK_COMMENT: "*/" > : DEFAULT
+|	< ~[] >
+}
+
+Alphabet<String> charStringRange():
+{
+	char l, r;
+}
+{
+	<LBRACK> l=singleChar() <DOTS> r=singleChar() <RBRACK>
+	{
+		if (l > r) {
+			error("Invalid character range [{0}..{1}]", l, r);
+			return null;
+		}
+		return Alphabets.closedCharStringRange(l, r);
+	}
+}
+
+Alphabet<String> stringSet():
+{
+	Alphabet<String> result = new GrowingMapAlphabet<String>();
+	String s;
+}
+{
+	<LBRACE>
+	s=string() { result.add(s); } ( <COMMA> s=string() { result.add(s); } )*
+	<RBRACE>
+	{ return result; }
+}
+
+char singleChar():
+{
+	Token t;
+}
+{
+	t=<LC_ALPHA> { return t.toString().charAt(0); }
+}
+
+
+Alphabet<String> stringCollection():
+{
+	Alphabet<String> sc;
+	String s;
+}
+{
+	(
+	sc=charStringRange()
+|	sc=stringSet()
+|	s=string() { sc = Alphabets.singleton(s); }
+	)
+	{ return sc; }
+}
+
+
+String identifier():
+{
+	Token t;
+}
+{
+	t=<ID> { return t.toString(); }
+|	t=<LC_ALPHA> { return t.toString(); }
+}
+
+
+String string():
+{
+	String s;
+	Token t;
+}
+{
+	(
+	s=identifier()
+|	t=<QID> { s = StringUtil.unescapeQuotes(t.toString()); }
+|	t=<NUMBER> { s = t.toString(); }
+	)
+	{ return s; }
+}
+
+Set<String> stateOpts():
+{
+	Set<String> result = Collections.emptySet();
+	String s;
+}
+{
+	[
+	<LBRACK>
+	s=identifier() { result = new HashSet<String>(); result.add(s); }
+	(<COMMA> s=identifier() { result.add(s); })*
+	<RBRACK>
+	]
+	{ return result; }
+}
+
+Type type():
+{}
+{
+	<DFA> { return Type.DFA; }
+|	<MEALY> { return Type.MEALY; }
+}
+
+void dfa(TAFBuilderDFA builder):
+{}
+{
+	<DFA> dfaBody(builder)
+}
+
+void dfaBody(TAFBuilderDFA builder):
+{
+	Alphabet<String> alphabet;
+}
+{
+	alphabet=stringCollection()
+	{
+		if (alphabet == null) {
+			fatal("No valid alphabet specified");
+		}
+		builder.init(alphabet);
+	}
+	<LBRACE>
+	( stateDeclDfa(builder) )*
+	<RBRACE>
+}
+
+void stateDeclDfa(TAFBuilderDFA builder):
+{
+	String id;
+	Set<String> opts;
+}
+{
+	id=identifier() opts=stateOpts()
+	{ builder.declareState(id, opts); }
+	transBlockDfa(builder, id)
+}
+
+void transBlockDfa(TAFBuilderDFA builder, String source):
+{}
+{
+	<LBRACE>
+	( transDeclDfa(builder, source) )*
+	<RBRACE>
+}
+
+void transDeclDfa(TAFBuilderDFA builder, String source):
+{
+	Collection<String> symbols;
+	String tgt;
+}
+{
+	symbols=stringCollection() <ARROW> tgt=identifier()
+	{ if (symbols != null) { builder.addTransitions(source, symbols, tgt); } }
+}
+
+void wildcardTransDeclDfa(TAFBuilderDFA builder, String source):
+{
+	String tgt;
+}
+{
+	<ASTERISK> <ARROW> tgt=identifier()
+	{ builder.addWildcardTransitions(source, tgt); }
+}
+
+void mealy(TAFBuilderMealy builder):
+{}
+{
+	<MEALY> mealyBody(builder)
+}
+
+void mealyBody(TAFBuilderMealy builder):
+{
+	Alphabet<String> alphabet;
+}
+{
+	alphabet=stringCollection()
+	{
+		if (alphabet == null) {
+			fatal("No valid alphabet specified");
+		}
+		builder.init(alphabet);
+	}
+	<LBRACE>
+	( stateDeclMealy(builder) )*
+	<RBRACE>
+}
+
+void stateDeclMealy(TAFBuilderMealy builder):
+{
+	String id;
+	Set<String> opts;
+}
+{
+	id=identifier() opts=stateOpts()
+	{ builder.declareState(id, opts); }
+	transBlockMealy(builder, id)
+}
+
+void transBlockMealy(TAFBuilderMealy builder, String source):
+{}
+{
+	<LBRACE>
+	( transDeclMealy(builder, source) )*
+	[ wildcardTransDeclMealy(builder, source) ]
+	<RBRACE>
+}
+
+void transDeclMealy(TAFBuilderMealy builder, String source):
+{
+	Collection<String> symbols;
+	String output = null;
+	String tgt;
+}
+{
+	symbols=stringCollection() [<SLASH> output=string()] <ARROW> tgt=identifier()
+	{ if (symbols != null) { builder.addTransitions(source, symbols, output, tgt); } }
+}
+
+void wildcardTransDeclMealy(TAFBuilderMealy builder, String source):
+{
+	String output = null;
+	String tgt;
+}
+{
+	<ASTERISK> [<SLASH> output=string()] <ARROW> tgt=identifier()
+	{ builder.addWildcardTransitions(source, output, tgt); }
+}
+
+

@@ -1,0 +1,205 @@
+start
+NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+ALARMING
+start
+NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+start
+NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+ALARMING
+start
+NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+NORMAL
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+NORMAL
+NORMAL
+NORMAL
+NORMAL
+NORMAL
+NORMAL
+NORMAL
+start
+NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+ALARMING
+(!(inp.cmd == ACK) and !(inp.cmd == DND) and !(inp.cmd == NO_CMD)): NORMAL
+NORMAL
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+ALARMING
+(inp.cmd == ACK): SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+NORMAL
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+(out.snooze_time > snooze_timeout): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+SNOOZE
+start
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+SNOOZE
+SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+NORMAL
+(inp.val > thresh): ALARMING
+(inp.cmd == ACK): SNOOZE
+((inp.cmd == RESET) and !(out.snooze_time > snooze_timeout)): NORMAL
+(inp.val > thresh): ALARMING
+start

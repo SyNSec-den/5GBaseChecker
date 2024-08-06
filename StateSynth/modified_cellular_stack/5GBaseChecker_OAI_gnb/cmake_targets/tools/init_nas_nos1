@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#/*
+# * Licensed to the OpenAirInterface (OAI) Software Alliance under one or more
+# * contributor license agreements.  See the NOTICE file distributed with
+# * this work for additional information regarding copyright ownership.
+# * The OpenAirInterface Software Alliance licenses this file to You under
+# * the OAI Public License, Version 1.1  (the "License"); you may not use this file
+# * except in compliance with the License.
+# * You may obtain a copy of the License at
+# *
+# *      http://www.openairinterface.org/?page_id=698
+# *
+# * Unless required by applicable law or agreed to in writing, software
+# * distributed under the License is distributed on an "AS IS" BASIS,
+# * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# * See the License for the specific language governing permissions and
+# * limitations under the License.
+# *-------------------------------------------------------------------------------
+# * For more information about the OpenAirInterface (OAI) Software Alliance:
+# *      contact@openairinterface.org
+# */
+
+# file init_nas_nos1
+# brief loads the nasmesh module and sets up the radio bearers (used to provide ip interface without S1 interface)
+# author Florian Kaltenberger
+#
+#######################################
+
+load_module() {
+  mod_name=${1##*/}
+  mod_name=${mod_name%.*}
+  if awk "/$mod_name/ {found=1 ;exit} END {if (found!=1) exit 1}" /proc/modules
+    then
+      echo "module $mod_name already loaded: I remove it first"
+      sudo rmmod $mod_name
+  fi
+  echo loading $mod_name
+  sudo insmod $1
+}
+
+load_module $OPENAIR_DIR/cmake_targets/ran_build/build/nasmesh.ko
+
+if [ "$1" = "eNB" ]; then 
+     echo "bring up oai0 interface for enb"
+     sudo ifconfig oai0 10.0.1.1 netmask 255.255.255.0 broadcast 10.0.1.255
+     $OPENAIR_DIR/cmake_targets/ran_build/build/rb_tool -a -c0 -i0 -z0 -s 10.0.1.1 -t 10.0.1.2 -r 1
+else
+    if [ "$1" = "UE" ]; then 
+       echo "bring up oai0 interface for UE"
+       sudo ifconfig oai0 10.0.1.2 netmask 255.255.255.0 broadcast 10.0.1.255
+       $OPENAIR_DIR/cmake_targets/ran_build/build/rb_tool -a -c0 -i0 -z0 -s 10.0.1.2 -t 10.0.1.1 -r 1
+    fi
+fi  

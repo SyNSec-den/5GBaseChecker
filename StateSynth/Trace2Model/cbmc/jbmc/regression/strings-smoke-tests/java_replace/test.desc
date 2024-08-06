@@ -1,0 +1,12 @@
+FUTURE
+test_replace.class
+--verbosity 10 --max-nondet-string-length 100
+^EXIT=0$
+^SIGNAL=0$
+^VERIFICATION SUCCESSFUL$
+--
+non equal types
+--
+diffblue/test-gen#256
+This test is only effective with a model of
+java.lang.String.replace(LCharSequence; LCharSequence).

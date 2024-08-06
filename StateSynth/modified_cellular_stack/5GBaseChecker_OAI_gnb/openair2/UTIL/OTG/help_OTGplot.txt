@@ -1,0 +1,33 @@
+ 
+STEP 1: 
+install octave package
+
+STEP 2:
+It is possible to make OTGplot an executable Octave program by exploiting the ‘#!’ script mechanism. 
+Follow these steps:
+	1. make OTGplot an executable file (chmod +x OTGplot)
+	2. locate your Octave interpreter (which octave)
+	3. write such location in the first line of OTGplot (e.g. #! /usr/bin/octave -qf )
+
+Then, you can directly execute OTGplot instead of passing it as argument to octave (e.g. ./OTGplot bitrate.dat 1:4).
+If you want to set a title for the plot, you can use the env command: env TITLE="title" OTGplot otg_latency.dat "[1 2]"
+
+
+
+STEP 2:
+Add OTGplot_path to a user's PATH variable
+
+    PATH=$PATH:/OTGplot_path
+    export PATH
+
+
+NB: Before doing simulation you should delete the following files in the case where they already exist:
+rm otg_latency.dat otg.log otg_GP.dat
+
+EXAMPLE :
+
+# env TITLE="GoodPut (Kbis)" OTGplot otg_GP.dat [1:3]
+# env TITLE="Radio Access Delay (ms)" OTGplot otg_latency.dat [1:3]
+# env TITLE="One Way Delay (ms)" OTGplot otg_latency.dat [1:3]
+
+

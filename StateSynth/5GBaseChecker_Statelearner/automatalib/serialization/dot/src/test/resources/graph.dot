@@ -1,0 +1,35 @@
+digraph g {
+// this is a preamble
+
+	s0 [shape="doublecircle" label="0_1"];
+	s1 [shape="circle" label="1_2"];
+	s2 [shape="doublecircle" label="2_2"];
+	s3 [shape="circle" label="3_3"];
+	s4 [shape="doublecircle" label="4_3"];
+	s5 [shape="circle" label="5_3"];
+	s6 [shape="doublecircle" label="6_3"];
+	s7 [shape="circle" label="7_4"];
+	s8 [shape="doublecircle" label="8_4"];
+	s9 [shape="circle" label="9_4"];
+	s10 [shape="doublecircle" label="10_4"];
+	s11 [shape="circle" label="11_4"];
+	s12 [shape="doublecircle" label="12_4"];
+	s13 [shape="circle" label="13_4"];
+	s14 [shape="doublecircle" label="14_4"];
+	s0 -> s1 [color="red" label="1"];
+	s1 -> s2 [color="red" label="2"];
+	s1 -> s3 [color="red" label="3"];
+	s2 -> s4 [color="red" label="4"];
+	s2 -> s5 [color="red" label="5"];
+	s3 -> s6 [color="red" label="6"];
+	s3 -> s7 [color="red" label="7"];
+	s4 -> s8 [color="red" label="8"];
+	s4 -> s9 [color="red" label="9"];
+	s5 -> s10 [color="red" label="10"];
+	s5 -> s11 [color="red" label="11"];
+	s6 -> s12 [color="red" label="12"];
+	s6 -> s13 [color="red" label="13"];
+	s7 -> s14 [color="red" label="14"];
+
+// this is a postamble
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2013-2022 TU Dortmund
+This file is part of AutomataLib, http://www.automatalib.net/.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.automatalib</groupId>
+        <artifactId>automata-build-parent</artifactId>
+        <version>0.11.0-SNAPSHOT</version>
+        <relativePath>../build-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>automata-examples</artifactId>
+    <packaging>jar</packaging>
+
+    <name>AutomataLib :: Examples</name>
+    <description>
+        A collection of various small example applications that illustrate several use cases
+        of AutomataLib.
+        *Note:* This artifact is not intended as a library, but only exists for educational
+        purposes. No artifacts are deployed for this module.
+    </description>
+
+    <dependencies>
+        <!-- internal -->
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-brics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-commons-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-dot-visualizer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-incremental</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-modelchecking-ltsmin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-modelchecking-m3c</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-serialization-dot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.automatalib</groupId>
+            <artifactId>automata-util</artifactId>
+        </dependency>
+
+        <!-- external -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.brics.automaton</groupId>
+            <artifactId>automaton</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>info.scce</groupId>
+            <artifactId>addlib-cudd</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <!-- test -->
+        <dependency>
+            <groupId>com.github.caciocavallosilano</groupId>
+            <artifactId>cacio-tta</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin><!-- Do not deploy binaries -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <awt.toolkit>com.github.caciocavallosilano.cacio.ctc.CTCToolkit</awt.toolkit>
+                            <java.awt.graphicsenv>com.github.caciocavallosilano.cacio.ctc.CTCGraphicsEnvironment</java.awt.graphicsenv>
+                            <java.awt.headless>false</java.awt.headless>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2013-2022 TU Dortmund
+This file is part of AutomataLib, http://www.automatalib.net/.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<FindBugsFilter>
+    <Match>
+        <!-- TODO: SpotBugs seem to incorrectly infer type annotations, https://github.com/spotbugs/spotbugs/issues/643
+                   We have CheckerFramework for this anyway -->
+        <Bug pattern="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"/>
+    </Match>
+    <Match>
+        <Bug pattern="SE_COMPARATOR_SHOULD_BE_SERIALIZABLE"/>
+    </Match>
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID,SE_BAD_FIELD"/>
+        <!-- internal class, not exposed to public -->
+        <Class name="net.automatalib.commons.util.concurrent.ScalingThreadPoolExecutor$ScalingLinkedBlockingQueue"/>
+    </Match>
+    <Match>
+        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+        <Or>
+            <And>
+                <!-- Fine according to JavaDoc -->
+                <Class name="net.automatalib.commons.smartcollections.AbstractLinkedList"/>
+                <Or>
+                    <Method name="popBack" returns="java.lang.Object"/>
+                    <Method name="popFront" returns="java.lang.Object"/>
+                </Or>
+            </And>
+        </Or>
+    </Match>
+    <Match>
+        <!-- TODO: mostly due to performance. However, usage should be checked again -->
+        <Bug pattern="EI_EXPOSE_REP2"/>
+        <Class name="net.automatalib.util.partitionrefinement.PaigeTarjan"/>
+    </Match>
+    <Match>
+        <!-- mostly internal structures, where this behavior is fine -->
+        <Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS"/>
+        <Or>
+            <Class name="net.automatalib.commons.smartcollections.BackedGeneralPriorityQueue$Entry"/>
+            <Class name="net.automatalib.util.graphs.sssp.DijkstraSSSP$Record"/>
+        </Or>
+    </Match>
+    <Match>
+        <!-- fields are accessed from classes in other maven modules which is not detected by findBugs -->
+        <Bug pattern="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD,UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD,URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD"/>
+        <Or>
+            <Class name="net.automatalib.commons.util.Holder"/>
+            <Class name="net.automatalib.graphs.base.compact.CompactBidiEdge"/>
+            <Class name="net.automatalib.graphs.base.compact.CompactEdge"/>
+        </Or>
+    </Match>
+    <Match>
+        <Bug pattern="CN_IDIOM_NO_SUPER_CALL"/>
+        <!-- we want to cut cloning hierarchy here -->
+        <Class name="net.automatalib.commons.smartcollections.ArrayStorage"/>
+    </Match>
+    <Match>
+        <Bug pattern="DM_DEFAULT_ENCODING,URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD,SBSC_USE_STRINGBUFFER_CONCATENATION,SF_SWITCH_NO_DEFAULT"/>
+        <!-- TODO: these modules/packages currently contains generated javaCC code that we cannot easily change -->
+        <Or>
+            <Class name="net.automatalib.serialization.dot.InternalDOTParser"/>
+            <Class name="net.automatalib.serialization.dot.InternalDOTParserConstants"/>
+            <Class name="net.automatalib.serialization.dot.InternalDOTParserTokenManager"/>
+            <Class name="net.automatalib.serialization.dot.ParseException"/>
+            <Class name="net.automatalib.serialization.dot.SimpleCharStream"/>
+            <Class name="net.automatalib.serialization.dot.Token"/>
+            <Class name="net.automatalib.serialization.dot.TokenMgrError"/>
+
+            <Class name="net.automatalib.serialization.taf.parser.InternalTAFParser"/>
+            <Class name="net.automatalib.serialization.taf.parser.InternalTAFParserConstants"/>
+            <Class name="net.automatalib.serialization.taf.parser.InternalTAFParserTokenManager"/>
+            <Class name="net.automatalib.serialization.taf.parser.ParseException"/>
+            <Class name="net.automatalib.serialization.taf.parser.SimpleCharStream"/>
+            <Class name="net.automatalib.serialization.taf.parser.Token"/>
+            <Class name="net.automatalib.serialization.taf.parser.TokenMgrError"/>
+
+            <Class name="net.automatalib.modelcheckers.ltsmin.InternalLTSminLTLParser"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.InternalLTSminLTLParserConstants"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.InternalLTSminLTLParserTokenManager"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.ParseException"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.SimpleCharStream"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.Token"/>
+            <Class name="net.automatalib.modelcheckers.ltsmin.TokenMgrError"/>
+
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.InternalM3CParser"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.InternalM3CParserConstants"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.InternalM3CParserTokenManager"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.ParseException"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.SimpleCharStream"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.Token"/>
+            <Class name="net.automatalib.modelcheckers.m3c.formula.parser.TokenMgrError"/>
+        </Or>
+    </Match>
+</FindBugsFilter>

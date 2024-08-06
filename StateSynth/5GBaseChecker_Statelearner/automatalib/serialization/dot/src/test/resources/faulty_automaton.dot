@@ -1,0 +1,6 @@
+graph g {
+
+	s0 [shape="circle" label="0" thrown in some syntax errors
+	s0 ----> s1 [label="a"]; // and senseless transitions
+
+}

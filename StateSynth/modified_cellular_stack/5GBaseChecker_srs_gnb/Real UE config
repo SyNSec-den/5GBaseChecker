@@ -1,0 +1,3 @@
+Huawei P40 pro(Turn off mobile data): tx_gain = 50 rx_gain = 25 nr_pdsch_mcs=3 nr_pusch_mcs=3 (nr_pdsch_mcs=10 nr_pusch_mcs=10 also works) 
+
+Google Pixel 6(Turn off mobile data): tx_gain = 80 rx_gain = 40 nr_pdsch_mcs=3 nr_pusch_mcs=3 

@@ -1,0 +1,7 @@
+CORE
+NondetEnumArg.class
+--function NondetEnumArg.canChooseBlue --cp `../../../../scripts/format_classpath.sh . ../../../lib/java-models-library/target/core-models.jar`
+^VERIFICATION FAILED$
+--
+--
+Test 3 of 3 to check that any of the enum constants can be chosen.

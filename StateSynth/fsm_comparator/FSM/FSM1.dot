@@ -1,0 +1,18 @@
+digraph g {
+__start0 [label="" shape="none"];
+
+	s0 [shape="circle" label="s0"];
+	dummy_state [shape="circle" label="dummy_state"];
+	s0 -> s0 [label="enable_s1 / registration_request"];
+	s0 -> s0 [label="id_request_plain_text / null_action_dummy"];
+	s0 -> s0 [label="auth_request_plain_text / null_action_dummy"];
+	s0 -> s0 [label="nas_sm_cmd / null_action_dummy"];
+	s0 -> s0 [label="registration_accept_protected / null_action_dummy"];
+	s0 -> s0 [label="config_update_cmd_protected / null_action_dummy"];
+	s0 -> s0 [label="rrc_sm_cmd / null_action_dummy"];
+	s0 -> s0 [label="ue_cap_enquiry_protected / null_action_dummy"];
+	s0 -> s0 [label="rrc_reconf_protected / null_action_dummy"];
+
+
+__start0 -> s0;
+}

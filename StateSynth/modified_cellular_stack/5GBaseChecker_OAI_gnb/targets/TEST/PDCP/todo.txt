@@ -1,0 +1,7 @@
+
+* Test configuration should be configurable on run-time (command-line?)
+* Inbetween every test PDCP entity should be reinitialized or different 
+  PDCP entities should be utilised
+
+
+baris.demiray@eurecom.fr

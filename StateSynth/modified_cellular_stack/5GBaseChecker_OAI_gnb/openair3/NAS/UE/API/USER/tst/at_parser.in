@@ -1,0 +1,2 @@
+AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+quit

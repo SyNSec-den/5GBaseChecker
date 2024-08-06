@@ -1,0 +1,162 @@
+#
+# logger:
+#
+#  o Set OGS_LOG_INFO to all domain level
+#   - If `level` is omitted, the default level is OGS_LOG_INFO)
+#   - If `domain` is omitted, the all domain level is set from 'level'
+#    (Nothing is needed)
+#
+#  o Set OGS_LOG_ERROR to all domain level
+#   - `level` can be set with none, fatal, error, warn, info, debug, trace
+#    level: error
+#
+#  o Set OGS_LOG_DEBUG to mme/emm domain level
+#    level: debug
+#    domain: mme,emm
+#
+#  o Set OGS_LOG_TRACE to all domain level
+#    level: trace
+#    domain: core,pfcp,gtp,sgwc,event,tlv,mem,sock
+#
+logger:
+    file: @localstatedir@/log/open5gs/sgwc.log
+
+#
+# sgwc:
+#
+#  <GTP-C Server>
+#
+#  o GTP-C Server(127.0.0.3:2123, [fd69:f21d:873c:fa::2]:2123)
+#    gtpc:
+#      addr:
+#        - 127.0.0.3
+#        - fd69:f21d:873c:fa::2
+#
+#  o On SGW, Same Configuration(127.0.0.3:2123,
+#  [fd69:f21d:873c:fa::2]:2123) as below.
+#    gtpc:
+#      - addr: 127.0.0.3
+#      - addr: fd69:f21d:873c:fa::2
+#
+#  o GTP-C Option (Default)
+#    - so_bindtodevice : NULL
+#
+#    gtpc:
+#      addr: 127.0.0.3
+#      option:
+#        so_bindtodevice: vrf-blue
+#
+#  <PFCP Server>
+#
+#  o PFCP Server(127.0.0.3:8805, ::1:8805)
+#    pfcp:
+#      - addr: 127.0.0.3
+#      - addr: ::1
+#
+#  o PFCP-U Server(127.0.0.1:2152, [::1]:2152)
+#    pfcp:
+#      name: localhost
+#
+#  o PFCP Option (Default)
+#    - so_bindtodevice : NULL
+#
+#    pfcp:
+#      addr: 127.0.0.3
+#      option:
+#        so_bindtodevice: vrf-blue
+#
+sgwc:
+    gtpc:
+      - addr: 127.0.0.3
+    pfcp:
+      - addr: 127.0.0.3
+
+#
+# sgwu:
+#
+#  <PFCP Client>>
+#
+#  o PFCP Client(127.0.0.6:8805)
+#
+#    pfcp:
+#      addr: 127.0.0.6
+#
+#  <SGWU_SELECTION_MODE - EPC only>
+#
+#  sgwu:
+#    pfcp:
+#      - addr: 127.0.0.6
+#      - addr: 127.0.0.12
+#      - addr: 127.0.0.18
+#
+# o SGWU selection by eNodeB TAC
+#   (either single TAC or multiple TACs, DECIMAL representation)
+#
+#  sgwu:
+#    pfcp:
+#      - addr: 127.0.0.6
+#        tac: 1
+#      - addr: 127.0.0.12
+#        tac: [3,5,8]
+#
+# o SGWU selection by UE's APN (either single APN or multiple APNs)
+#
+#  sgwu:
+#    pfcp:
+#      - addr: 127.0.0.6
+#        apn: ims
+#      - addr: 127.0.0.12
+#        apn: [internet, web]
+#
+# o SGWU selection by CellID(e_cell_id: 28bit)
+#   (either single e_cell_id or multiple e_cell_id, HEX representation)
+#
+#  sgwu:
+#    pfcp:
+#      - addr: 127.0.0.6
+#        e_cell_id: 463
+#      - addr: 127.0.0.12
+#        e_cell_id: [123456789, 9413]
+#
+sgwu:
+    pfcp:
+      - addr: 127.0.0.6
+
+#
+# parameter:
+#
+#  o Disable use of IPv4 addresses (only IPv6)
+#      no_ipv4: true
+#
+#  o Disable use of IPv6 addresses (only IPv4)
+#      no_ipv6: true
+#
+#  o Prefer IPv4 instead of IPv6 for estabishing new GTP connections.
+#      prefer_ipv4: true
+#
+#  o Disable selection of SGW-U PFCP in Round-Robin manner
+#      no_pfcp_rr_select: true
+#
+parameter:
+
+#
+# max:
+#
+# o Maximum Number of UE
+#    ue: 1024
+# o Maximum Number of Peer(S1AP/NGAP, DIAMETER, GTP, PFCP or SBI)
+#    peer: 64
+# o Maximum Number of GTP peer nodes per SGWC/SMF
+#    gtp_peer: 64
+#
+max:
+
+#
+# time:
+#
+#  o Message Wait Duration (Default : 10,000 ms = 10 seconds)
+#
+#  o Message Wait Duration (3000 ms)
+#    message:
+#        duration: 3000
+time:

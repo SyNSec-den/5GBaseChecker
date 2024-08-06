@@ -1,0 +1,33 @@
+digraph g {
+
+	s0 [shape="circle" label=<<U>0</U>>];
+	s1 [shape="circle" label=<<U>1</U>>];
+	s2 [shape="circle" label=<<U>2</U>>];
+	s3 [shape="circle" label=<<U>3</U>>];
+	s4 [shape="circle" label=<<U>4</U>>];
+	s5 [shape="circle" label=<<U>5</U>>];
+	s6 [shape="circle" label=<<U>6</U>>];
+	s7 [shape="circle" label=<<U>7</U>>];
+	s8 [shape="circle" label=<<U>8</U>>];
+	s9 [shape="circle" label=<<U>9</U>>];
+	s10 [shape="circle" label=<<U>10</U>>];
+	s11 [shape="circle" label=<<U>11</U>>];
+	s12 [shape="circle" label=<<U>12</U>>];
+	s13 [shape="circle" label=<<U>13</U>>];
+	s14 [shape="circle" label=<<U>14</U>>];
+	s0 -> s1 [label="1"];
+	s1 -> s2 [label="2"];
+	s1 -> s3 [label="3"];
+	s2 -> s4 [label="4"];
+	s2 -> s5 [label="5"];
+	s3 -> s6 [label="6"];
+	s3 -> s7 [label="7"];
+	s4 -> s8 [label="8"];
+	s4 -> s9 [label="9"];
+	s5 -> s10 [label="10"];
+	s5 -> s11 [label="11"];
+	s6 -> s12 [label="12"];
+	s6 -> s13 [label="13"];
+	s7 -> s14 [label="14"];
+
+}

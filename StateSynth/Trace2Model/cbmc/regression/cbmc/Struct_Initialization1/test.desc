@@ -1,0 +1,11 @@
+CORE
+main.c
+
+^EXIT=0$
+^SIGNAL=0$
+^VERIFICATION SUCCESSFUL$
+--
+^warning: ignoring
+--
+The C front-end needs to ignore the unnamed bit-field during struct
+initialization; issue #3709.

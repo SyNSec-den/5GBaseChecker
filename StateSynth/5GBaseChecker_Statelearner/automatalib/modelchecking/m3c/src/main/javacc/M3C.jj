@@ -1,0 +1,262 @@
+/* Copyright (C) 2013-2022 TU Dortmund
+ * This file is part of AutomataLib, http://www.automatalib.net/.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+options {
+	LOOKAHEAD = 1;
+	STATIC = false;
+	SUPPORT_CLASS_VISIBILITY_PUBLIC = false;
+	UNICODE_INPUT = true;
+}
+
+PARSER_BEGIN(InternalM3CParser)
+
+package net.automatalib.modelcheckers.m3c.formula.parser;
+
+import net.automatalib.modelcheckers.m3c.formula.*;
+import net.automatalib.modelcheckers.m3c.formula.ctl.*;
+import net.automatalib.modelcheckers.m3c.formula.modalmu.*;
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.function.Function;
+
+class InternalM3CParser<L, AP> {
+	private Set<String> fixedPointVars;
+	private Function<String, L> labelParser;
+	private Function<String, AP> apParser;
+
+	private void addFixedPointVar(String fixedPointVar) throws ParseException {
+		if (fixedPointVars.contains(fixedPointVar)) {
+			throw new ParseException("Input formula is not valid. The variable " + fixedPointVar + " is defined multiple times.");
+		}
+		fixedPointVars.add(fixedPointVar);
+	}
+}
+
+PARSER_END(InternalM3CParser)
+
+<*> SKIP:
+{
+	" "
+|	"\r"
+|	"\t"
+|	"\n"
+}
+
+<*> TOKEN [IGNORE_CASE]:
+{
+	< TRUE: "true" >
+|	< FALSE: "false" >
+}
+
+<DEFAULT, CTL> TOKEN:
+{
+	< ALL: "A" > : CTL
+|	< EXISTS: "E" > : CTL
+|	< AF: "AF" > : CTL
+|	< AG: "AG" > : CTL
+|	< EF: "EF" > : CTL
+|	< EG: "EG" > : CTL
+|	< UNTIL: "U" > : CTL
+|	< WUNTIL: "W" > : CTL
+}
+
+<DEFAULT, MUCALC> TOKEN:
+{
+	< NU: "nu" > : MUCALC
+|	< MU: "mu" > : MUCALC
+}
+
+<*> TOKEN:
+{
+// atoms
+	< LPAREN: "(" >
+|	< RPAREN: ")" >
+|	< LBRACKET: "[" >
+|	< RBRACKET: "]" >
+|	< LABRACKET: "<" >
+|	< RABRACKET: ">" >
+// junctors
+|	< NEGATION: "!" >
+|	< DOT: "." >
+|	< AND: "&&" >
+|	< OR: "||" >
+|	< EQUIVALENCE: "<->" >
+|	< IMPLICATION: "->" >
+|	< ID: ["a"-"z","A"-"Z"] (["a"-"z","A"-"Z"] | ["0"-"9"] | "_")* >
+|	< STRING_LITERAL: ("'" (~["'", "\\"])* (("\\\'" | "\\\\") (~["'", "\\"])*)* "'")
+| ("\""  (~["\"", "\\"])* (("\\\"" | "\\\\") (~["\"", "\\"])*)* "\"")>
+}
+
+FormulaNode<L, AP> parse(Function<String, L> labelParser, Function<String, AP> apParser):
+{
+	this.fixedPointVars = new HashSet<String>();
+	this.labelParser = labelParser;
+	this.apParser = apParser;
+	FormulaNode<L, AP> node;
+}
+{
+	node=formula() <EOF> {return node;}
+}
+
+private FormulaNode<L, AP> formula():
+{
+ FormulaNode<L, AP> node;
+}
+{
+	(node=untilFormula()
+|	node=equivFormula() ) {return node;}
+}
+
+private FormulaNode<L, AP> untilFormula():
+{
+	FormulaNode<L, AP> l, r;
+	boolean isAll = false, isStrongUntil = false;
+}
+{
+	(<ALL> {isAll=true;} | <EXISTS>) <LPAREN> l=formula() (<UNTIL> {isStrongUntil=true;} | <WUNTIL>) r=formula() <RPAREN>
+	{
+		if(isAll) {
+			if(isStrongUntil) {
+				return new AUNode<L, AP>(l, r);
+			}
+			return new AWUNode<L, AP>(l, r);
+		}
+		if(isStrongUntil) {
+			return new EUNode<L, AP>(l, r);
+		}
+		return new EWUNode<L, AP>(l, r);
+	}
+}
+
+private FormulaNode<L, AP> equivFormula():
+{
+	FormulaNode<L, AP> l;
+	FormulaNode<L, AP> r = null;
+}
+{
+	l=implFormula() (<EQUIVALENCE> r=equivFormula())?
+	{
+		if(r == null) {
+			return l;
+		}
+		return new AndNode<L, AP>(new OrNode<L, AP>(new NotNode<L, AP>(l), r), new OrNode<L, AP>(new NotNode<L, AP>(r), l));
+	}
+}
+
+private FormulaNode<L, AP> implFormula():
+{
+	FormulaNode<L, AP> l;
+	FormulaNode<L, AP> r = null;
+}
+{
+	l=orFormula() (<IMPLICATION> r=implFormula())?
+	{
+		if(r == null) {
+			return l;
+		}
+		return new OrNode<L, AP>(new NotNode<L, AP>(l), r);
+	}
+}
+
+private FormulaNode<L, AP> orFormula():
+{
+	FormulaNode<L, AP> l;
+	FormulaNode<L, AP> r = null;
+}
+{
+	l=andFormula() (<OR> r=orFormula())?
+	{
+		if(r == null) {
+			return l;
+		}
+		return new OrNode<L, AP>(l, r);
+	}
+}
+
+private FormulaNode<L, AP> andFormula():
+{
+	FormulaNode<L, AP> l;
+	FormulaNode<L, AP> r = null;}
+{
+	l=unary() (<AND> r=andFormula())?
+	{
+		if(r == null) {
+			return l;
+		}
+		return new AndNode<L, AP>(l, r);
+	}
+}
+
+private FormulaNode<L, AP> unary():
+{
+	FormulaNode<L, AP> child;
+	Token action = null;
+}
+{
+	child=fixedPointFormula() {return child;}
+|	<NEGATION> child=unary() {return new NotNode<L, AP>(child);}
+|	<AF> child=unary() {return new AFNode<L, AP>(child);}
+|	<AG> child=unary() {return new AGNode<L, AP>(child);}
+|	<EF> child=unary() {return new EFNode<L, AP>(child);}
+|	<EG> child=unary() {return new EGNode<L, AP>(child);}
+|	<LABRACKET> (action=<ID>)? <RABRACKET> child=unary() {return new DiamondNode<L, AP>(action==null ? null : this.labelParser.apply(action.toString()), child);}
+|	<LBRACKET> (action=<ID>)? <RBRACKET> child=unary() {return new BoxNode<L, AP>(action==null ? null : this.labelParser.apply(action.toString()), child);}
+|	child=element() {return child;}
+}
+
+private FormulaNode<L, AP> fixedPointFormula():
+{
+	FormulaNode<L, AP> child;
+	Token var;
+	boolean isGFP = false;
+}
+{
+	(<NU> {isGFP=true;}| <MU>) var=<ID> {addFixedPointVar(var.toString());} <DOT> <LPAREN> child=formula() <RPAREN>
+	{
+		String fixedPointVar = var.toString();
+		fixedPointVars.remove(fixedPointVar);
+		if(isGFP) {
+			return new GfpNode<L, AP>(fixedPointVar, child);
+		}
+		return new LfpNode<L, AP>(fixedPointVar, child);
+	}
+}
+
+private FormulaNode<L, AP> element():
+{
+	FormulaNode<L, AP> node;
+	Token ap, var;
+}
+{
+	ap=<STRING_LITERAL>
+	{
+		String apString = ap.toString();
+		String apWithoutQuotMarks = apString.substring(1, apString.length()-1);
+		return new AtomicNode<L, AP>(this.apParser.apply(apWithoutQuotMarks));
+	}
+|	var=<ID>
+	{
+		String fixedPointVar = var.toString();
+		if (!fixedPointVars.contains(fixedPointVar)) {
+			throw new ParseException("Referenced variable " + fixedPointVar + " is not in scope.");
+		}
+		return new VariableNode<L, AP>(fixedPointVar);
+	}
+|	<TRUE> {return new TrueNode<L, AP>();}
+|	<FALSE> {return new FalseNode<L, AP>();}
+|	<LPAREN> node=formula() <RPAREN> {return node;}
+}

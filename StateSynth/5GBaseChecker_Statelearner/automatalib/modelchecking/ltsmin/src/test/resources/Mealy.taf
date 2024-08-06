@@ -1,0 +1,35 @@
+mealy {B,E,C,A,D} {
+	s0 [initial] {
+		D / Y -> s1
+	}
+	s1 {
+		C / U -> s2
+	}
+	s2 {
+		D / W -> s0
+		E / W -> s7
+		B / S -> s3
+	}
+	s3 {
+		C / W -> s0
+		E / X -> s4
+		D / U -> s0
+	}
+	s4 {
+		E / Z -> s6
+		B / W -> s5
+		D / S -> s4
+	}
+	s5 {
+		C / X -> s0
+		E / U -> s2
+	}
+	s6 {
+		C / Y -> s6
+		D / W -> s5
+		E / X -> s1
+	}
+	s7 {
+		B / Y -> s1
+	}
+}

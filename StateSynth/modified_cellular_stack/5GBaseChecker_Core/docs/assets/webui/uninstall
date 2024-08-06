@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Refer to Node.js install script
+#
+# Run as root or insert `sudo -E` before `bash`:
+#
+# curl -fsSL https://open5gs.org/open5gs/assets/webui/uninstall | sudo -E bash -
+#   or
+# wget -qO- https://open5gs.org/open5gs/assets/webui/uninstall | sudo -E bash -
+#
+
+exec_cmd_nobail() {
+    echo "+ $1"
+    bash -c "$1"
+}
+
+uninstall() {
+exec_cmd_nobail "deb-systemd-invoke stop open5gs-webui"
+exec_cmd_nobail "systemctl disable open5gs-webui"
+exec_cmd_nobail "rm -f /lib/systemd/system/open5gs-webui.service"
+exec_cmd_nobail "rm -rf /usr/lib/node_modules/open5gs"
+
+exec_cmd_nobail "systemctl daemon-reload"
+}
+
+## Defer setup until we have the complete script
+uninstall

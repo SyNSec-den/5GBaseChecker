@@ -1,0 +1,402 @@
+/* Copyright (C) 2013-2022 TU Dortmund
+ * This file is part of AutomataLib, http://www.automatalib.net/.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+options {
+	LOOKAHEAD = 1;
+	STATIC = false;
+	SUPPORT_CLASS_VISIBILITY_PUBLIC = false;
+}
+
+PARSER_BEGIN(InternalDOTParser)
+
+package net.automatalib.serialization.dot;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.google.common.base.Preconditions;
+import net.automatalib.commons.util.strings.StringUtil;
+import net.automatalib.serialization.FormatException;
+
+/**
+ * The parser is based on the official <a href="http://www.graphviz.org/doc/info/lang.html">language definition<a>.
+ */
+class InternalDOTParser {
+
+	private Map<String, String> defaultNodeAttrs = new LinkedHashMap<String, String>();
+	private Map<String, String> defaultEdgeAttrs = new LinkedHashMap<String, String>();
+
+	private Map<String, Map<String, String>> nodes = new LinkedHashMap<String, Map<String, String>>();
+	private Map<EdgePair, Map<String, String>> edges = new LinkedHashMap<EdgePair, Map<String, String>>();
+
+	private boolean parsed;
+
+	private boolean strict;
+	private boolean directed;
+
+	private List<Node> transformedNodes;
+	private List<Edge> transformedEdges;
+
+	public List<Node> getNodes() {
+		Preconditions.checkArgument(this.parsed, "parse() needs to be called first");
+		return this.transformedNodes;
+	}
+
+	public List<Edge> getEdges() {
+		Preconditions.checkArgument(this.parsed, "parse() needs to be called first");
+		return this.transformedEdges;
+	}
+
+	public boolean isStrict() {
+		Preconditions.checkArgument(this.parsed, "parse() needs to be called first");
+		return this.strict;
+	}
+
+	public boolean isDirected() {
+		Preconditions.checkArgument(this.parsed, "parse() needs to be called first");
+		return this.directed;
+	}
+
+	public void parse() throws FormatException {
+		try {
+			graph();
+		} catch (ParseException e) {
+			throw new FormatException(e);
+		}
+
+		this.parsed = true;
+
+		final List<Node> transformedNodes = new ArrayList<Node>(this.nodes.size());
+		final List<Edge> transformedEdges = new ArrayList<Edge>(this.edges.size());
+
+		for (Map.Entry<String, Map<String, String>> entry : nodes.entrySet()) {
+			transformedNodes.add(new Node(entry.getKey(), Collections.unmodifiableMap(entry.getValue())));
+		}
+		for (Map.Entry<EdgePair, Map<String, String>>  entry : edges.entrySet()) {
+			transformedEdges.add(new Edge(entry.getKey().src, entry.getKey().tgt, Collections.unmodifiableMap(entry.getValue())));
+		}
+
+		this.transformedNodes = Collections.unmodifiableList(transformedNodes);
+		this.transformedEdges = Collections.unmodifiableList(transformedEdges);
+
+		// allow garbage collection
+		this.nodes = null;
+		this.edges = null;
+	}
+
+	private void addEdges(List<EdgePair> edges, Map<String, String> attrs) {
+		Map<String, String> localAttrs = new LinkedHashMap<String, String>(this.defaultEdgeAttrs);
+		localAttrs.putAll(attrs);
+
+		for (EdgePair ep : edges) {
+			String src = ep.src;
+			String tgt = ep.tgt;
+
+			this.edges.put(ep, localAttrs);
+
+			// if edges define new states, add them to the node map
+			this.putIfAbsent(this.nodes, src, new LinkedHashMap<String, String>(this.defaultNodeAttrs));
+			this.putIfAbsent(this.nodes, tgt, new LinkedHashMap<String, String>(this.defaultNodeAttrs));
+		}
+	}
+
+	/*
+	* Utility method, since JavaCC parser does not allow Java 8 lambda statements
+	*/
+	private <K, V> V putIfAbsent(Map<K, V> map, K key, V value) {
+		if (!map.containsKey(key)) {
+			map.put(key, value);
+			return value;
+		} else {
+			return map.get(key);
+		}
+	}
+
+	/*
+	* We require identity semantics
+	*/
+	private static class EdgePair {
+		String src;
+		String tgt;
+
+		EdgePair(String src, String tgt) {
+			this.src = src;
+			this.tgt = tgt;
+		}
+
+		@Override
+		public String toString() {
+		  return src + " -> " + tgt;
+		}
+	}
+}
+
+PARSER_END(InternalDOTParser)
+
+SKIP :
+{
+	" "
+|	"\r"
+|	"\t"
+|	"\n"
+}
+
+TOKEN [IGNORE_CASE]:
+{
+	< DIGRAPH: "digraph" >
+|	< EDGE: "edge" >
+|	< GRAPH: "graph" >
+|	< NODE: "node" >
+|	< STRICT: "strict" >
+|	< SUBGRAPH: "subgraph" >
+}
+
+TOKEN:
+{
+	< LBRACK: "[" >
+|	< RBRACK: "]" >
+|	< LCURLY: "{" >
+|	< RCURLY: "}" >
+|	< COLON: ":" >
+|	< SEMICOLON: ";" >
+|	< COMMA: "," >
+|	< EQUALS: "=" >
+|	< EDGEOP: "--" | "->" >
+|	< ID: <NUMERAL> | <LETTER> (<LETTER> | <NUMBER>)*>
+|	< LETTER: ["a"-"z","A"-"Z","\200"-"\377","_"] >
+|	< NUMBER: ["0"-"9"] >
+|	< NUMERAL: ["-"]( ("."(<NUMBER>)+) | (<NUMBER>)+ ("." (<NUMBER>)+)?)>
+}
+
+SKIP:
+{
+	< BEGIN_QID: "\"" > : IN_QID
+}
+
+<IN_QID> TOKEN:
+{
+	< QID: ("\\\""|~["\""])+ >
+}
+
+<IN_QID> SKIP:
+{
+	< END_QID: "\"" > : DEFAULT
+}
+
+SKIP:
+{
+	< BEGIN_LINE_COMMENT1: "//" > : IN_LINE_COMMENT
+|	< BEGIN_LINE_COMMENT2: "#" > : IN_LINE_COMMENT
+|	< BEGIN_BLOCK_COMMENT: "/*" > : IN_BLOCK_COMMENT
+}
+
+<IN_LINE_COMMENT> SKIP:
+{
+	< END_LINE_COMMENT: "\n" > : DEFAULT
+|	< ~[] >
+}
+
+
+<IN_BLOCK_COMMENT> SKIP:
+{
+	< END_BLOCK_COMMENT: "*/" > : DEFAULT
+|	< ~[] >
+}
+
+private void graph():
+{}
+{
+	[<STRICT> { this.strict = true; }] (<GRAPH> | <DIGRAPH> { this.directed = true; }) [identifier()] <LCURLY> stmt_list() <RCURLY>
+}
+
+// return the list of contained nodes
+private List<String> stmt_list():
+{
+	List<String> nodes;
+	List<String> allNodes = new ArrayList<String>();
+}
+{
+	(nodes=stmt() { allNodes.addAll(nodes); } [<SEMICOLON>])*
+	{
+		return allNodes;
+	}
+}
+
+// return the list of contained nodes
+private List<String> stmt():
+{
+	String id;
+	List<String> nodes = new ArrayList<String>();
+	List<String> graphSrc, graphTgt, edgeTgt;
+}
+{
+	// slightly modified grammar to prevent amiguity
+	// extracted 'id' and 'subgraph' prefix
+	(
+		(id = identifier() { nodes.add(id); } (edgeTgt = edge_stmt(id) { nodes.addAll(edgeTgt); } | <EQUALS> identifier() | node_stmt(id)))
+	|	(graphSrc = subgraph() { nodes.addAll(graphSrc); } (graphTgt = edge_stmt_sgr(graphSrc) { nodes.addAll(graphTgt); })?)
+	|	attr_stmt()
+	)
+	{
+		return nodes;
+	}
+}
+
+private void attr_stmt():
+{
+	Map<String, String> defaults = null;
+}
+{
+	(<GRAPH> | <NODE> { defaults = this.defaultNodeAttrs; } | <EDGE> { defaults = this.defaultEdgeAttrs; }) attr_list(defaults)
+}
+
+private void attr_list(Map<String, String> attrs):
+{}
+{
+	(<LBRACK> [a_list(attrs)] <RBRACK>)+
+}
+
+private void a_list(Map<String, String> attrs):
+{
+	String key;
+	String value;
+}
+{
+	(key=identifier() <EQUALS> value=identifier() { if (attrs != null) attrs.put(key, value); } [<SEMICOLON> | <COMMA>])+
+}
+
+// edge_stmt for node_id
+// return the list of contained nodes
+private List<String> edge_stmt(String src):
+{
+	List<EdgePair> edges = new ArrayList<EdgePair>();
+	List<String> tgts;
+	Map<String, String> attrs = new LinkedHashMap<String, String>();
+}
+{
+	tgts = edgeRHS(Collections.singletonList(src), edges) [attr_list(attrs)]
+	{
+		addEdges(edges, attrs);
+		return tgts;
+	}
+}
+
+// edge_stmt for subgraphs
+// return the list of contained nodes
+private List<String> edge_stmt_sgr(List<String> srcs):
+{
+	List<EdgePair> edges = new ArrayList<EdgePair>();
+	List<String> tgts;
+	Map<String, String> attrs = new LinkedHashMap<String, String>();
+}
+{
+	tgts = edgeRHS(srcs, edges) [attr_list(attrs)]
+	{
+		addEdges(edges, attrs);
+		return tgts;
+	}
+}
+
+// return the list of contained nodes
+// collect edges in the 'edges' parameter
+private List<String> edgeRHS(List<String> srcs, List<EdgePair> edges):
+{
+	String tgt;
+	List<String> tgts;
+	List<String> nodes = new ArrayList<String>();
+}
+{
+	(
+		// a single target is a non-aggregating edge
+		<EDGEOP> (tgt=node_id() { tgts = Collections.singletonList(tgt); } | tgts = subgraph())
+		{
+			for (String s : srcs) {
+				for (String t : tgts) {
+					edges.add(new EdgePair(s, t));
+				}
+			}
+			nodes.addAll(tgts);
+			srcs = tgts;
+		}
+	)+
+	{
+		return nodes;
+	}
+}
+
+private void node_stmt(String id):
+{
+	Map<String, String> attrs = new LinkedHashMap<String, String>();
+}
+{
+	[attr_list(attrs)]
+	{
+		// If node was already defined, merge attributes
+		Map<String, String> localAttrs = this.putIfAbsent(this.nodes, id, new LinkedHashMap<String, String>());
+		localAttrs.putAll(this.defaultNodeAttrs);
+		localAttrs.putAll(attrs);
+	}
+}
+
+private String node_id():
+{
+	String id;
+}
+{
+	id=identifier() [port()]
+	{
+		return id;
+	}
+}
+
+private void port():
+{}
+{
+	<COLON> ((identifier() [<COLON> compass_pt()]) | compass_pt())
+}
+
+// return the list of referenced nodes
+private List<String> subgraph():
+{
+	List<String> nodes;
+}
+{
+	 [<SUBGRAPH> [identifier()]] <LCURLY> nodes=stmt_list() <RCURLY>
+	{
+		return nodes;
+	}
+}
+
+private void compass_pt():
+{}
+{
+	("n" | "ne" | "e" | "se" | "s" | "sw" | "w" | "nw" | "c" | "_")
+}
+
+
+private String identifier():
+{
+	Token t;
+}
+{
+	t=<ID> { return t.toString(); }
+|	"\"\"" { return ""; }
+|	t=<QID> { return StringUtil.unescapeQuotes(t.toString()); }
+}

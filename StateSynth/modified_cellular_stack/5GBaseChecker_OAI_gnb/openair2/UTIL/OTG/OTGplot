@@ -1,0 +1,86 @@
+#! /usr/bin/octave -qf
+#      OTGPlot
+
+# Check the octave version
+ver=version;
+octave3 = str2num(ver(1))>=3;
+octave32 = str2num(ver(3))>=2;
+
+graphicformat="epsc2";
+extension="eps";
+
+arg_list = argv ();
+if nargin>0
+   inputf=arg_list{1};
+else
+   printf("%s\n","Input file name missing, exiting...");
+   return;
+endif
+
+if (f=fopen(inputf,"r"))<0
+   printf("%s%s%s\n","File ",inputf," does not exist, exiting...");
+   return;
+endif
+
+if size(s=getenv("TITLE"))
+   title(s);
+endif
+
+# read labels
+labels=blanks(0);
+fscanf(f,"%s",1);    # we do not need the first string (Time)
+while !strcmp(s=fscanf(f,"%s",1),"Aggregated")
+labels=[labels; strcat("-@;",s,";") ];
+endwhile
+labels=[labels; strcat("-@;",s,";") ];    # add the last string (Aggregate-Flow)
+
+if nargin>1
+   mask=intersect(str2num(arg_list{2}),1:size(labels,1));
+else
+   mask=1:size(labels,1);
+endif
+
+if !size(mask)
+   printf("%s\n","No flow selected to be plotted");
+   return;
+endif
+
+# read data 
+data=fscanf(f,"%f",[size(labels,1)+1,Inf])';
+
+temp=char(strsplit(strrep(inputf,"\\","/"),"/"));
+outputf=char(strsplit(deblank(temp(size(temp,1),:)),"."));
+ylbl=outputf(1,:);
+
+#ylbl(1,1)=toupper(ylbl(1,1));
+ylabel(ylbl);
+xlabel("Time (ms)");
+
+
+plot(data(:,1), data(:,mask+1), labels(mask,:));
+
+# Only for Octave 3.0
+if octave3
+
+if size(s=getenv("TITLE"))
+   title(s);
+endif
+
+   nlabels=blanks(0);
+   for i=1:size(labels,1)
+      nlabels=[nlabels; labels(i,:)(strfind(labels(i,:),";")(1)+1:strfind(labels(i,:),";")(2)-1)];
+   endfor
+   legend(nlabels(mask,:));
+   legend("boxon");
+   ylabel(ylbl);
+   xlabel("Time (ms)");
+endif
+
+if octave32
+	eval(cstrcat("print -d",graphicformat," ",ylbl,".",extension));
+else
+
+	eval(strcat("print -d",graphicformat," ",ylbl,".",extension));
+endif
+
+printf("%s\n","Done!");

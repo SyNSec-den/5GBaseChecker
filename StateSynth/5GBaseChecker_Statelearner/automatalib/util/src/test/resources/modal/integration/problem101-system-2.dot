@@ -1,0 +1,27 @@
+digraph g {
+
+	s0 [shape="circle" label="s2"];
+	s1 [shape="circle" label="s3"];
+	s2 [shape="circle" label="s1"];
+	s3 [shape="circle" label="s0"];
+	s4 [shape="circle" label="s6"];
+	s5 [shape="circle" label="s5"];
+	s6 [shape="circle" label="s4"];
+
+	s5 -> s0 [modality="MUST", style="strict", label="crelease3"];
+	s4 -> s4 [modality="MAY", style="dashed", label="ctake3"];
+	s0 -> s2 [modality="MUST", style="strict", label="ctake3"];
+	s6 -> s0 [modality="MUST", style="strict", label="crelease1"];
+	s0 -> s4 [modality="MAY", style="dashed", label="crelease1"];
+	s4 -> s4 [modality="MAY", style="dashed", label="crelease3"];
+	s2 -> s3 [modality="MUST", style="strict", label="ctake1"];
+	s0 -> s1 [modality="MUST", style="strict", label="ctake1"];
+	s3 -> s5 [modality="MUST", style="strict", label="crelease1"];
+	s3 -> s6 [modality="MUST", style="strict", label="crelease3"];
+	s1 -> s3 [modality="MUST", style="strict", label="ctake3"];
+	s4 -> s4 [modality="MAY", style="dashed", label="ctake1"];
+	s4 -> s4 [modality="MAY", style="dashed", label="crelease1"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}
