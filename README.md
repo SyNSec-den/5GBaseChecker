@@ -1,4 +1,4 @@
-# 5gbasechecker
+# 5GBaseChecker
 
 This is the public release of the code of our paper titled "Logic Gone Astray: A Security Analysis Framework for the Control Plane Protocols of 5G Basebands" (USENIX'24).
 
