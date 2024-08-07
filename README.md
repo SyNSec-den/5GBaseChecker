@@ -3,6 +3,7 @@
 This is the public release of the code of 5GBaseChecker, a security analysis framework for the control plane protocols of 5G baseband.  
 
 Based on this tool, we have the following USENIX Security '24 paper and BlackHat '24 talk: 
+
 USENIX Security '24 paper: "Logic Gone Astray: A Security Analysis Framework for the Control Plane Protocols of 5G Basebands" (USENIX'24). Link: https://www.usenix.org/conference/usenixsecurity24/presentation/tu
 
 BlackHat Talk: https://www.blackhat.com/us-24/briefings/schedule/index.html#cracking-the-g-fortress-peering-into-gs-vulnerability-abyss-40620
