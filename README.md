@@ -188,6 +188,22 @@ python3 ./main.py
 The console will show (total number of deviations analyzed) / (total number of deviations provided). It will also display the input sequence of unresolved deviations (if any). Our provided deviations list and program takes ~20 minutes to run on our machine. 
 
 
+# Citation
+
+```bibtex
+@inproceedings {tu2024logic,
+author = {Kai Tu and Abdullah Al Ishtiaq and Syed Md Mukit Rashid and Yilu Dong and Weixuan Wang and Tianwei Wu and Syed Rafiul Hussain},
+title = {Logic Gone Astray: A Security Analysis Framework for the Control Plane Protocols of 5G Basebands},
+booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
+year = {2024},
+isbn = {978-1-939133-44-1},
+address = {Philadelphia, PA},
+pages = {3063--3080},
+url = {https://www.usenix.org/conference/usenixsecurity24/presentation/tu},
+publisher = {USENIX Association},
+month = aug
+}
+```
 
 # Acknowledgement
 
