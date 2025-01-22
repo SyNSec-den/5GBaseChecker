@@ -29,7 +29,7 @@ def subtract_two(match):
     return f"S{number - 2}"  # Subtract 2 and return the modified string
 
 # Open the file
-with open('./models/5g_incr_same_dfa.dot', 'r') as f:
+with open('./models/example_incr_same_dfa.dot', 'r') as f:
     # Read the lines
     lines = f.readlines()
 
